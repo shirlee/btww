@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fname: MyString
+  lname: MyString
+  team_id: 1
+  isleader: false
+  isadmin: false
+  isnewbie: false
+  email: MyString
+  bikerclass: MyString
+
+two:
+  fname: MyString
+  lname: MyString
+  team_id: 1
+  isleader: false
+  isadmin: false
+  isnewbie: false
+  email: MyString
+  bikerclass: MyString

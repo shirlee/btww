@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @commute.user_id %>
+</p>
+
+<p>
+  <b>Commute date:</b>
+  <%= @commute.commute_date %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%= @commute.sequence %>
+</p>
+
+<p>
+  <b>Departure address:</b>
+  <%= @commute.departure_address %>
+</p>
+
+<p>
+  <b>Arrival address:</b>
+  <%= @commute.arrival_address %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @commute.distance %>
+</p>
+
+<p>
+  <b>Ridescore:</b>
+  <%= @commute.ridescore %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @commute.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_commute_path(@commute) %> |
+<%= link_to 'Back', commutes_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@commute) do |f| %>
+  <% if @commute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commute.errors.count, "error") %> prohibited this commute from being saved:</h2>
+
+      <ul>
+      <% @commute.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :commute_date %><br />
+    <%= f.date_select :commute_date %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence %><br />
+    <%= f.number_field :sequence %>
+  </div>
+  <div class="field">
+    <%= f.label :departure_address %><br />
+    <%= f.text_field :departure_address %>
+  </div>
+  <div class="field">
+    <%= f.label :arrival_address %><br />
+    <%= f.text_field :arrival_address %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.text_field :distance %>
+  </div>
+  <div class="field">
+    <%= f.label :ridescore %><br />
+    <%= f.text_field :ridescore %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

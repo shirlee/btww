@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  formula: MyString
+  isindividual: false
+  isteam: false
+  company_type: MyString
+  company_size_range: MyString
+
+two:
+  name: MyString
+  formula: MyString
+  isindividual: false
+  isteam: false
+  company_type: MyString
+  company_size_range: MyString

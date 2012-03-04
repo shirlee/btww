@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @award.name %>
+</p>
+
+<p>
+  <b>Formula:</b>
+  <%= @award.formula %>
+</p>
+
+<p>
+  <b>Isindividual:</b>
+  <%= @award.isindividual %>
+</p>
+
+<p>
+  <b>Isteam:</b>
+  <%= @award.isteam %>
+</p>
+
+<p>
+  <b>Company type:</b>
+  <%= @award.company_type %>
+</p>
+
+<p>
+  <b>Company size range:</b>
+  <%= @award.company_size_range %>
+</p>
+
+
+<%= link_to 'Edit', edit_award_path(@award) %> |
+<%= link_to 'Back', awards_path %>

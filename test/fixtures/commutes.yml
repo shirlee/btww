@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  commute_date: 2012-03-03
+  sequence: 1
+  departure_address: MyString
+  arrival_address: MyString
+  distance: 1.5
+  ridescore: MyString
+  comments: MyText
+
+two:
+  user_id: 1
+  commute_date: 2012-03-03
+  sequence: 1
+  departure_address: MyString
+  arrival_address: MyString
+  distance: 1.5
+  ridescore: MyString
+  comments: MyText

@@ -1,0 +1,33 @@
+<h1>Listing awards</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Formula</th>
+    <th>Isindividual</th>
+    <th>Isteam</th>
+    <th>Company type</th>
+    <th>Company size range</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @awards.each do |award| %>
+  <tr>
+    <td><%= award.name %></td>
+    <td><%= award.formula %></td>
+    <td><%= award.isindividual %></td>
+    <td><%= award.isteam %></td>
+    <td><%= award.company_type %></td>
+    <td><%= award.company_size_range %></td>
+    <td><%= link_to 'Show', award %></td>
+    <td><%= link_to 'Edit', edit_award_path(award) %></td>
+    <td><%= link_to 'Destroy', award, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Award', new_award_path %>
