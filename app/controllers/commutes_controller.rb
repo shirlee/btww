@@ -1,6 +1,9 @@
 class CommutesController < ApplicationController
   # GET /commutes
   # GET /commutes.json
+
+before_filter :loggedin, :except => :index
+
   def index
     @commutes = Commute.all
 

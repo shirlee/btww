@@ -1,0 +1,11 @@
+<div id="header">
+	
+	<h1><%= link_to "Bike2WorkWeek.com", root_url%></h1>
+	
+	<% if session[:user_id] %>
+	<p>Hello, <%= link_to "#{User.find(session[:user_id]).fname}", user_url(session[:user_id])%>  <%= link_to "Sign Out", logout_url %></p>
+	<% else %>
+	<%= link_to "Sign In", new_session_url %> | <%= link_to "Sign Up", new_user_url  %>
+	<% end %>
+		
+</div>

@@ -1,10 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Company:</b>
-  <%= @team.company %>
-</p>
-
+<h2>Team <%= link_to "#{@team.company}", @team.website, :target => "_blank" %></h2>
+  
 <p>
   <b>Company type:</b>
   <%= @team.company_type %>
@@ -16,10 +13,46 @@
 </p>
 
 <p>
-  <b>Website:</b>
-  <%= @team.website %>
+  <b>Team Members:</b>
 </p>
+	 
+	<table>
+		<tr>
+		<th> Name </th>
+		<th> Team Leader </th>
+	 	<th> Self-Described Biker Type </th>
+		<th> Commutes </th>
+		<th> Current Mileage </th>
+		</tr>
+		<% teammiles = 0 %>
+		<% @team.users.each do |user| %>
+			<% miles = 0 %>
+			<% user.commutes.each do |commute| %>
+					<% miles = miles + commute.distance %>
+			<% end %>
+			<% teammiles = teammiles + miles  %>			
+		<tr>
+		<td> <%= link_to "#{user.fname}" " #{user.lname}", user_url(user.id)  %> </td>
+		<% if user.isleader == true %>
+		<td> Y </td>		
+		<% else %>
+		<td>  </td>	
+		<% end %>	
+		<td> <%= user.bikerclass %> </td>
+		<td> <%= user.commutes.count %> </td>
+		<td> <%= miles %> </td>		
+		</tr>
+  <% end %>
+	</table>
+	
+<br>
 
+	<p>
+	  <b>Current Team Miles:</b>
+	  <%= teammiles %>
+	</p>
+
+<br>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

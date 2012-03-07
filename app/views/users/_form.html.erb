@@ -12,37 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fname %><br />
+    <%= f.label :fname, "First Name" %><br />
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br />
+    <%= f.label :lname, "Last Name" %><br />
     <%= f.text_field :lname %>
   </div>
   <div class="field">
-    <%= f.label :team_id %><br />
-    <%= f.number_field :team_id %>
+    <%= f.label :team_id %> <%= link_to "Create a new team", new_team_url %><br />
+    <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
   </div>
   <div class="field">
-    <%= f.label :isleader %><br />
+    <%= f.label :isleader, "Are you the Team Leader?" %><br />
     <%= f.check_box :isleader %>
   </div>
   <div class="field">
-    <%= f.label :isadmin %><br />
+    <%= f.label :isadmin, "Are you an Administrator?" %><br />
     <%= f.check_box :isadmin %>
   </div>
   <div class="field">
-    <%= f.label :isnewbie %><br />
+    <%= f.label :isnewbie, "First Time Biking to Work?" %><br />
     <%= f.check_box :isnewbie %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Email Address" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :bikerclass %><br />
-    <%= f.text_field :bikerclass %>
+    <%= f.label :bikerclass, "Primary Biker Type" %><br />
+    <%= f.select(:bikerclass, ['Commuter', 'Roadie', 'Dirt', 'Cycle-Crazed'], :prompt => "Select One") %>
   </div>
+<br>
   <div class="actions">
     <%= f.submit %>
   </div>

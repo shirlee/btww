@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :company_type %><br />
-    <%= f.text_field :company_type %>
+    <%= f.select(:company_type, ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related'],
+ 				:prompt => "Select One") %>
   </div>
   <div class="field">
     <%= f.label :size %><br />

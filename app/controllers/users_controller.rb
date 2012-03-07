@@ -41,9 +41,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.password = params[:password]
+    
     respond_to do |format|
       if @user.save
+        @user.authenticate
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -52,6 +54,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # PUT /users/1
   # PUT /users/1.json
