@@ -7,4 +7,13 @@ class Team < ActiveRecord::Base
   validates :company, :presence => :true, :uniqueness => :true
   validates_inclusion_of :company_type, :in => %w(Business Non-Profit Education Bike-Related Government Transportation-Related), :message => " invalid company type"
   
+  def self.search(search_name)
+    if search_name
+      find(:all, :conditions => ['company LIKE ?', "%#{search_name}%"])
+    else
+      find(:all)
+    end
+  end
+  
+  
 end

@@ -1,5 +1,15 @@
 <h1>Competing Teams</h1>
 
+
+<p><strong>Search for your company here:</strong></p>
+<%= form_tag teams_url, :method => 'get' do %>
+<p>
+<%= text_field_tag :search, params[:search]%>
+<%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
+
 <table>
   <tr>
     <th>Company</th>

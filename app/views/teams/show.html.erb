@@ -41,6 +41,12 @@
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
 		<td> <%= miles %> </td>		
+		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_commutes_url(user.id) %> </td>		
+		<% if session[:user_id] %>
+			<% if User.find(session[:user_id]).isleader == true ||  User.find(session[:user_id]) == user %>
+			<td> <%= link_to "Add Commute", new_commute_url(:user_id => user.id) %> </td>				
+			<% end %>	
+		<% end %>	
 		</tr>
   <% end %>
 	</table>

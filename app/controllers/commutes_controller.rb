@@ -2,16 +2,24 @@ class CommutesController < ApplicationController
   # GET /commutes
   # GET /commutes.json
 
-before_filter :loggedin, :except => :index
+before_filter :loggedin, :except => [:index, :show]
 
   def index
-    @commutes = Commute.all
+    if params[:user_id]
+      @commutes = Commute.find_all_by_user_id(params[:user_id])
+      @user = User.find_all_by_id(params[:user_id])
+
+    else
+      @commutes = Commute.all
+    
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @commutes }
     end
   end
+
 
   # GET /commutes/1
   # GET /commutes/1.json
@@ -28,7 +36,8 @@ before_filter :loggedin, :except => :index
   # GET /commutes/new.json
   def new
     @commute = Commute.new
-
+    @commute.user = User.find_by_id(params[:user_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @commute }
