@@ -10,5 +10,5 @@
 //= require_tree .
 
 $(function() {
-  $("#commute_commute_date").datepicker();
+  $("#commute_commute_date").datepicker({ dateFormat: 'yy-mm-dd' });
   });
