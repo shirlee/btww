@@ -12,20 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :company %><br />
+    <%= f.label :company %>
     <%= f.text_field :company %>
   </div>
   <div class="field">
-    <%= f.label :company_type %><br />
+    <%= f.label :company_type %>
     <%= f.select(:company_type, ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related'],
- 				:prompt => "Select One") %>
+ 				{:prompt => 'Select One'}) %>
   </div>
   <div class="field">
-    <%= f.label :size %><br />
+    <%= f.label :size, "Number of Employees" %>
     <%= f.number_field :size %>
   </div>
   <div class="field">
-    <%= f.label :website %><br />
+    <%= f.label :website %>
     <%= f.text_field :website %>
   </div>
   <div class="actions">

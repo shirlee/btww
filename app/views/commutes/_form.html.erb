@@ -16,31 +16,28 @@
   </div>
 
   <div class="field">
-    <%= f.label :commute_date %><br />
+    <%= f.label :commute_date %>
     <%= f.text_field :commute_date %>
   </div>
   <div class="field">
-    <%= f.label :sequence %><br />
-    <%= f.number_field :sequence %>
-  </div>
-  <div class="field">
-    <%= f.label :departure_address %><br />
+    <%= f.label :departure_address %>
     <%= f.text_field :departure_address %>
   </div>
   <div class="field">
-    <%= f.label :arrival_address %><br />
+    <%= f.label :arrival_address %>
     <%= f.text_field :arrival_address %>
   </div>
   <div class="field">
-    <%= f.label :distance %><br />
+    <%= f.label :distance %>
     <%= f.text_field :distance %>
   </div>
   <div class="field">
-    <%= f.label :ridescore %><br />
-    <%= f.text_field :ridescore %>
+    <%= f.label :ridescore, "How did you feel?" %>
+    <%= f.select(:ridescore, ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor', 'Abysmal'],
+ 				:prompt => "Select One") %>
   </div>
   <div class="field">
-    <%= f.label :comments %><br />
+    <%= f.label :comments %>
     <%= f.text_area :comments %>
   </div>
   <div class="actions">

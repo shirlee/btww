@@ -1,10 +1,10 @@
 Btww1::Application.routes.draw do
 
-  root :to => redirect("/signup")
+  #root :to => redirect("/signup")
 
   resources :sessions
 
-  #root :to => 'teams#index'
+  root :to => 'teams#index'
   
   get '/logout' => 'sessions#destroy', :as => :logout
 

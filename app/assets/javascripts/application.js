@@ -6,9 +6,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-ui
 //= require_tree .
 
 $(function() {
   $("#commute_commute_date").datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+
+
+$(function() {
+  $("#individual_checkbox").click(function(){
+	$("#company_type").toggle();
+	$("#company_size").toggle();
+		})
   });

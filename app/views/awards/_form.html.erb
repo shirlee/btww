@@ -12,28 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :formula %><br />
+    <%= f.label :formula %>
     <%= f.text_field :formula %>
   </div>
-  <div class="field">
-    <%= f.label :isindividual %><br />
-    <%= f.check_box :isindividual %>
+  <div class="field" id="individual_checkbox">
+    <%= f.label :isindividual, "Check if this is an Individual Award" %>
+    <%= f.check_box:isindividual %>
   </div>
-  <div class="field">
-    <%= f.label :isteam %><br />
-    <%= f.check_box :isteam %>
+  <div class="field" id="company_type">
+    <%= f.label :company_type %>
+    <%= f.select(:company_type, ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related'],
+ 				{:prompt => 'Select One'}) %>
   </div>
-  <div class="field">
-    <%= f.label :company_type %><br />
-    <%= f.text_field :company_type %>
-  </div>
-  <div class="field">
-    <%= f.label :company_size_range %><br />
-    <%= f.text_field :company_size_range %>
+  <div class="field" id="company_size">
+    <%= f.label :company_size_range, "Company Size" %>
+    <%= f.select(:company_size_range, ['1-5', '6-20', '21-50', '51-100', '101-300', '301-1000', '1001+'],
+ 				{:prompt => 'Select One'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -28,7 +28,7 @@
 		<% @team.users.each do |user| %>
 			<% miles = 0 %>
 			<% user.commutes.each do |commute| %>
-					<% miles = miles + commute.distance %>
+					<% miles = miles + commute.mileage %>
 			<% end %>
 			<% teammiles = teammiles + miles  %>			
 		<tr>
@@ -55,7 +55,7 @@
 
 	<p>
 	  <b>Current Team Miles:</b>
-	  <%= teammiles %>
+	  <%= (teammiles * 100).round.to_f / 100 %>
 	</p>
 
 <br>
