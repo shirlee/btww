@@ -6,13 +6,12 @@
 </p>
 
 <p>
-  <b>Formula:</b>
-  <%= @award.formula %>
-</p>
-
-<p>
   <b>Isindividual:</b>
-  <%= @award.isindividual %>
+	<% if @award.isindividual == true %>
+	<td> Y </td>		
+	<% else %>
+	<td>  </td>	
+	<% end %>	
 </p>
 
 <p>
@@ -30,6 +29,16 @@
   <%= @award.company_size_range %>
 </p>
 
+<table>
+	<tr>
+		<th> Team Name </th>
+	</tr>
+	<%= @teams.each do |team| %>
+		<tr>
+			<td> <%= team.company %> </td>
+		</tr>
+	<% end %>
+</table>
 
 <%= link_to 'Edit', edit_award_path(@award) %> |
 <%= link_to 'Back', awards_path %>

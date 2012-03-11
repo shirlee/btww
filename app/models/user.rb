@@ -7,4 +7,14 @@ class User < ActiveRecord::Base
   
   validates :email, :presence => :true
   
+  
+  def mileage
+  mileage = 0
+	  commutes.each do |commute|
+					mileage = mileage + commute.mileage
+		end
+	return (mileage * 100).round.to_f / 100
+  end
+
+
 end

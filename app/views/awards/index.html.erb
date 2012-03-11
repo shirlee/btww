@@ -1,11 +1,9 @@
-<h1>Listing awards</h1>
+<h1>Awards</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Formula</th>
     <th>Isindividual</th>
-    <th>Isteam</th>
     <th>Company type</th>
     <th>Company size range</th>
     <th></th>
@@ -16,9 +14,11 @@
 <% @awards.each do |award| %>
   <tr>
     <td><%= award.name %></td>
-    <td><%= award.formula %></td>
-    <td><%= award.isindividual %></td>
-    <td><%= award.isteam %></td>
+	<% if award.isindividual == true %>
+	<td> Y </td>		
+	<% else %>
+	<td>  </td>	
+	<% end %>
     <td><%= award.company_type %></td>
     <td><%= award.company_size_range %></td>
     <td><%= link_to 'Show', award %></td>

@@ -14,7 +14,9 @@ class AwardsController < ApplicationController
   # GET /awards/1.json
   def show
     @award = Award.find(params[:id])
-
+    @teams = Team.where(:company_type => @award.company_type)
+                        # :company_size_range => @award.company_size_range)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @award }

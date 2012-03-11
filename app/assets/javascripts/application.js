@@ -14,9 +14,14 @@ $(function() {
   $("#commute_commute_date").datepicker({ dateFormat: 'yy-mm-dd' });
   });
 
+$(function() {
+	$("#company_type").hide();
+	$("#company_size").hide();
+		})
+
 
 $(function() {
-  $("#individual_checkbox").click(function(){
+  $("#team_checkbox").click(function(){
 	$("#company_type").toggle();
 	$("#company_size").toggle();
 		})

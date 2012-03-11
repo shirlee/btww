@@ -47,7 +47,7 @@ Commute.destroy_all
   c = Commute.new
   c.user_id = users.first.id
   c.commute_date = Time.parse("2012/02/#{rand(30) + 1}")
-    c.distance = rand(40) + 1 + rand
+  c.distance = rand(40) + 1 + rand
   c.ridescore = 'Good'
   c.save
   
@@ -56,4 +56,12 @@ end
 puts "We now have #{Commute.count} commutes."
 
 
-Award.
+Award.destroy_all
+
+Award.create(:name => 'Highest Participation Rate', :formula => 'max (team_mileage / company_size)',
+            :isindividual => false, :isteam => true, :isadmin => false, :company_type => 'Business',
+            :company_size_range => '51-100')
+
+Award.create(:name => 'Highest Participation Rate', :formula => 'max (team_mileage / company_size)',
+            :isindividual => false, :isteam => true, :isadmin => false, :company_type => 'Business',
+            :company_size_range => '51-100')

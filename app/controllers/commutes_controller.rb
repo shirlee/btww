@@ -2,7 +2,7 @@ class CommutesController < ApplicationController
   # GET /commutes
   # GET /commutes.json
 
-before_filter :loggedin, :except => [:index, :show]
+before_filter :logged_in?, :except => [:index, :show]
 
   def index
     if params[:user_id]

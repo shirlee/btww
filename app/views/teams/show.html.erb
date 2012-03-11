@@ -24,13 +24,7 @@
 		<th> Commutes </th>
 		<th> Current Mileage </th>
 		</tr>
-		<% teammiles = 0 %>
 		<% @team.users.each do |user| %>
-			<% miles = 0 %>
-			<% user.commutes.each do |commute| %>
-					<% miles = miles + commute.mileage %>
-			<% end %>
-			<% teammiles = teammiles + miles  %>			
 		<tr>
 		<td> <%= link_to "#{user.fname}" " #{user.lname}", user_url(user.id)  %> </td>
 		<% if user.isleader == true %>
@@ -40,10 +34,10 @@
 		<% end %>	
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
-		<td> <%= miles %> </td>		
+		<td> <%= user.mileage %> </td>		
 		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_commutes_url(user.id) %> </td>		
-		<% if session[:user_id] %>
-			<% if User.find(session[:user_id]).isleader == true ||  User.find(session[:user_id]) == user %>
+		<% if logged_in? %>
+			<% if teamleader? ||  get_user == user %>
 			<td> <%= link_to "Add Commute", new_commute_url(:user_id => user.id) %> </td>				
 			<% end %>	
 		<% end %>	
@@ -54,8 +48,24 @@
 <br>
 
 	<p>
-	  <b>Current Team Miles:</b>
-	  <%= (teammiles * 100).round.to_f / 100 %>
+	  <b>Total Team Miles:</b>
+	  <%= @team.mileage %>
+	</p>
+	<p>
+	  <b>Total Team Commutes:</b>
+	  <%= @team.commutes.count %>
+	</p>
+	<p>
+	  <b>Total Team Commuters:</b>
+	  <%= @team.team_commuters %>
+	</p>
+	<p>
+	  <b>Number of Employees:</b>
+	  <%= @team.size %>
+	</p>
+	<p>
+	  <b>Team Participation Rate:</b>
+	  <%= @team.team_participation %> %
 	</p>
 
 <br>

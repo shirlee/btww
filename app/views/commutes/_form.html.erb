@@ -28,12 +28,12 @@
     <%= f.text_field :arrival_address %>
   </div>
   <div class="field">
-    <%= f.label :distance %>
+    <%= f.label :distance, "Distance in Miles" %>
     <%= f.text_field :distance %>
   </div>
   <div class="field">
     <%= f.label :ridescore, "How did you feel?" %>
-    <%= f.select(:ridescore, ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor', 'Abysmal'],
+    <%= f.select(:ridescore, ['Fan-freakin-rastic!', 'Hella Good', 'Meh', "Hurtin'", 'Abysmal'],
  				:prompt => "Select One") %>
   </div>
   <div class="field">
