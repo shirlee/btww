@@ -16,19 +16,6 @@ class Team < ActiveRecord::Base
     end
   end
   
-  def company_size_range
-    result = case size
-      when 1..5 then '1-5'
-      when 6..20 then '6-20'
-      when 21..50 then '21-50'
-      when 51..100 then '51-100'
-      when 101..300 then '101-300'
-      when 301..1000 then '101-300'
-      else '1001+'
-    end
-    return result
-  end
-  
   
   def team_commutes
     commutes.count

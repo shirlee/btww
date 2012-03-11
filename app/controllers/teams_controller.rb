@@ -41,7 +41,8 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(params[:team])
-
+    @team.company_size_range = company_size_range
+    
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -57,7 +58,8 @@ class TeamsController < ApplicationController
   # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
-
+    @team.company_size_range = company_size_range
+    
     respond_to do |format|
       if @team.update_attributes(params[:team])
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
@@ -80,4 +82,20 @@ class TeamsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def company_size_range
+    company_size_range = case @team.size
+      when 1..5 then '1-5'
+      when 6..20 then '6-20'
+      when 21..50 then '21-50'
+      when 51..100 then '51-100'
+      when 101..300 then '101-300'
+      when 301..1000 then '101-300'
+      else '1001+'
+    end
+    return company_size_range
+  end
+  
 end
+
+
