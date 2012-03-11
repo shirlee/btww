@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   
   has_many :commutes
   belongs_to :team
+  has_many :won_awards
   
   validates :email, :presence => :true
   

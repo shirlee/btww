@@ -1,44 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @award.name %>
-</p>
+<% if @award.isindividual %>
+	<h2> <%= @award.name %> </h2>
 
-<p>
-  <b>Isindividual:</b>
-	<% if @award.isindividual == true %>
-	<td> Y </td>		
-	<% else %>
-	<td>  </td>	
-	<% end %>	
-</p>
-
-<p>
-  <b>Isteam:</b>
-  <%= @award.isteam %>
-</p>
-
-<p>
-  <b>Company type:</b>
-  <%= @award.company_type %>
-</p>
-
-<p>
-  <b>Company size range:</b>
-  <%= @award.company_size_range %>
-</p>
-
-<table>
-	<tr>
-		<th> Team Name </th>
-	</tr>
-	<%= @teams.each do |team| %>
+	<table>
 		<tr>
-			<td> <%= team.company %> </td>
+			<th> Commuter Name </th>
 		</tr>
-	<% end %>
-</table>
+		<% @users.each do |user| %>
+			<tr>
+				<td> <%= user.fname %> </td>
+			</tr>
+		<% end %>
+	</table>
 
-<%= link_to 'Edit', edit_award_path(@award) %> |
-<%= link_to 'Back', awards_path %>
+
+<% else %>
+
+
+	<h2> Teams Competing for <%= @award.name %> </h2>
+	<h3>"<%= @award.company_type %> - <%= @award.company_size_range %>" Category</h3>
+
+<br>
+
+	<table>
+		<tr>
+			<th> Team Name </th>
+		</tr>
+		<% @teams.each do |team| %>
+			<tr>
+				<td> <%= team.company %> </td>
+			</tr>
+		<% end %>
+	</table>
+
+
+<% end %>
+
+<br>
+<br>
+
+<%= link_to 'All Leaderboards', awards_path %>
