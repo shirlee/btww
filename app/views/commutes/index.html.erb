@@ -2,14 +2,10 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Commute date</th>
-    <th>Sequence</th>
-    <th>Departure address</th>
-    <th>Arrival address</th>
+    <th>Commuter</th>
+    <th>Date</th>
     <th>Distance</th>
     <th>Ridescore</th>
-    <th>Comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,21 +13,17 @@
 
 <% @commutes.each do |commute| %>
   <tr>
-    <td><%= commute.user_id %></td>
+    <td><%= User.find_by_id(commute.user_id).fname %> <%= User.find_by_id(commute.user_id).lname %></td>
     <td><%= commute.commute_date %></td>
-    <td><%= commute.sequence %></td>
-    <td><%= commute.departure_address %></td>
-    <td><%= commute.arrival_address %></td>
     <td><%= commute.mileage%></td>
     <td><%= commute.ridescore %></td>
-    <td><%= commute.comments %></td>
-    <td><%= link_to 'Show', commute %></td>
-    <td><%= link_to 'Edit', edit_commute_path(commute) %></td>
-    <td><%= link_to 'Destroy', commute, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show Commute', commute %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Commute', new_commute_path %>
+<% if logged_in? %>
+<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
+<% end %>

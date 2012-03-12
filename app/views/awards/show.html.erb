@@ -6,10 +6,14 @@
 	<table>
 		<tr>
 			<th> Commuter Name </th>
+			<th> Commutes </th>
+			<th> Total Mileage </th>
 		</tr>
 		<% @users.each do |user| %>
 			<tr>
 				<td> <%= user.fname %> </td>
+				<td> <%= user.commutes.count %> </td>
+				<td> <%= user.mileage %> </td>
 			</tr>
 		<% end %>
 	</table>

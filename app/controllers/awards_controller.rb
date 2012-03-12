@@ -20,8 +20,12 @@ class AwardsController < ApplicationController
                           :company_size_range => @award.company_size_range)
 
     else
-     @users = User.all
-    
+     commuters = User.joins(:commutes).select("distinct(users.id)")
+        @users = Array.new
+        commuters.each do |commuter|
+          @users << User.find_by_id(commuter)
+        end
+      
     end
     
     respond_to do |format|

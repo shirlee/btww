@@ -1,13 +1,20 @@
-<h1>Competing Teams</h1>
+<h1>Bike To Work Week 2012</h1>
+<br>
+<h2>Meet The Competing Teams!</h2>
 <br>
 
 <p><strong>Search for your company here:</strong></p>
+
 <%= form_tag teams_url, :method => 'get' do %>
 <p>
 <%= text_field_tag :search, params[:search]%>
 <%= submit_tag "Search", :name => nil %>
 </p>
 <% end %>
+
+<p><strong>Can't Find Your Company? Shame On You! <%= link_to 'Add It Here', new_team_path %></strong></p>
+
+<br>
 
 
 <table>
@@ -36,4 +43,4 @@
 
 <br />
 
-<%= link_to 'New Team', new_team_path %>
+
