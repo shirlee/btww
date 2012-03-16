@@ -15,13 +15,17 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+  <div class="field" id="goal">
+    <%= f.label :goal %>
+    <%= f.select(:goal, ['Participation Rate', 'Number of Commutes', 'Number of Newbies', 'Total Mileage', 'Highest Mileage in One Day'],
+ 				{:prompt => 'Select One'}) %>
   <div class="field">
     <%= f.label :formula %>
     <%= f.text_field :formula %>
   </div>
   <div class="field" id="team_checkbox">
     <%= f.label :isteam, "Check if this is a Team Award" %>
-    <%= f.check_box:isindividual %>
+    <%= f.check_box:isteam %>
   </div>
   <div class="field" id="company_type">
     <%= f.label :company_type %>

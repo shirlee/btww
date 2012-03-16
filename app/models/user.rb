@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :won_awards
   
   validates :email, :presence => :true
+  validates :team, :presence => :true
   
   
   def mileage

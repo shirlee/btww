@@ -1,8 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<% if @award.isindividual %>
-	<h2> <%= @award.name %> </h2>
+<% if @award.isteam %>
+		<h2>Teams Competing for the <%= @award.goal.upcase %> Award</h2>
+		<h3>In the Category of <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees</h3>
+	
+<br>
 
+<p> Other Leaderboards: 
+
+	<% @award_list.each do |award| %>
+		<% if award.id != @award.id  %>
+			<%= link_to "#{award.goal}", award_url(award.id) %> | 
+			<% else  %>
+			<%= award.goal %> | 
+		<% end  %>
+	<% end  %>
+</p>
+
+
+	<br>
+
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<th> Team Name </th>
+				<th> Total Mileage </th>			
+				<th> Total Commutes </th>			
+				<th> Total Commuters </th>			
+				<th> Total Employees </th>			
+				<th> Total Participation Rate </th>			
+				<th> Newbies </th>			
+				<th> Team Members with 0 Commutes  </th>			
+			</tr>
+			<% @teams.each do |team| %>
+				<tr>
+					<td> <%= team.company %> </td>
+					<td> <%= team.mileage %> </td>
+					<td> <%= team.commutes.count %> </td>
+					<td> <%= team.commuters %> </td>
+					<td> <%= team.size %> </td>
+					<td> <%= team.team_participation %> </td>
+					<td> <%= team.newbies %> </td>
+					<td> <%= team.zero_commutes %> </td>
+
+				</tr>
+			<% end %>
+		</table>
+
+<% else %>
 	<table class="table table-striped table-bordered table-condensed">
 		<tr>
 			<th> Commuter Name </th>
@@ -14,26 +58,6 @@
 				<td> <%= user.fname %> </td>
 				<td> <%= user.commutes.count %> </td>
 				<td> <%= user.mileage %> </td>
-			</tr>
-		<% end %>
-	</table>
-
-
-<% else %>
-
-
-	<h2> Teams Competing for <%= @award.name %> </h2>
-	<h3>"<%= @award.company_type %> - <%= @award.company_size_range %>" Category</h3>
-
-<br>
-
-	<table>
-		<tr>
-			<th> Team Name </th>
-		</tr>
-		<% @teams.each do |team| %>
-			<tr>
-				<td> <%= team.company %> </td>
 			</tr>
 		<% end %>
 	</table>

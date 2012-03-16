@@ -15,10 +15,24 @@ class AwardsController < ApplicationController
   def show
     @award = Award.find(params[:id])
     
-    if @award.isindividual == false
+    if @award.isindividual == nil
       @teams = Team.where(:company_type => @award.company_type,
                           :company_size_range => @award.company_size_range)
+                          
+        if @award.goal == 'Participation Rate'
+              @teams.order('team_participation')
+          elsif @award.goal == 'Total Mileage'
+              @teams.order('mileage desc')
+          elsif @award.goal == 'Number of Newbies'
+              @teams.order('newbies desc')
+          elsif @award.goal == 'Total Commutes'
+              @teams.order('total_commutes desc')
+          else @teams.order('mileage desc')
+        end
 
+      @award_list = Award.where(:company_type => @award.company_type,
+                                  :company_size_range => @award.company_size_range)
+ 
     else
      commuters = User.joins(:commutes).select("distinct(users.id)")
         @users = Array.new
@@ -26,6 +40,8 @@ class AwardsController < ApplicationController
           @users << User.find_by_id(commuter)
         end
       
+     @award_list = Award.where(:isindividual => true)
+    
     end
     
     respond_to do |format|

@@ -20,16 +20,20 @@
     <%= f.text_field :lname %>
   </div>
   <div class="field">
+    <%= f.label :password, "Password" %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Password Confirmation" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
     <%= f.label :team_id %> <%= link_to "Create a new team", new_team_url %><br />
     <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
   </div>
   <div class="field">
     <%= f.label :isleader, "Are you the Team Leader?" %><br />
     <%= f.check_box :isleader %>
-  </div>
-  <div class="field">
-    <%= f.label :isadmin, "Are you an Administrator?" %><br />
-    <%= f.check_box :isadmin %>
   </div>
   <div class="field">
     <%= f.label :isnewbie, "First Time Biking to Work?" %><br />
@@ -41,8 +45,9 @@
   </div>
   <div class="field">
     <%= f.label :bikerclass, "Primary Biker Type" %><br />
-    <%= f.select(:bikerclass, ['Commuter', 'Roadie', 'Dirt', 'Cycle-Crazed'], :prompt => "Select One") %>
+    <%= f.select(:bikerclass, ['Recreational', 'Commuter', 'Roadie', 'BMX', 'MTB', 'All of the Above'], :prompt => "Select One") %>
   </div>
+
 <br>
   <div class="actions">
     <%= f.submit %>

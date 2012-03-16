@@ -8,6 +8,7 @@ gem 'rails', '3.1.3'
 gem "pg", :group => :production
 gem "sqlite3-ruby", :group => :development
 
+gem 'omniauth'
 
 # Gems used only for assets and not required
 # in production environments by default.

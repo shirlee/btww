@@ -1,10 +1,10 @@
-<h1>Awards</h1>
+<h1>Leaderboards</h1>
 
 <table class="table table-striped table-bordered table-condensed">
 
   <tr>
-    <th>Name</th>
-    <th>Isindividual</th>
+    <th>Goal</th>
+    <th>Team Award?</th>
     <th>Company type</th>
     <th>Company size range</th>
     <th></th>
@@ -14,8 +14,8 @@
 
 <% @awards.each do |award| %>
   <tr>
-    <td><%= award.name %></td>
-	<% if award.isindividual == true %>
+    <td><%= award.goal %></td>	
+	<% if award.isteam == true %>
 	<td> Y </td>		
 	<% else %>
 	<td>  </td>	

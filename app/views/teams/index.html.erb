@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Bike To Work Week 2012</h1>
 <br>
 <h2>Meet The Competing Teams!</h2>
@@ -30,7 +32,7 @@
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.company %></td>
+    <td><%= link_to "#{team.company}", team %></td>
     <td><%= team.company_type %></td>
     <td><%= team.size %></td>
     <td><%= team.website %></td>

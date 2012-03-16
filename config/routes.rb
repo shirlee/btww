@@ -8,8 +8,6 @@ Btww1::Application.routes.draw do
   
   get '/logout' => 'sessions#destroy', :as => :logout
 
-
-
   resources :awards
 
   resources :commutes

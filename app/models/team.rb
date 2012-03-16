@@ -17,7 +17,7 @@ class Team < ActiveRecord::Base
   end
   
   
-  def team_commutes
+  def total_commutes
     commutes.count
   end
 
@@ -31,13 +31,28 @@ class Team < ActiveRecord::Base
 	end
 
 
-  def team_commuters
+  def commuters
     commutes.group('user_id').count.count
+  end
+
+
+  def zero_commutes
+    return users.count - commuters
   end
 
 
   def team_participation
     return (((commutes.group('user_id').count.count).to_f / size) * 100).round(2)
+  end
+
+  def newbies
+    newbies = 0
+    users.each do |user|
+      if user.isnewbie
+          newbies = newbies + 1
+      end
+    end
+    return newbies
   end
 
 end
