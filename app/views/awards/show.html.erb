@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <% if @award.isteam %>
-		<h2>Teams Competing for the <%= @award.goal.upcase %> Award</h2>
-		<h3>In the Category of <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees</h3>
+	<h3>Teams Competing in the Category of: </h3>
+	<p>Type: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees</p>
+	<p><%= link_to 'Scoreboards for Other Categories', awards_path %></p>
 	
 <br>
 
-<p> Other Leaderboards: 
+<p> Other Scoreboards in this category: 
 
 	<% @award_list.each do |award| %>
 		<% if award.id != @award.id  %>
@@ -68,4 +69,4 @@
 <br>
 <br>
 
-<%= link_to 'All Leaderboards', awards_path %>
+

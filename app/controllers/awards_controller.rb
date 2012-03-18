@@ -16,24 +16,30 @@ class AwardsController < ApplicationController
     @award = Award.find(params[:id])
     
     if @award.isindividual == nil
-      @teams = Team.where(:company_type => @award.company_type,
-                          :company_size_range => @award.company_size_range)
-                          
-        if @award.goal == 'Participation Rate'
-              @teams.order('team_participation')
-          elsif @award.goal == 'Total Mileage'
-              @teams.order('mileage desc')
-          elsif @award.goal == 'Number of Newbies'
-              @teams.order('newbies desc')
-          elsif @award.goal == 'Total Commutes'
-              @teams.order('total_commutes desc')
-          else @teams.order('mileage desc')
-        end
 
+      if @award.goal == 'Participation Ratex'
+           goal = 'team_participation'
+        elsif @award.goal == 'Total Mileagex'
+           goal = 'mileage asc'
+        elsif @award.goal == 'Number of Newbiesx'
+           goal = 'company'
+        elsif @award.goal == 'Total Commutesx'
+           goal = 'total_commutes'
+        else goal = 'company'
+      end
+
+      @teams = Team.where(:company_type => @award.company_type,
+                          :company_size_range => @award.company_size_range,)
+                    .order("#{goal} asc")
+                                    
+        logger.debug "Teams in this category: #{@teams}"
+        logger.debug "Goal: #{@award.goal}"
+            
       @award_list = Award.where(:company_type => @award.company_type,
                                   :company_size_range => @award.company_size_range)
  
     else
+
      commuters = User.joins(:commutes).select("distinct(users.id)")
         @users = Array.new
         commuters.each do |commuter|

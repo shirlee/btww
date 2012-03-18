@@ -41,19 +41,23 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+
     respond_to do |format|
       if @user.save
-          if !logged_in?
-            session[:user_id] = @user.id
-            format.html { redirect_to root_url(params[@user.team.id]), notice: "You're in! Let's get started!" }
-          end
-        format.html { redirect_to users_url, notice: 'User was successfully added.' }          
+
+        if !logged_in?
+          session[:user_id] = @user.id
+        end
+
+        format.html { redirect_to team_url(params[@user.team.id]), notice: "You're in! Let's get started!" }
         format.json { render json: @user, status: :created, location: @user }
+
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
 

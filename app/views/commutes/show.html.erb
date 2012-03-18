@@ -74,7 +74,7 @@
 
 <% if logged_in? && get_user.id == @commute.user_id %>
 <%= link_to 'Edit', edit_commute_path(@commute) %> |
-<%= link_to 'Delete', edit_commute_path(@commute) %> |
+<%= link_to 'Delete', user_path(@commute.user_id) %> |
 <% end %>
 <%= link_to "All #{@commute.user.fname}'s Commutes", user_commutes_path(@commute.user_id) %> | 
 <%= link_to 'All Commutes', commutes_path %>

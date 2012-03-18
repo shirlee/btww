@@ -1,38 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Fname:</b>
-  <%= @user.fname %>
-</p>
-
-<p>
-  <b>Lname:</b>
-  <%= @user.lname %>
+  <b>Name</b>
+  <%= @user.fname %>  <%= @user.lname %>
 </p>
 
 <p>
   <b>Team:</b>
-  <%= @user.team_id %>
+  <%= link_to "#{@user.team.company}", team_url(@user.team.id) %>
+	<% if @user.isleader == true %>
+		(Team Leader)
+	<% else %>
+	<% end %>
 </p>
 
 <p>
-  <b>Isleader:</b>
-  <%= @user.isleader %>
-</p>
-
-<p>
-  <b>Isadmin:</b>
-  <%= @user.isadmin %>
-</p>
-
-<p>
-  <b>Isnewbie:</b>
-  <%= @user.isnewbie %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
+	<% if @user.isleader == true %>
+		<b>Newbie!</b>
+	<% else %>
+	<% end %>
 </p>
 
 <p>
@@ -40,6 +26,32 @@
   <%= @user.bikerclass %>
 </p>
 
+<br>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <b><%= @user.fname %>'s Commutes:</b>
+</p>
+	 
+	<table class="table table-striped table-bordered table-condensed">
+
+		<tr>
+		<th> Date </th>
+		<th> Distance </th>
+	 	<th> Ridescore </th>
+		</tr>
+		<% @user.commutes.each do |commute| %>
+			<tr>
+			<td> <%= commute.commute_date %> </td>
+			<td> <%= commute.distance %> </td>
+			<td> <%= commute.ridescore %> </td>
+			<td> <%= link_to "View Commute Detail", commute_url(commute.id) %> </td>		
+			</tr>
+	  	<% end %>
+	</table>
+
+<% if logged_in? %>
+	<% if teamleader? ||  get_user == @user %>
+	<%= link_to "Add Commute", new_commute_url(:user_id => @user.id) %> |				
+	<% end %>	
+<% end %>	
+<%= link_to 'Edit User', edit_user_path(@user) %>

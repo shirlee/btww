@@ -2,6 +2,8 @@ Btww1::Application.routes.draw do
 
   #root :to => redirect("/signup")
 
+  match '/auth/:facebook/callback', to: 'sessions#fb_auth'
+
   resources :sessions
 
   root :to => 'teams#index'
@@ -11,15 +13,15 @@ Btww1::Application.routes.draw do
   resources :awards
 
   resources :commutes
-  
-#  get 'commutes/user/:id/:fname-:lname' => 'commutes#user_commutes', :as => :user_commutes
-
 
   resources :teams
 
   resources :users do
     resources :commutes
   end
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

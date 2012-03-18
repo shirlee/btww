@@ -1,21 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Team <%= link_to "#{@team.company}", @team.website, :target => "_blank" %></h2>
-  
+<h2>Team <%=  @team.company  %></h2>
+
+<div id="edit-link">
+
+</div>
+
+<p><%= link_to "Company Website", @team.website, :target => "_blank" %> |
+<%= link_to "Twitter", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
+
+
 <p>
   <b>Company type:</b>
-  <%= @team.company_type %>
-</p>
-
-<p>
+  <%= @team.company_type %>; 
   <b>Size:</b>
-  <%= @team.size %>
-</p>
-
-<p>
-  <b>Size Category:</b>
+  <%= @team.size %>; 
+  <b>Size Range:</b>
   <%= @team.company_size_range %>
 </p>
+
+<p>Scoreboards for teams in category: "<%= @team.company_type %>" with <%= @team.company_size_range %> employees:</p>
+
+<br>
+
+<h3><%=  @team.company  %> Stats:</h3>
+
+<p> 
+  <b>Commuters:</b>
+  <%= @team.commuters %>; 
+  <b>Participation:</b>
+  <%= @team.team_participation %>%;
+  <b>Mileage:</b>
+  <%= @team.mileage %>;
+  <b># Commutes:</b>
+  <%= @team.commutes.count %>;
+  <b># Newbies:</b>
+  <%= @team.newbies %>;
+</p>
+
+<br>
 
 <p>
   <b>Team Members:</b>
@@ -25,7 +48,8 @@
 
 		<tr>
 		<th> Name </th>
-		<th> Team Leader </th>
+		<th> Team Leader </th>		
+		<th> Newbie </th>		
 	 	<th> Self-Described Biker Type </th>
 		<th> Commutes </th>
 		<th> Current Mileage </th>
@@ -38,43 +62,23 @@
 		<% else %>
 		<td>  </td>	
 		<% end %>	
+		<% if user.isnewbie == true %>
+		<td> Y </td>		
+		<% else %>
+		<td>  </td>	
+		<% end %>	
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
 		<td> <%= user.mileage %> </td>		
 		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_commutes_url(user.id) %> </td>		
-		<% if logged_in? %>
-			<% if teamleader? ||  get_user == user %>
-			<td> <%= link_to "Add Commute", new_commute_url(:user_id => user.id) %> </td>				
-			<% end %>	
-		<% end %>	
 		</tr>
   <% end %>
 	</table>
 	
 <br>
 
-	<p>
-	  <b>Total Team Miles:</b>
-	  <%= @team.mileage %>
-	</p>
-	<p>
-	  <b>Total Team Commutes:</b>
-	  <%= @team.total_commutes %>
-	</p>
-	<p>
-	  <b>Total Team Commuters:</b>
-	  <%= @team.commuters %>
-	</p>
-	<p>
-	  <b>Number of Employees:</b>
-	  <%= @team.size %>
-	</p>
-	<p>
-	  <b>Team Participation Rate:</b>
-	  <%= @team.team_participation %> %
-	</p>
 
-<br>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<% if logged_in? && teamleader?  %>
+<%= link_to 'Edit Team', edit_team_path(@team) %> |
+<% end  %>
+<%= link_to 'All Teams', teams_path %>

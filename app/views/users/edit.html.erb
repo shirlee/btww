@@ -1,6 +1,10 @@
 <h1>Editing user</h1>
 
-<%= render 'form' %>
+	<% if @user.provider !=nil  %>
+		<%= render 'omniauthform' %>
+	<% else  %>
+	<%= render 'form' %>
+	<% end  %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
