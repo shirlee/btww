@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to "Allow Facebook", '/auth/facebook' %>
-
 <h1>Bike To Work Week 2012</h1>
 <br>
 <h2>Meet The Competing Teams!</h2>
@@ -27,9 +25,7 @@
     <th>Company type</th>
     <th>Size</th>
     <th>Website</th>
-    <th></th>
-    <th></th>
-    <th></th>
+
   </tr>
 
 <% @teams.each do |team| %>
@@ -38,9 +34,6 @@
     <td><%= team.company_type %></td>
     <td><%= team.size %></td>
     <td><%= team.website %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

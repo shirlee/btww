@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if @award.isteam %>
+<% if @award.isteam = true %>
 	<h3>Teams Competing in the Category of: </h3>
 	<p>Type: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees</p>
 	<p><%= link_to 'Scoreboards for Other Categories', awards_path %></p>

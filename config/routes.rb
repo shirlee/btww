@@ -1,6 +1,8 @@
 Btww1::Application.routes.draw do
 
-  #root :to => redirect("/signup")
+  get "greetings/index"
+
+  root :to => 'teams#index'
 
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'
 
