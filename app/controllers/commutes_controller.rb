@@ -55,7 +55,7 @@ before_filter :logged_in?, :except => [:index, :show]
     @commute = Commute.new(params[:commute])
 
     respond_to do |format|
-      if @commute.save
+      if @commute.save && update_team_stats(@commute.user.team)
         format.html { redirect_to @commute, notice: 'Commute was successfully created.' }
         format.json { render json: @commute, status: :created, location: @commute }
       else
@@ -71,7 +71,7 @@ before_filter :logged_in?, :except => [:index, :show]
     @commute = Commute.find(params[:id])
 
     respond_to do |format|
-      if @commute.update_attributes(params[:commute])
+      if @commute.update_attributes(params[:commute]) && update_team_stats(@commute.user.team)
         format.html { redirect_to @commute, notice: 'Commute was successfully updated.' }
         format.json { head :ok }
       else
@@ -86,10 +86,15 @@ before_filter :logged_in?, :except => [:index, :show]
   def destroy
     @commute = Commute.find(params[:id])
     @commute.destroy
+    update_team_stats(@commute.user.team)
 
     respond_to do |format|
-      format.html { redirect_to commutes_url }
+      format.html { redirect_to user_url(@commute.user) }
       format.json { head :ok }
     end
   end
+  
+
+  
+  
 end

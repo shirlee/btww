@@ -18,5 +18,8 @@ class User < ActiveRecord::Base
 	return (mileage * 100).round.to_f / 100
   end
 
+  def full_name
+    return fname + ' ' + lname
+  end
 
 end

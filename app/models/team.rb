@@ -17,12 +17,12 @@ class Team < ActiveRecord::Base
   end
   
   
-  def total_commutes
+  def total_commutes_calc
     commutes.count
   end
 
 
-  def mileage
+  def mileage_calc
     miles = 0
 		commutes.each do |commute|
 					miles = miles + commute.mileage
@@ -31,21 +31,26 @@ class Team < ActiveRecord::Base
 	end
 
 
-  def commuters
+  def commuters_calc
     commutes.group('user_id').count.count
   end
 
 
-  def zero_commutes
-    return users.count - commuters
+  def zero_commutes_calc
+    zero_commutes_calc = users.count - (commutes.group('user_id').count.count)
+      if zero_commutes_calc == nil
+        return 0
+      else
+      end
+    return zero_commutes_calc
   end
 
 
-  def team_participation
+  def team_participation_calc
     return (((commutes.group('user_id').count.count).to_f / size) * 100).round(2)
   end
 
-  def newbies
+  def newbies_calc
     newbies = 0
     users.each do |user|
       if user.isnewbie

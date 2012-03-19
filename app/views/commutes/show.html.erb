@@ -32,7 +32,7 @@
 </div>
 <p>
   <b>User:</b>
-  <%= User.find_by_id(@commute.user_id).fname %>
+  <%= link_to "#{User.find_by_id(@commute.user_id).full_name}", user_url(User.find_by_id(@commute.user_id)) %>
 </p>
 
 <p>
@@ -74,7 +74,7 @@
 
 <% if logged_in? && get_user.id == @commute.user_id %>
 <%= link_to 'Edit', edit_commute_path(@commute) %> |
-<%= link_to 'Delete', user_path(@commute.user_id) %> |
+<%= link_to 'Delete', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
 <% end %>
 <%= link_to "All #{@commute.user.fname}'s Commutes", user_commutes_path(@commute.user_id) %> | 
 <%= link_to 'All Commutes', commutes_path %>

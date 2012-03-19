@@ -34,7 +34,7 @@
 			</tr>
 			<% @teams.each do |team| %>
 				<tr>
-					<td> <%= team.company %> </td>
+					<td> <%= link_to "#{team.company}", team_url(team.id) %> </td>
 					<td> <%= team.mileage %> </td>
 					<td> <%= team.commutes.count %> </td>
 					<td> <%= team.commuters %> </td>

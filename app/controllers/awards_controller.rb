@@ -14,23 +14,25 @@ class AwardsController < ApplicationController
   # GET /awards/1.json
   def show
     @award = Award.find(params[:id])
-    
+
     if @award.isindividual == nil
 
-      if @award.goal == 'Participation Ratex'
-           goal = 'team_participation'
-        elsif @award.goal == 'Total Mileagex'
-           goal = 'mileage asc'
-        elsif @award.goal == 'Number of Newbiesx'
-           goal = 'company'
-        elsif @award.goal == 'Total Commutesx'
-           goal = 'total_commutes'
-        else goal = 'company'
+      if @award.goal == 'Participation Rate'
+           goal = 'team_participation desc'
+        elsif @award.goal == 'Total Mileage'
+           goal = 'mileage desc'
+        elsif @award.goal == 'Number of Newbies'
+           goal = 'newbies desc'
+        elsif @award.goal == 'Number of Commutes'
+           goal = 'total_commutes desc'
+        elsif @award.goal == 'Total Commuters'
+           goal = 'total_commuters desc'
+        else goal = 'company asc'
       end
 
       @teams = Team.where(:company_type => @award.company_type,
                           :company_size_range => @award.company_size_range,)
-                    .order("#{goal} asc")
+                    .order("#{goal}")
                                     
         logger.debug "Teams in this category: #{@teams}"
         logger.debug "Goal: #{@award.goal}"

@@ -60,7 +60,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     
     respond_to do |format|
-      if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range)
+      if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :ok }
       else
@@ -94,6 +94,8 @@ class TeamsController < ApplicationController
     end
     return company_size_range
   end
+
+
   
 end
 

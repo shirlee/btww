@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318202953) do
+ActiveRecord::Schema.define(:version => 20120319000332) do
 
   create_table "awards", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20120318202953) do
     t.datetime "updated_at"
     t.string   "company_size_range"
     t.string   "twitter_handle"
+    t.integer  "total_commutes"
+    t.float    "mileage"
+    t.integer  "commuters"
+    t.integer  "zero_commutes"
+    t.float    "team_participation"
+    t.integer  "newbies"
   end
 
   create_table "users", :force => true do |t|
