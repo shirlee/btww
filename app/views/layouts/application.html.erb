@@ -43,7 +43,7 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
 	
-				<% if session[:user_id] %>
+				<% if session[:user_id] != nil && User.find_by_id(session[:user_id]) != nil %>
 					<% if User.find_by_id(session[:user_id]).provider != nil %>
 						<li><%= link_to "#{User.find(session[:user_id]).fname} (logged in via #{User.find(session[:user_id]).provider})", user_url(session[:user_id])%> </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
