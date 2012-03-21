@@ -6,36 +6,36 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Team.destroy_all
-# 
-# Team.create(:company => 'HomeFinder.com', :company_type => 'Business', :size => 72, :company_size_range => '51-100',
-#             :website => 'http://www.homefinder.com', :twitter_handle => 'HomeFinder1')
-# 
-# Team.create(:company => 'Sparkfactor', :company_type => 'Business', :size => 4, :company_size_range => '1-5',
-#             :website => 'http://www.sparkfactor.com', :twitter_handle => '@sparkfactor')
-#             
-# Team.create(:company => 'Code Academy', :company_type => 'Business', :size => 15, :company_size_range => '6-20',
-#             :website => 'http://www.codeacademy.com', :twitter_handle => '@CodeAcademy')
-# 
-# Team.create(:company => 'GrubHub', :company_type => 'Business', :size => 250, :company_size_range => '101-300',
-#             :website => 'http://www.grubhub.com', :twitter_handle => '@GrubHub')
-#             
-# Team.create(:company => 'Apartments.com', :company_type => 'Business', :size => 500, :company_size_range => '301-1000',
-#             :website => 'http://www.apartments.com', :twitter_handle => '@AptsCom')
-# 
-# Team.create(:company => 'Cars.com', :company_type => 'Business', :size => 800, :company_size_range => '301-1000',
-#             :website => 'http://www.cars.com', :twitter_handle => '@carsdotcom')
-#             
-# Team.create(:company => 'Orbitz', :company_type => 'Business', :size => 1400, :company_size_range => '1000+',
-#             :website => 'http://www.codeacademy.com', :twitter_handle => '@Orbitz')
-# 
-# Team.create(:company => 'Chicago Coalition for the Homeless', :company_type => 'Non-Profit', :size => 45, :company_size_range => '21-50',
-#             :website => 'http://www.chicagohomeless.org')
-#             
-# Team.create(:company => 'Jewish United Fund', :company_type => 'Non-Profit', :size => 99, :company_size_range => '51-100',
-#             :website => 'http://www.juf.org/', :twitter_handle => '@JUFChicago')
-#             
-# puts "We now have #{Team.count} teams."
+Team.destroy_all
+
+Team.create(:company => 'HomeFinder.com', :company_type => 'Business', :size => 72, :company_size_range => '51-100',
+            :website => 'http://www.homefinder.com', :twitter_handle => 'HomeFinder1')
+
+Team.create(:company => 'Sparkfactor', :company_type => 'Business', :size => 4, :company_size_range => '1-5',
+            :website => 'http://www.sparkfactor.com', :twitter_handle => '@sparkfactor')
+            
+Team.create(:company => 'Code Academy', :company_type => 'Business', :size => 15, :company_size_range => '6-20',
+            :website => 'http://www.codeacademy.com', :twitter_handle => '@CodeAcademy')
+
+Team.create(:company => 'GrubHub', :company_type => 'Business', :size => 250, :company_size_range => '101-300',
+            :website => 'http://www.grubhub.com', :twitter_handle => '@GrubHub')
+            
+Team.create(:company => 'Apartments.com', :company_type => 'Business', :size => 500, :company_size_range => '301-1000',
+            :website => 'http://www.apartments.com', :twitter_handle => '@AptsCom')
+
+Team.create(:company => 'Cars.com', :company_type => 'Business', :size => 800, :company_size_range => '301-1000',
+            :website => 'http://www.cars.com', :twitter_handle => '@carsdotcom')
+            
+Team.create(:company => 'Orbitz', :company_type => 'Business', :size => 1400, :company_size_range => '1000+',
+            :website => 'http://www.codeacademy.com', :twitter_handle => '@Orbitz')
+
+Team.create(:company => 'Chicago Coalition for the Homeless', :company_type => 'Non-Profit', :size => 45, :company_size_range => '21-50',
+            :website => 'http://www.chicagohomeless.org')
+            
+Team.create(:company => 'Jewish United Fund', :company_type => 'Non-Profit', :size => 99, :company_size_range => '51-100',
+            :website => 'http://www.juf.org/', :twitter_handle => '@JUFChicago')
+            
+puts "We now have #{Team.count} teams."
 
 
 User.destroy_all
@@ -198,143 +198,143 @@ end
 puts "We now have #{Commute.count} commutes."
 
 
-# Award.destroy_all
+Award.destroy_all
 
-# consider this program to create every possible leaderboard.
-# goal = ['Participation Rate', 'Number of Commutes', 'Number of Newbies', 'Total Mileage', 'Highest Mileage in One Day']
-# comapny_type = ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related']
-# comapny_size_range = ['1-5', '6-20', '21-50', '51-100', '101-300', '301-1000', '1001+']
-# g = 0
-# ct = 0
-# csr = 0
-# 
-# a = Award.new
-# 
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1-5')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '6-20')
-#             
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '21-50')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '51-100')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '101-300')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '301-1000')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1000+')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1-5')
-# 
-# Award.create(:goal => 'Number of Commutes',
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '6-20')
-#             
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '21-50')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '51-100')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '101-300')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '301-1000')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1000+')
-# 
-# Award.create(:goal => 'Number of Newbies', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1-5')
-# 
-# Award.create(:goal => 'Number of Newbies', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '6-20')
-#             
-# Award.create(:goal => 'Number of Newbies',  
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '21-50')
-# 
-# Award.create(:goal => 'Number of Newbies',  
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '51-100')
-# 
-# Award.create(:goal => 'Number of Newbies',  
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '101-300')
-# 
-# Award.create(:goal => 'Number of Newbies',  
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '301-1000')
-# 
-# Award.create(:goal => 'Number of Newbies',  
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1000+')
-# 
-# Award.create(:goal => 'Number of Newbies', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1-5')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '6-20')
-#             
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '21-50')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '51-100')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '101-300')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '301-1000')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Business',
-#             :company_size_range => '1000+')
-# 
-# Award.create(:goal => 'Participation Rate', 
-#             :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
-#             :company_size_range => '51-100')
-# 
-# Award.create(:goal => 'Number of Commutes', 
-#             :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
-#             :company_size_range => '6-20')
-#             
-# Award.create(:goal => 'Number of Newbies', 
-#             :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
-#             :company_size_range => '21-50')
-# 
-# Award.create(:goal => 'Total Mileage', 
-#             :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
-#             :company_size_range => '51-100')
+consider this program to create every possible leaderboard.
+goal = ['Participation Rate', 'Number of Commutes', 'Number of Newbies', 'Total Mileage', 'Highest Mileage in One Day']
+comapny_type = ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related']
+comapny_size_range = ['1-5', '6-20', '21-50', '51-100', '101-300', '301-1000', '1001+']
+g = 0
+ct = 0
+csr = 0
+
+a = Award.new
+
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1-5')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '6-20')
+            
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '21-50')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '51-100')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '101-300')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '301-1000')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1000+')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1-5')
+
+Award.create(:goal => 'Number of Commutes',
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '6-20')
+            
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '21-50')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '51-100')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '101-300')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '301-1000')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1000+')
+
+Award.create(:goal => 'Number of Newbies', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1-5')
+
+Award.create(:goal => 'Number of Newbies', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '6-20')
+            
+Award.create(:goal => 'Number of Newbies',  
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '21-50')
+
+Award.create(:goal => 'Number of Newbies',  
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '51-100')
+
+Award.create(:goal => 'Number of Newbies',  
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '101-300')
+
+Award.create(:goal => 'Number of Newbies',  
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '301-1000')
+
+Award.create(:goal => 'Number of Newbies',  
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1000+')
+
+Award.create(:goal => 'Number of Newbies', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1-5')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '6-20')
+            
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '21-50')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '51-100')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '101-300')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '301-1000')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Business',
+            :company_size_range => '1000+')
+
+Award.create(:goal => 'Participation Rate', 
+            :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
+            :company_size_range => '51-100')
+
+Award.create(:goal => 'Number of Commutes', 
+            :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
+            :company_size_range => '6-20')
+            
+Award.create(:goal => 'Number of Newbies', 
+            :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
+            :company_size_range => '21-50')
+
+Award.create(:goal => 'Total Mileage', 
+            :isindividual => false, :isteam => true, :company_type => 'Non-Profit',
+            :company_size_range => '51-100')
