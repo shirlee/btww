@@ -8,7 +8,7 @@
 
 <p><%= link_to "Company Website", @team.website, :target => "_blank" %> |
 <%= link_to "Twitter", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
-
+<br>
 
 <p>
   <b>Company type:</b>
@@ -19,7 +19,11 @@
   <%= @team.company_size_range %>
 </p>
 
-<p>Scoreboards for teams in category: "<%= @team.company_type %>" with <%= @team.company_size_range %> employees:</p>
+<p>Scoreboards for this category:
+<% @award_list.each do |award| %>
+	<%= link_to "#{award.goal}", award_url(award.id) %> | 
+<% end  %>
+</p>
 
 <br>
 

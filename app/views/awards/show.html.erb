@@ -30,8 +30,9 @@
 				<th> Total Employees </th>			
 				<th> Total Participation Rate </th>			
 				<th> Newbies </th>			
-				<th> Team Members with 0 Commutes  </th>			
+				<th> Team Members yet to Log a Commute  </th>			
 			</tr>
+		<% if @teams != nil %>
 			<% @teams.each do |team| %>
 				<tr>
 					<td> <%= link_to "#{team.company}", team_url(team.id) %> </td>
@@ -39,11 +40,12 @@
 					<td> <%= team.commutes.count %> </td>
 					<td> <%= team.commuters %> </td>
 					<td> <%= team.size %> </td>
-					<td> <%= team.team_participation %> </td>
+					<td> <%= team.team_participation %>% </td>
 					<td> <%= team.newbies %> </td>
 					<td> <%= team.zero_commutes %> </td>
 
 				</tr>
+				<% end %>
 			<% end %>
 		</table>
 

@@ -2,12 +2,12 @@ class CommutesController < ApplicationController
   # GET /commutes
   # GET /commutes.json
 
-before_filter :logged_in?, :except => [:index, :show]
+  before_filter :require_login, :except =>  [:index, :show]
 
   def index
     if params[:user_id]
       @commutes = Commute.find_all_by_user_id(params[:user_id])
-      @user = User.find_all_by_id(params[:user_id])
+      @user = User.find(params[:user_id])
 
     else
       @commutes = Commute.all

@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
     if User.find_by_uid(data['uid']) != nil
         @user = User.find_by_uid(data['uid'])
         session[:user_id] = @user.id
+          if @user.email != User.find_by_email(data['info']['email'])
+            @user.update_attributes(:email => data['info']['email'])
+          end
         redirect_to root_url, :notice => "You are now signed in"
     elsif User.find_by_email(data['info']['email']) != nil
         @user = User.find_by_email(data['info']['email'])

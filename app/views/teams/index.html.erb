@@ -14,7 +14,7 @@
 </p>
 <% end %>
 
-<p><strong>Can't Find Your Company? Shame On You! <%= link_to 'Add It Here', new_team_path %></strong></p>
+<p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
 
 <br>
 
@@ -24,7 +24,8 @@
     <th>Company</th>
     <th>Company type</th>
     <th>Size</th>
-    <th>Website</th>
+    <th>Size Range</th>
+    <th>Twitter</th>
 
   </tr>
 
@@ -33,7 +34,10 @@
     <td><%= link_to "#{team.company}", team %></td>
     <td><%= team.company_type %></td>
     <td><%= team.size %></td>
-    <td><%= team.website %></td>
+    <td><%= team.company_size_range %></td>
+		<% if team.twitter_handle != nil %>
+    <td><%= link_to "#{team.twitter_handle}", "https://twitter.com/#!/#{team.twitter_handle}", :target => "_blank" %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>

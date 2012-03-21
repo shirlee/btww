@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
+
+
   def index
     @teams = Team.search(params[:search])
 
@@ -14,6 +16,9 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+
+    @award_list = Award.where(:company_type => @team.company_type,
+                                :company_size_range => @team.company_size_range)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,7 +83,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to teams_url }
-      format.json { head :ok }
+      # format.json { head :ok }
     end
   end
   

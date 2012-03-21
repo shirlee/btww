@@ -12,13 +12,24 @@ module ApplicationHelper
       
     end
   end
+  
     
+  def isadmin?
+    if logged_in?
+      get_user.isadmin
+    end
+  end
   
   def teamleader?
     if logged_in?
       get_user.isleader
     end
   end
-  
+ 
+  def is_the_team_leader?
+    if logged_in? && @user.team.id == get_user.team_id
+      get_user.isleader
+    end
+  end 
     
 end

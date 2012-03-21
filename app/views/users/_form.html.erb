@@ -20,6 +20,10 @@
     <%= f.text_field :lname %>
   </div>
   <div class="field">
+    <%= f.label :email, "Email Address" %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
     <%= f.label :password, "Password" %><br />
     <%= f.password_field :password %>
   </div>
@@ -28,8 +32,9 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :team_id %> <%= link_to "Create a new team", new_team_url %><br />
+    <%= f.label :team_id, "Team (Required)" %><br />
     <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
+	Not seeing your company? <%= link_to "Create a new team", new_team_url %>
   </div>
   <div class="field">
     <%= f.label :isleader, "Are you the Team Leader?" %><br />
@@ -38,10 +43,6 @@
   <div class="field">
     <%= f.label :isnewbie, "First Time Biking to Work?" %><br />
     <%= f.check_box :isnewbie %>
-  </div>
-  <div class="field">
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label :bikerclass, "Primary Biker Type" %><br />

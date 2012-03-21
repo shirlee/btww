@@ -1,6 +1,6 @@
 Btww1::Application.routes.draw do
 
-  get "greetings/index"
+  get '/index' => 'greetings#index'
 
   root :to => 'teams#index'
 

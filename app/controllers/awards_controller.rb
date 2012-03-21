@@ -1,8 +1,11 @@
 class AwardsController < ApplicationController
   # GET /awards
   # GET /awards.json
+
+  before_filter :require_login, :except =>  [:index, :show]
+
   def index
-    @awards = Award.all
+    @awards = Award.find_all_by_goal 'Participation Rate'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +18,7 @@ class AwardsController < ApplicationController
   def show
     @award = Award.find(params[:id])
 
-    if @award.isindividual == nil
+    if @award.isindividual == nil || @award.isindividual == false
 
       if @award.goal == 'Participation Rate'
            goal = 'team_participation desc'

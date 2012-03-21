@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+
+
   def logged_in?
     session[:user_id].present?
+  end
+  
+  def require_login
+    unless logged_in?
+      flash[:error] = "Login or create an account to join the fun!"
+      redirect_to new_session_url
+    end
   end
   
   

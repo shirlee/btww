@@ -7,13 +7,11 @@
     <th>Distance</th>
     <th>Ridescore</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @commutes.each do |commute| %>
   <tr>
-    <td><%= User.find_by_id(commute.user_id).fname %> <%= User.find_by_id(commute.user_id).lname %></td>
+    <td><%= link_to "#{User.find_by_id(commute.user_id).full_name}", user_url(User.find(commute.user_id)) %> </td>
     <td><%= commute.commute_date %></td>
     <td><%= commute.mileage%></td>
     <td><%= commute.ridescore %></td>
@@ -24,6 +22,12 @@
 
 <br />
 
-<% if logged_in? %>
-<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
-<% end %>
+<% if logged_in? && isadmin? %>
+	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
+<% elsif logged_in? && get_user.id == @user.id %>
+	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
+<% end  %>
+
+
+
+

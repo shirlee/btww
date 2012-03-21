@@ -50,8 +50,9 @@
 	</table>
 
 <% if logged_in? %>
-	<% if teamleader? ||  get_user == @user %>
-	<%= link_to "Add Commute", new_commute_url(:user_id => @user.id) %> |				
+	<% if is_the_team_leader? ||  get_user == @user %>
+	<%= link_to "Add Commute", new_commute_url(:user_id => @user.id) %> |
+	<%= link_to 'Edit User', edit_user_path(@user) %>	
 	<% end %>	
 <% end %>	
-<%= link_to 'Edit User', edit_user_path(@user) %>
+
