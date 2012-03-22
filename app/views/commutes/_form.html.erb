@@ -20,11 +20,11 @@
     <%= f.text_field :commute_date %>
   </div>
   <div class="field">
-    <%= f.label :departure_address %>
+    <%= f.label :departure_address, "Departure Address (full address for map)" %>
     <%= f.text_field :departure_address %>
   </div>
   <div class="field">
-    <%= f.label :arrival_address %>
+    <%= f.label :arrival_address, "Arrival Address (full address for map)" %>
     <%= f.text_field :arrival_address %>
   </div>
   <div class="field">
@@ -38,7 +38,7 @@
   </div>
   <div class="field">
     <%= f.label :comments %>
-    <%= f.text_area :comments %>
+    <%= f.text_area :comments, :size => "50x5" %>
   </div>
   <div class="actions">
     <%= f.submit %>

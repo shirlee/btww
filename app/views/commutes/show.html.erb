@@ -37,6 +37,14 @@
   <%= @commute.comments %>
 </p>
 
+<div id="commute_map">
+<% if @commute.departure_address != nil  &&  @commute.arrival_address != nil %>
+<% markers = "markers=color:blue|label:A|#{@commute.departure_address}&markers=color:blue|label:B|#{@commute.arrival_address}" %>
+<p><img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @commute.arrival_address %>&zoom=12&size=400x300&sensor=false&<%= markers %>" alt="#{@commute.user.full-name}'s Commute" /></p>
+
+<% end  %>
+</div>
+
 <div id='fb-share-button'> </div>
 
 <div id='fb-root'></div>
