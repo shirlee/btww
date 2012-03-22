@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
+  before_filter :find_user, :except =>  [:index, :new, :create]
+  before_filter :require_istheuser, :except =>  [:index, :show, :new, :create]
+
   def index
     @users = User.all
 
@@ -13,7 +17,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +37,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+
   end
 
   # POST /users
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
         end
 
-        format.html { redirect_to team_url(params[@user.team.id]), notice: "You're in! Let's get started!" }
+        format.html { redirect_to team_url(@user.team.id), notice: "You're in! Let's get started!" }
         format.json { render json: @user, status: :created, location: @user }
 
       else
@@ -64,7 +67,6 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -80,7 +82,6 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|

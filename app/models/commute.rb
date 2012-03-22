@@ -1,5 +1,7 @@
 class Commute < ActiveRecord::Base
   
+  validates :commute_date, :distance, :presence => :true
+  
   belongs_to :user
   
   

@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
 
+  before_filter :require_leader, :except => [:index, :show, :new]
 
   def index
     @teams = Team.search(params[:search])

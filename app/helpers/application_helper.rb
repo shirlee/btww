@@ -27,9 +27,17 @@ module ApplicationHelper
   end
  
   def is_the_team_leader?
-    if logged_in? && @user.team.id == get_user.team_id
-      get_user.isleader
+    if @user != nil
+      if logged_in? && @user.team.id == get_user.team_id
+        get_user.isleader
+      end
+    elsif @team!= nil
+      if logged_in? && @team.id == get_user.team_id
+        get_user.isleader
+      end
+    else
     end
-  end 
-    
+  end
+  
+  
 end

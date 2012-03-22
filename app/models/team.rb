@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   has_many :commutes, :through => :users
   
   validates :company, :presence => :true, :uniqueness => :true
+  validates :company_type, :size, :presence => :true
   validates_inclusion_of :company_type, :in => %w(Business Non-Profit Education Bike-Related Government Transportation-Related), :message => " invalid company type"
   
   

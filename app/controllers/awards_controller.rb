@@ -2,7 +2,7 @@ class AwardsController < ApplicationController
   # GET /awards
   # GET /awards.json
 
-  before_filter :require_login, :except =>  [:index, :show]
+  before_filter :require_admin, :except =>  [:index, :show]
 
   def index
     @awards = Award.find_all_by_goal 'Participation Rate'

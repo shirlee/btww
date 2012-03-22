@@ -88,7 +88,7 @@
 <br>
 
 
-<% if logged_in? && teamleader?  %>
+<% if logged_in? && is_the_team_leader?  %>
 <%= link_to 'Edit Team', edit_team_path(@team) %> |
 <% end  %>
 <%= link_to 'All Teams', teams_path %>
