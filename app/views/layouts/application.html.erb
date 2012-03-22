@@ -26,6 +26,20 @@
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-29684552-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
   </head>
   <body>
 
@@ -43,12 +57,13 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
 	
-				<% if session[:user_id] != nil && User.find_by_id(session[:user_id]) != nil %>
-					<% if User.find_by_id(session[:user_id]).provider != nil %>
-						<li><%= link_to "#{User.find(session[:user_id]).fname} (logged in via #{User.find(session[:user_id]).provider})", user_url(session[:user_id])%> </li>
+				<% if session[:user_id] != nil && get_user != nil %>
+					<% if get_user.provider != nil %>
+						<li><%= image_tag("http://graph.facebook.com/#{get_user.uid}/picture?type=square") %></li>
+						<li><%= link_to "#{get_user.fname} (logged in via #{get_user.provider})", user_url(get_user.id)%> </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
 					<% else %>
-						<li><%= link_to "#{User.find(session[:user_id]).fname}", user_url(session[:user_id])%> </li>
+						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
 					<% end %>
 				<% else %>
@@ -85,6 +100,7 @@
 
       <footer>
         <p>&copy; Bike2WorkWeek.com 2012</p>
+		
       </footer>
 
     </div> <!-- /container -->

@@ -1,5 +1,44 @@
 <p id="notice"><%= notice %></p>
-<div id='fb-share-button'>
+
+
+
+<p>
+  <b>Biker:</b>
+  <%= link_to "#{User.find_by_id(@commute.user_id).full_name}", user_url(User.find_by_id(@commute.user_id)) %>
+</p>
+
+<p>
+  <b>Commute Date:</b>
+  <%= @commute.commute_date.strftime("%A %B %d, %Y") %>
+</p>
+
+<p>
+  <b>Departure address:</b>
+  <%= @commute.departure_address %>
+</p>
+
+<p>
+  <b>Arrival address:</b>
+  <%= @commute.arrival_address %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @commute.mileage %>
+</p>
+
+<p>
+  <b>Ridescore:</b>
+  <%= @commute.ridescore %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @commute.comments %>
+</p>
+
+<div id='fb-share-button'> </div>
+
 <div id='fb-root'></div>
     <script src='http://connect.facebook.net/en_US/all.js'></script>
     <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '100') %></a></p>
@@ -29,47 +68,6 @@
       }
     
     </script>
-</div>
-<p>
-  <b>User:</b>
-  <%= link_to "#{User.find_by_id(@commute.user_id).full_name}", user_url(User.find_by_id(@commute.user_id)) %>
-</p>
-
-<p>
-  <b>Commute date:</b>
-  <%= @commute.commute_date %>
-</p>
-
-<p>
-  <b>Sequence:</b>
-  <%= @commute.sequence %>
-</p>
-
-<p>
-  <b>Departure address:</b>
-  <%= @commute.departure_address %>
-</p>
-
-<p>
-  <b>Arrival address:</b>
-  <%= @commute.arrival_address %>
-</p>
-
-<p>
-  <b>Distance:</b>
-  <%= @commute.mileage %>
-</p>
-
-<p>
-  <b>Ridescore:</b>
-  <%= @commute.ridescore %>
-</p>
-
-<p>
-  <b>Comments:</b>
-  <%= @commute.comments %>
-</p>
-
 <br>
 
 <% if logged_in? && get_user.id == @commute.user_id %>

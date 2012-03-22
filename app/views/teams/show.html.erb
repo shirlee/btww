@@ -45,9 +45,15 @@
 <br>
 
 <p>
-  <b>Team Members:</b>
+	<% if logged_in? != true %>
+  <b>Team Members: <%= link_to '(Join This Team!)', new_user_url %></b>
+	<% else %>
+  <b>Team Members:</b>	
+	<% end %>
 </p>
 	 
+	
+	
 	<table class="table table-striped table-bordered table-condensed">
 
 		<tr>

@@ -5,6 +5,10 @@
   <%= @user.fname %>  <%= @user.lname %>
 </p>
 
+<% if @user.provider != nil  %>
+<p> <%= image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square", :width => '100') %> </p>
+<% end  %>
+
 <p>
   <b>Team:</b>
   <%= link_to "#{@user.team.company}", team_url(@user.team.id) %>
