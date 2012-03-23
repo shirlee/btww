@@ -6,6 +6,7 @@
     <th></th>
     <th>Company type</th>
     <th>Company size range</th>
+    <th># Competing Teams</th>
     <th></th>
   </tr>
 
@@ -18,7 +19,12 @@
 	<% end %>
     <td><%= award.company_type %></td>
     <td><%= award.company_size_range %></td>
-    <td><%= link_to "Display Scoreboard", award_url(award.id) %></td>
+    <td><%= num_competing_teams(award) %></td>
+	<% if num_competing_teams(award) > 0 %>
+		<td><%= link_to "Display Scoreboard", award_url(award.id) %></td>
+	<% else %>
+		<td><%= link_to "+ Add Your Team", new_team_url %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>

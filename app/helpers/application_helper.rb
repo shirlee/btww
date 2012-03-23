@@ -40,4 +40,11 @@ module ApplicationHelper
   end
   
   
+  def num_competing_teams(award)
+    Team.where(:company_type => award.company_type,
+  					   :company_size_range => award.company_size_range)
+  			.count
+  end
+  
+  
 end

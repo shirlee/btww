@@ -17,6 +17,7 @@ class AwardsController < ApplicationController
   # GET /awards/1.json
   def show
     @award = Award.find(params[:id])
+    
 
     if @award.isindividual == nil || @award.isindividual == false
 
