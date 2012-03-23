@@ -227,7 +227,7 @@ Award.create(:goal => 'Participation Rate',
 
 Award.create(:goal => 'Participation Rate', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
-            :company_size_range => '1000+')
+            :company_size_range => '1001+')
 
 Award.create(:goal => 'Number of Commutes', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
@@ -255,7 +255,7 @@ Award.create(:goal => 'Number of Commutes',
 
 Award.create(:goal => 'Number of Commutes', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
-            :company_size_range => '1000+')
+            :company_size_range => '1001+')
 
 Award.create(:goal => 'Number of Newbies', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
@@ -283,7 +283,7 @@ Award.create(:goal => 'Number of Newbies',
 
 Award.create(:goal => 'Number of Newbies',  
             :isindividual => false, :isteam => true, :company_type => 'Business',
-            :company_size_range => '1000+')
+            :company_size_range => '1001+')
 
 Award.create(:goal => 'Number of Newbies', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
@@ -311,7 +311,7 @@ Award.create(:goal => 'Total Mileage',
 
 Award.create(:goal => 'Total Mileage', 
             :isindividual => false, :isteam => true, :company_type => 'Business',
-            :company_size_range => '1000+')
+            :company_size_range => '1001+')
 
 Award.create(:goal => 'Participation Rate', 
             :isindividual => false, :isteam => true, :company_type => 'Non-Profit',

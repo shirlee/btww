@@ -19,15 +19,12 @@
   <%= @team.company_size_range %>
 </p>
 
-<p>Scoreboards for this category:
-<% @award_list.each do |award| %>
-	<%= link_to "#{award.goal}", award_url(award.id) %> | 
-<% end  %>
-</p>
+
 
 <br>
 
 <h3><%=  @team.company  %> Stats:</h3>
+
 
 <p> 
   <b>Commuters:</b>
@@ -41,8 +38,14 @@
   <b># Newbies:</b>
   <%= @team.newbies %>;
 </p>
-
 <br>
+<p><strong>HOW DO WE STACK UP AGAINST THE COMPETITION?</strong>
+</p>
+<p><strong>View Scoreboards:
+<% @award_list.each do |award| %>
+	<%= link_to "#{award.goal}", award_url(award.id) %> | 
+<% end  %></strong>
+</p><br>
 
 <p>
 	<% if logged_in? != true %>
