@@ -12,27 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fname, "First Name" %><br />
+    <%= f.label :fname, "First Name" %>
     <%= f.text_field :fname %>
   </div>
+<br>
   <div class="field">
-    <%= f.label :lname, "Last Name" %><br />
+    <%= f.label :lname, "Last Name" %>
     <%= f.text_field :lname %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :email, "Email Address" %><br />
+    <%= f.label :email, "Email Address" %>
     <%= f.text_field :email %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :password, "Password" %><br />
+    <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :password_confirmation, "Password Confirmation" %><br />
+    <%= f.label :password_confirmation, "Password Confirmation" %>
     <%= f.password_field :password_confirmation %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :team_id, "Team (Required)" %><br />
+    <%= f.label :team_id, "Team (Required)" %>
     <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
 	Not seeing your company? <%= link_to "Create a new team", new_team_url %>
   </div>
