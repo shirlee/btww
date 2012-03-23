@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   APP_DOMAIN = 'www.bike2workweek.com'
 
   def ensure_domain
-    if request.env['HTTP_HOST'] != APP_DOMAIN
+    if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'
       # HTTP 301 is a "permanent" redirect
        redirect_to "http://#{APP_DOMAIN}#{request.env['REQUEST_PATH']}", :status => 301
     end
