@@ -28,9 +28,10 @@ class SessionsController < ApplicationController
       @user.update_attributes(:provider => data['provider'], :uid => data['uid'],
                               :email => data['info']['email'], :fname => data['info']['first_name'], :lname => data['info']['last_name'],
                               :password => @pwd, :password_confirmation => @pwd)
+        
         if @user.save
             session[:user_id] = @user.id
-            redirect_to edit_user_url(@user.id), :notice => "New user created! Please add a team and complete the profile."
+            redirect_to edit_user_url(@user.id), :notice => "New user created! You must add your team and complete the profile."
         else
             redirect_to root_url, :notice => "There was a problem"
         end

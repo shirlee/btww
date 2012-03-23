@@ -48,13 +48,18 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        if !logged_in?
+        if logged_in? == false
           session[:user_id] = @user.id
+        else
         end
-
+        
+        if @user.team != nil
         format.html { redirect_to team_url(@user.team.id), notice: "You're in! Let's get started!" }
         format.json { render json: @user, status: :created, location: @user }
-
+        else
+        format.html { redirect_to edit_user_url(@user.id), notice: "Choose a Team, or add a New Team" }
+        end
+      
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }

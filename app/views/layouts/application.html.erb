@@ -56,22 +56,6 @@
           <a class="brand" href="/">Bike2WorkWeek.com</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-	
-				<% if session[:user_id] != nil && get_user != nil %>
-					<% if get_user.provider != nil %>
-						<li><%= image_tag("http://graph.facebook.com/#{get_user.uid}/picture?type=square") %></li>
-						<li><%= link_to "#{get_user.fname} (logged in via #{get_user.provider})", user_url(get_user.id)%> </li>
-						<li><%= link_to "Sign Out", logout_url %></li>
-					<% else %>
-						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
-						<li><%= link_to "Sign Out", logout_url %></li>
-					<% end %>
-				<% else %>
-				<li><%= link_to "Sign In", new_session_url %></li>
-				<li> <%= link_to "Sign Up", new_user_url  %></li>
-				<li> <%= link_to image_tag("login_fb.jpeg", :border=>0), '/auth/facebook' %> </li>
-				<% end %>
-	
 
             </ul>
           </div><!--/.nav-collapse -->
@@ -90,6 +74,22 @@
                 <li><%= link_to "Bikers", users_url  %></li>
                 <li><%= link_to "How to Bike to Work", "http://www.activetrans.org/tricks-tips", :target => :blank  %></li>
                 <li><%= link_to "About Us", '/index' %></li>
+                <li> --- </li>
+
+				<% if session[:user_id] != nil && get_user != nil %>
+					<% if get_user.provider != nil %>
+						<li><%= image_tag("http://graph.facebook.com/#{get_user.uid}/picture?type=square") %></li>
+						<li><%= link_to "#{get_user.fname} (logged in via #{get_user.provider})", user_url(get_user.id)%> </li>
+						<li><%= link_to "Sign Out", logout_url %></li>
+					<% else %>
+						<li><%= link_to "#{get_user.fname}'s Profile", user_url(get_user.id)%> </li>
+						<li><%= link_to "Sign Out", logout_url %></li>
+					<% end %>
+				<% else %>
+				<li><%= link_to "Sign In", new_session_url %></li>
+				<li> <%= link_to "Sign Up", new_user_url  %></li>
+				<li> <%= link_to image_tag("login_fb.jpeg", :border=>0), '/auth/facebook' %> </li>
+				<% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

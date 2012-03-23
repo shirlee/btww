@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   def find_user
     @user = User.find(params[:id])
+    # logger.debug "find_user: This page is about User #{@user}"
   end
 
   def logged_in?
@@ -11,14 +12,18 @@ class ApplicationController < ActionController::Base
   
   def get_user
     if logged_in?
-      User.find_by_id(session[:user_id])
+      return User.find_by_id(session[:user_id])
+    # logger.debug "get_user ran. Logged in User #{User.find_by_id(session[:user_id])}"
     else
       
     end
   end
   
   def is_the_user?
+    # logger.debug "is_the_user: This page is about User #{@user.fname}"
+    # logger.debug "is_the_user: Logged in User #{get_user}"
     if logged_in? && @user.id == get_user.id
+
       # if logged_in? && @user.id == get_user.id
         return true
     elsif isadmin?
@@ -30,8 +35,7 @@ class ApplicationController < ActionController::Base
   
   def require_istheuser
     unless is_the_user?
-      flash[:error] = "You do not have permissions"
-      redirect_to root_url
+      redirect_to root_url, :notice => "You do not have permissions"
     end
   end
   
@@ -44,15 +48,13 @@ class ApplicationController < ActionController::Base
   
   def require_login
     unless logged_in?
-      flash[:error] = "Login or create an account to join the fun!"
-      redirect_to new_session_url
+      redirect_to new_session_url, :notice => "Login or create an account to join the fun!"
     end
   end
   
   def require_admin
     unless isadmin?
-      flash[:error] = "You are not allowed that function!"
-      redirect_to root_url
+      redirect_to root_url, :notice => "You are not allowed that function!"
     end
   end
   
@@ -72,8 +74,7 @@ class ApplicationController < ActionController::Base
   
   def require_leader
     unless is_the_team_leader? || isadmin?
-      flash[:error] = "Only your team leader or an admin can do that"
-      redirect_to root_url
+      redirect_to root_url, :notice => "Only your team leader or an admin can do that"
     end
   end
   

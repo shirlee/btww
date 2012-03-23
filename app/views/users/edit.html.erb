@@ -1,5 +1,7 @@
 <h1>Editing user</h1>
 
+<p id="notice"><%= notice %></p>
+
 	<% if @user.provider !=nil  %>
 		<%= render 'omniauthform' %>
 	<% else  %>
