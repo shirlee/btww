@@ -6,8 +6,8 @@
 
 </div>
 
-<p><%= link_to "Company Website", @team.website, :target => "_blank" %> |
-<%= link_to "Twitter", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
+<p><%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
+<%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
 <br>
 
 <p>
@@ -47,6 +47,8 @@
 <p>
 	<% if logged_in? != true %>
   <b>Team Members: <%= link_to '(Join This Team!)', new_user_url %></b>
+	<% elsif logged_in? && get_user.team_id == nil %>
+		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user) %></b>	
 	<% else %>
   <b>Team Members:</b>	
 	<% end %>
