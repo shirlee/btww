@@ -79,7 +79,8 @@
 				<% if session[:user_id] != nil && get_user != nil %>
 					<% if get_user.provider != nil %>
 						<li><%= image_tag("http://graph.facebook.com/#{get_user.uid}/picture?type=square") %></li>
-						<li><%= link_to "#{get_user.fname} (logged in via #{get_user.provider})", user_url(get_user.id)%> </li>
+						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
+						<li>  (logged in via <%= get_user.provider %>) </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
 					<% else %>
 						<li><%= link_to "#{get_user.fname}'s Profile", user_url(get_user.id)%> </li>
