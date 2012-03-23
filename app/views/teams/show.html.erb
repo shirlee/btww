@@ -41,12 +41,16 @@
 <br>
 <p><strong>HOW DO WE STACK UP AGAINST THE COMPETITION?</strong>
 </p>
+<div id= "scoreboards" >
 <p><strong>View Scoreboards:
-<% @award_list.each do |award| %>
-	<%= link_to "#{award.goal}", award_url(award.id) %> | 
-<% end  %></strong>
-</p><br>
-
+	<% if @award_list != nil %>
+		<% @award_list.each do |award| %>
+			<%= link_to "#{award.goal}", award_url(award.id) %> | 
+		<% end  %></strong>
+	<% end  %>
+</p>
+</dev>
+<br>
 <p>
 	<% if logged_in? != true %>
   <b>Team Members: <%= link_to '(Join This Team!)', new_user_url %></b>
