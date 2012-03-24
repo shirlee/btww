@@ -48,6 +48,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
+        if @user.team != nil
+          update_team_stats(@user.team)
+        else
+        end
+
         if logged_in? == false
           session[:user_id] = @user.id
         else

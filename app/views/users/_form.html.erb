@@ -34,7 +34,7 @@
   </div><br />
   <div class="field">
     <%= f.label :team_id, "Team (Required)" %>
-    <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
+    <%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Company/Department") %>
 	Not seeing your company? <%= link_to "Create a new team", new_team_url %>
   </div>
 <br />

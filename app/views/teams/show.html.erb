@@ -99,5 +99,8 @@
 
 <% if logged_in? && is_the_team_leader?  %>
 <%= link_to 'Edit Team', edit_team_path(@team) %> |
+<% elsif logged_in? && isadmin?  %>
+<%= link_to 'Edit Team', edit_team_path(@team) %> |
+<% else %>
 <% end  %>
 <%= link_to 'All Teams', teams_path %>
