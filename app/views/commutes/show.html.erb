@@ -12,15 +12,20 @@
   <%= @commute.commute_date.strftime("%A %B %d, %Y") %>
 </p>
 
+
+<% if @commute.departure_address != ""%>
 <p>
   <b>Departure address:</b>
   <%= @commute.departure_address %>
 </p>
+<% end  %>
 
+<% if @commute.arrival_address != "" %>
 <p>
   <b>Arrival address:</b>
   <%= @commute.arrival_address %>
 </p>
+<% end  %>
 
 <p>
   <b>Distance:</b>
@@ -37,13 +42,14 @@
   <%= @commute.comments %>
 </p>
 
-<div id="commute_map">
-<% if @commute.departure_address != nil  &&  @commute.arrival_address != nil %>
-<% markers = "markers=color:blue|label:A|#{@commute.departure_address}&markers=color:blue|label:B|#{@commute.arrival_address}" %>
-<p><img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @commute.arrival_address %>&zoom=12&size=400x300&sensor=false&<%= markers %>" alt="#{@commute.user.full-name}'s Commute" /></p>
-
+<% if @commute.departure_address? &&  @commute.arrival_address? %>
+	<% if @commute.departure_address != ""  &&  @commute.arrival_address != ""  %>
+		<div id="commute_map">
+			<% markers = "markers=color:blue|label:A|#{@commute.departure_address}&markers=color:blue|label:B|#{@commute.arrival_address}" %>
+			<p><img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @commute.arrival_address %>&zoom=12&size=400x300&sensor=false&<%= markers %>" alt="#{@commute.user.full-name}'s Commute" /></p>
+		</div>
+	<% end %>
 <% end  %>
-</div>
 
 <div id='fb-share-button'> </div>
 
@@ -53,7 +59,8 @@
     <p id='msg'></p>
 
     <script> 
-      FB.init({appId: "204090116364336", status: true, cookie: true});
+      // FB.init({appId: "204090116364336", status: true, cookie: true});
+       FB.init({appId: "299340683464316", status: true, cookie: true});
 
       function postToFeed() {
 
@@ -81,6 +88,9 @@
 <% if logged_in? && get_user.id == @commute.user_id %>
 <%= link_to 'Edit', edit_commute_path(@commute) %> |
 <%= link_to 'Delete', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
+<%= link_to '+ Add A Commute', new_commute_url %>
 <% end %>
-<%= link_to "All #{@commute.user.fname}'s Commutes", user_commutes_path(@commute.user_id) %> | 
+<br>
+<br>
+<%= link_to "All #{@commute.user.fname}'s Commutes", user_url(@commute.user_id) %> | 
 <%= link_to 'All Commutes', commutes_path %>

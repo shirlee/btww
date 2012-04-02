@@ -34,7 +34,7 @@
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
 		<td> <%= user.mileage %> </td>		
-		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_commutes_url(user.id) %> </td>		
+		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_url(user.id) %> </td>		
 		</tr>
 <% end %>
 	</table>

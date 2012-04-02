@@ -53,7 +53,16 @@
     <%= f.select(:bikerclass, ['Recreational', 'Commuter', 'Roadie', 'BMX', 'MTB', 'All of the Above'], :prompt => "Select One") %>
 <br />
   </div>
-
+<br>
+<div class="field">
+  <%= f.label :btww_email_list, "Would you like to receive tips on How to Bike To Work and info on Pit Stops, Parties, and Winners of Commuter Challenge?" %>
+  <%= f.check_box :btww_email_list %>
+</div>
+<br>
+<div class="field">
+  <%= f.label :general_email_list, "Would you like to receive updates on events and policy efforts of the Active Transportation Alliance as it pertains to the state of cycling in Chicago and Illinois?" %>
+  <%= f.check_box :general_email_list %>
+</div>
 <br>
   <div class="actions">
     <%= f.submit %>

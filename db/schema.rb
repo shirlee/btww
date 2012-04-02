@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319000332) do
+ActiveRecord::Schema.define(:version => 20120402045150) do
 
   create_table "awards", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(:version => 20120319000332) do
     t.integer  "zero_commutes"
     t.float    "team_participation"
     t.integer  "newbies"
+    t.integer  "leader"
+    t.boolean  "shirt"
+    t.string   "shirt_size"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.boolean  "btww_email_list"
+    t.boolean  "general_email_list"
   end
 
   create_table "users", :force => true do |t|
@@ -69,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20120319000332) do
     t.string   "password_digest"
     t.string   "uid"
     t.string   "provider"
+    t.boolean  "btww_email_list"
+    t.boolean  "general_email_list"
   end
 
   create_table "won_awards", :force => true do |t|

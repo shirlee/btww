@@ -2,11 +2,18 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
 
+
+  before_filter :the_team, :except => [:index, :new, :create]
   before_filter :require_leader, :except => [:index, :show, :new, :create]
+
+  def the_team
+     @team = Team.find(params[:id])
+  end
+
 
   def index
     @teams = Team.search(params[:search])
-
+  
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,6 +39,8 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     @team = Team.new
+    @leaders = User.where(:team_id => @team.id,
+                          :isleader => true)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +51,9 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
+    @leaders = User.where(:team_id => @team.id,
+                          :isleader => true)
+    logger.debug "These are the leaders of the curret Team: #{@leaders}"
   end
 
   # POST /teams
@@ -49,7 +61,9 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     @team.company_size_range = company_size_range
-    
+    @leaders = User.where(:team_id => @team.id,
+                          :isleader => true)
+                              
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -65,7 +79,9 @@ class TeamsController < ApplicationController
   # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
-    
+    @leaders = User.where(:team_id => @team.id,
+                          :isleader => true)
+                              
     respond_to do |format|
       if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }

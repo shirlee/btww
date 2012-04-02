@@ -10,7 +10,7 @@ class CommutesController < ApplicationController
       @user = User.find(params[:user_id])
 
     else
-      @commutes = Commute.all
+      @commutes = Commute.order('commute_date desc')
     
     end
 
@@ -36,7 +36,7 @@ class CommutesController < ApplicationController
   # GET /commutes/new.json
   def new
     @commute = Commute.new
-    @commute.user = User.find_by_id(params[:user_id])
+    @commute.user = User.find_by_id(get_user.id)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -55,9 +55,13 @@ class CommutesController < ApplicationController
     @commute = Commute.new(params[:commute])
 
     respond_to do |format|
-      if @commute.save && update_team_stats(@commute.user.team)
-        format.html { redirect_to @commute, notice: 'Commute was successfully created.' }
-        format.json { render json: @commute, status: :created, location: @commute }
+      if @commute.save
+          if update_team_stats(@commute.user.team)
+          format.html { redirect_to @commute, notice: 'Commute was successfully created.' }
+          format.json { render json: @commute, status: :created, location: @commute }
+        else
+          format.html { redirect_to @commute, notice: 'Commute was successfully updated, but Team Stats were not updated because the Team does not have all the required information. A leader might be missing.' }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @commute.errors, status: :unprocessable_entity }
@@ -71,9 +75,13 @@ class CommutesController < ApplicationController
     @commute = Commute.find(params[:id])
 
     respond_to do |format|
-      if @commute.update_attributes(params[:commute]) && update_team_stats(@commute.user.team)
-        format.html { redirect_to @commute, notice: 'Commute was successfully updated.' }
-        format.json { head :ok }
+      if @commute.update_attributes(params[:commute])
+          if update_team_stats(@commute.user.team)
+            format.html { redirect_to @commute, notice: 'Commute was successfully updated.' }
+            format.json { head :ok }
+          else
+            format.html { redirect_to @commute, notice: 'Commute was successfully updated, but Team Stats were not updated because the Team does not have all the required information. A leader might be missing.' }
+          end
       else
         format.html { render action: "edit" }
         format.json { render json: @commute.errors, status: :unprocessable_entity }

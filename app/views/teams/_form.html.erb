@@ -25,6 +25,44 @@
     <%= f.number_field :size %>
   </div>
   <div class="field">
+    <%= f.label :leader, "Team Leader" %>
+    <%= f.collection_select(:leader, @leaders, :id, :fname, :prompt => "Select Team Leader for Contact") %>
+  </div>
+  <div class="field">
+    <%= f.label :address_line_1, "Mailing Address Line 1" %>
+    <%= f.text_field :address_line_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :address_line_2, "Mailing Address Line 2" %>
+    <%= f.text_field :address_line_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state, "State" %>
+    <%= f.select(:state, ['IL', 'IN', 'WI']) %>
+  </div>
+  <div class="field">
+    <%= f.label :zip, "Zip Code" %>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, "Phone Number (xxx-xxx-xxx)" %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field" id="shirt">
+    <%= f.label :shirt, "Check if you would like a T-shirt" %>
+    <%= f.check_box :shirt %>
+  </div>
+<br>
+  <div class="field" id="shirt_size">
+    <%= f.label :shirt_size, "Shirt Size" %>
+    <%= f.select(:shirt_size, ['Large', 'Medium', 'Small', 'No Thanks'],
+ 				{:prompt => 'Select One'}) %>
+  </div>
+  <div class="field">
     <%= f.label :website %>
     <%= f.text_field :website %>
   </div>

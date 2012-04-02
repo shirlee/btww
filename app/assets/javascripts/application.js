@@ -16,14 +16,21 @@ $(function() {
   });
 
 $(function() {
+	$("#shirt_size").hide();
 	$("#company_type").hide();
 	$("#company_size").hide();
-		})
+		});
 
 
 $(function() {
   $("#team_checkbox").click(function(){
 	$("#company_type").toggle();
 	$("#company_size").toggle();
-		})
+		});
+
+$(function() {
+  $("#shirt").click(function(){
+	$("#shirt_size").toggle();
+		});
   });
+

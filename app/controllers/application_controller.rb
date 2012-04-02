@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
       if logged_in? && @user.team.id == get_user.team_id
         get_user.isleader
       end
-    elsif @team!= nil
+    elsif @team != nil
       if logged_in? && @team.id == get_user.team_id
         get_user.isleader
       end

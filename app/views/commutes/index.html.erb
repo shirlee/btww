@@ -24,7 +24,7 @@
 
 <% if logged_in? && isadmin? %>
 	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
-<% elsif logged_in? && get_user.id == @user.id %>
+<% elsif logged_in? %>
 	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
 <% end  %>
 

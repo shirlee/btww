@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name</b>
+  <b>Name: </b>
   <%= @user.fname %>  <%= @user.lname %>
+	<% if logged_in? && get_user == @user  %>
+		<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+	<% end  %>
 </p>
 
 <% if @user.provider != nil  %>
@@ -35,7 +38,6 @@
   <b>Bikerclass:</b>
   <%= @user.bikerclass %>
 </p>
-
 <br>
 
 <p>
@@ -59,12 +61,13 @@
 	  	<% end %>
 	</table>
 
-	<% if logged_in?  && get_user.team_id != nil %>
-		<% if is_the_team_leader? ||  get_user == @user %>
-		<%= link_to "+ Add Commute", new_commute_url(:user_id => @user.id) %> |
-		<%= link_to 'Edit User', edit_user_path(@user) %>	
+
+	<% if logged_in? && get_user.team_id != nil %>
+		<% if is_the_team_leader? || get_user == @user %>
+		<%= button_to "+ Add Commute", new_commute_url(:user_id => @user.id), :method => 'get' %> 
 		<% end %>	
+	<% elsif logged_in? && get_user == @user %>
+		<%= link_to "Choose Your Team to Add a Commute!", edit_user_url(@user.id) %>
 	<% else  %>
-		<% link_to "Choose Your Team to Add a Commute!", new_commute_url(:user_id => @user.id) %>
 	<% end %>	
 

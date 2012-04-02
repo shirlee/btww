@@ -10,6 +10,8 @@
 <%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
 <br>
 
+<%= button_to "Log Your Commute for This Team", new_commute_url, :method => 'get' %>
+
 <p>
   <b>Company type:</b>
   <%= @team.company_type %>; 
@@ -89,7 +91,7 @@
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
 		<td> <%= user.mileage %> </td>		
-		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_commutes_url(user.id) %> </td>		
+		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_url(user.id) %> </td>		
 		</tr>
   <% end %>
 	</table>
