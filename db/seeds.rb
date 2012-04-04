@@ -153,12 +153,6 @@ User.find(users[8]).update_attributes(:team_id => Team.last.id)
                         
 puts "We now have #{Team.count} teams."
 
-all_users = User.all
-users = Array.new
-  all_users.each do |user|
-    users << user
-  end
-
 puts "Our array of User objects is #{users}"
 
 all_teams = Team.all
@@ -166,7 +160,7 @@ teams = Array.new
   all_teams.each do |team|
     teams << team.id
   end
-
+  
 puts "Our array of Team ID's is #{teams}"
 
 users[9].update_attributes(:team_id => teams[1])
