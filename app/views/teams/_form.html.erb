@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :company_type %>
-    <%= f.select(:company_type, ['Business', 'Non-Profit', 'Education', 'Bike-Related', 'Government', 'Transportation-Related'],
+    <%= f.select(:company_type, ['Public Agency', 'Business/Non-Profit', 'Bicycle-related Business', 'K-12 School', 'College/University'],
  				{:prompt => 'Select One'}) %>
   </div>
   <div class="field">
@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :leader, "Team Leader" %>
-    <%= f.collection_select(:leader, @leaders, :id, :fname, :prompt => "Select Team Leader for Contact") %>
+    <%= f.collection_select(:leader, @team.users, :id, :fname, :prompt => "Select Team Leader for Contact") %>
   </div>
   <div class="field">
     <%= f.label :address_line_1, "Mailing Address Line 1" %>
@@ -52,15 +52,9 @@
     <%= f.label :phone, "Phone Number (xxx-xxx-xxx)" %>
     <%= f.text_field :phone %>
   </div>
-  <div class="field" id="shirt">
-    <%= f.label :shirt, "Check if you would like a T-shirt" %>
-    <%= f.check_box :shirt %>
-  </div>
-<br>
   <div class="field" id="shirt_size">
-    <%= f.label :shirt_size, "Shirt Size" %>
-    <%= f.select(:shirt_size, ['Large', 'Medium', 'Small', 'No Thanks'],
- 				{:prompt => 'Select One'}) %>
+    <%= f.label :shirt_size, "Free T-Shirt Size" %>
+    <%= f.select(:shirt_size, ['No Thanks', 'Large', 'Medium', 'Small']) %>
   </div>
   <div class="field">
     <%= f.label :website %>
@@ -70,6 +64,7 @@
     <%= f.label :twitter_handle %>
     <%= f.text_field :twitter_handle %>
   </div>
+<br>
   <div class="actions">
     <%= f.submit %>
   </div>

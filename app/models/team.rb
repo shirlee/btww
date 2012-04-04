@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   
   validates :company, :presence => :true, :uniqueness => :true
   validates :company_type, :size, :leader, :address_line_1, :city, :state, :zip, :phone, :presence => :true
-  validates_inclusion_of :company_type, :in => %w(Business Non-Profit Education Bike-Related Government Transportation-Related), :message => " invalid company type"
+  validates :size, :numericality => { :greater_than_or_equal_to => 5 }
   
   
   def self.search(search_name)
