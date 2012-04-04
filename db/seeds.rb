@@ -102,54 +102,54 @@ Team.destroy_all
 all_users = User.all
 users = Array.new
   all_users.each do |user|
-    users << user.id
+    users << user
   end
 
 
 Team.create(:company => 'HomeFinder.com', :company_type => 'Business/Non-Profit', :size => 72, 
             :website => 'http://www.homefinder.com', :twitter_handle => 'HomeFinder1', :leader => users[0],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[0]).update_attributes(:team_id => Team.last.id)
+users[0].update_attributes(:team_id => Team.last.id)
 
 Team.create(:company => 'Sparkfactor', :company_type => 'Business/Non-Profit', :size => 4, 
             :website => 'http://www.sparkfactor.com', :twitter_handle => '@sparkfactor', :leader => users[1],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[1]).update_attributes(:team_id => Team.last.id)
+users[1].update_attributes(:team_id => Team.last.id)
 
 Team.create(:company => 'Code Academy', :company_type => 'Business/Non-Profit', :size => 15, 
             :website => 'http://www.codeacademy.com', :twitter_handle => '@CodeAcademy', :leader => users[2],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[2]).update_attributes(:team_id => Team.last.id)
+users[2].update_attributes(:team_id => Team.last.id)
             
 Team.create(:company => 'GrubHub', :company_type => 'Business/Non-Profit', :size => 250, 
             :website => 'http://www.grubhub.com', :twitter_handle => '@GrubHub', :leader => users[3],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[3]).update_attributes(:team_id => Team.last.id)
+users[3].update_attributes(:team_id => Team.last.id)
                         
 Team.create(:company => 'Apartments.com', :company_type => 'Business/Non-Profit', :size => 500, 
             :website => 'http://www.apartments.com', :twitter_handle => '@AptsCom', :leader => users[4],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[4]).update_attributes(:team_id => Team.last.id)
+users[4].update_attributes(:team_id => Team.last.id)
             
 Team.create(:company => 'Cars.com', :company_type => 'Business/Non-Profit', :size => 800, 
             :website => 'http://www.cars.com', :twitter_handle => '@carsdotcom', :leader => users[5],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[5]).update_attributes(:team_id => Team.last.id)
+users[5].update_attributes(:team_id => Team.last.id)
                         
 Team.create(:company => 'Orbitz', :company_type => 'Business/Non-Profit', :size => 1400, 
             :website => 'http://www.codeacademy.com', :twitter_handle => '@Orbitz', :leader => users[6],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[6]).update_attributes(:team_id => Team.last.id)
+users[6].update_attributes(:team_id => Team.last.id)
             
 Team.create(:company => 'Chicago Coalition for the Homeless', :company_type => 'Business/Non-Profit', :size => 45,
             :website => 'http://www.chicagohomeless.org', :leader => users[7],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[7]).update_attributes(:team_id => Team.last.id)
+users[7].update_attributes(:team_id => Team.last.id)
                         
 Team.create(:company => 'Jewish United Fund', :company_type => 'Business/Non-Profit', :size => 99, 
             :website => 'http://www.juf.org/', :twitter_handle => '@JUFChicago', :leader => users[8],
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
-User.find(users[8]).update_attributes(:team_id => Team.last.id)
+users[8].update_attributes(:team_id => Team.last.id)
                         
 puts "We now have #{Team.count} teams."
 
