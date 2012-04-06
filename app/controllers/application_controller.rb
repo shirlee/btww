@@ -63,6 +63,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_team
+    if logged_in?
+      unless get_user.team_id != nil
+        redirect_to edit_user_url(get_user.id), :notice => "Choose a team before you can log a commmute!"
+      end
+    end
+  end
+  
   def require_admin
     unless isadmin?
       redirect_to root_url, :notice => "You are not allowed that function!"

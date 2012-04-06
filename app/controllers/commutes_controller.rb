@@ -3,6 +3,7 @@ class CommutesController < ApplicationController
   # GET /commutes.json
 
   before_filter :require_login, :except => [:index, :show]
+  before_filter :require_team, :only => [:new, :create]
 
   def index
     if params[:user_id]
