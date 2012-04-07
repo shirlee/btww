@@ -7,7 +7,9 @@
 </div>
 
 <p><%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
-<%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %></p>
+<%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %> | 
+Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
+</p>
 <br>
 
 <%= button_to "Log Your Commute for This Team", new_commute_url, :method => 'get' %>
@@ -78,7 +80,7 @@
 		<% @team.users.each do |user| %>
 		<tr>
 		<td> <%= link_to "#{user.fname}" " #{user.lname}", user_url(user.id)  %> </td>
-		<% if user.isleader == true %>
+		<% if user.id == @team.leader %>
 		<td> Y </td>		
 		<% else %>
 		<td>  </td>	
@@ -100,9 +102,10 @@
 
 
 <% if logged_in? && is_the_team_leader?  %>
-<%= link_to 'Edit Team', edit_team_path(@team) %> |
+	<%= link_to 'Edit Team', edit_team_path(@team) %> |
 <% elsif logged_in? && isadmin?  %>
-<%= link_to 'Edit Team', edit_team_path(@team) %> |
+	<%= link_to 'Edit Team', edit_team_path(@team) %> |
 <% else %>
 <% end  %>
+
 <%= link_to 'All Teams', teams_path %>

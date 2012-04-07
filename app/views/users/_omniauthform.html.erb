@@ -24,10 +24,6 @@
     <%= f.collection_select(:team_id, Team.all, :id, :company, :prompt => "Select your Company/Department") %>
   </div>
   <div class="field">
-    <%= f.label :isleader, "Are you the Team Leader?" %><br />
-    <%= f.check_box :isleader %>
-  </div>
-  <div class="field">
     <%= f.label :isnewbie, "First Time Biking to Work?" %><br />
     <%= f.check_box :isnewbie %>
   </div>

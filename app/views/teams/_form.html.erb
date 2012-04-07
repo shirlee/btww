@@ -24,10 +24,15 @@
     <%= f.label :size, "Number of Employees" %>
     <%= f.number_field :size %>
   </div>
+
+  <% if @team.id != nil  %>
+	<% logger.debug "Team id: #{@team.id}"  %>
   <div class="field">
     <%= f.label :leader, "Team Leader" %>
-    <%= f.collection_select(:leader, @team.users, :id, :fname, :prompt => "Select Team Leader for Contact") %>
+    <%= f.collection_select(:leader, @team.users, :id, :full_name) %>
   </div>
+  <% end  %>
+
   <div class="field">
     <%= f.label :address_line_1, "Mailing Address Line 1" %>
     <%= f.text_field :address_line_1 %>

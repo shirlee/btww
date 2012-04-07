@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     session[:user_id].present?
   end
-  
+
+# returns currently logged in User  
   def get_user
     if logged_in?
       return User.find_by_id(session[:user_id])
@@ -69,7 +70,7 @@ class ApplicationController < ActionController::Base
         redirect_to edit_user_url(get_user.id), :notice => "Choose a team before you can log a commmute!"
       end
     end
-  end
+  end  
   
   def require_admin
     unless isadmin?
@@ -79,15 +80,18 @@ class ApplicationController < ActionController::Base
   
   
   def is_the_team_leader?
+        logger.debug "is_the_team_leader? is running"
     if @user != nil
-      if logged_in? && @user.team.id == get_user.team_id
-        get_user.isleader
+      if logged_in? && User.find(@user.team.leader) == get_user
+        return true
       end
     elsif @team != nil
-      if logged_in? && @team.id == get_user.team_id
-        get_user.isleader
+      if logged_in? && @team.leader == get_user.id
+        return true
+        logger.debug "the team leader id for this team is #{@team.leader}, and the logged in user's id is #{get_user.id}"
       end
     else
+      return false
     end
   end 
   

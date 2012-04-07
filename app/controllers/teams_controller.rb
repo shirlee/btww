@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
 
-
+  before_filter :require_login, :except => [:index, :show]
   before_filter :the_team, :except => [:index, :new, :create]
   before_filter :require_leader, :except => [:index, :show, :new, :create]
 
@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
-
+    @team_leader = User.find(@team.leader)
     @award_list = Award.where(:company_type => @team.company_type,
                                 :company_size_range => @team.company_size_range)
 
@@ -39,8 +39,6 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     @team = Team.new
-    @leaders = User.where(:team_id => @team.id,
-                          :isleader => true)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,8 +49,6 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
-    @leaders = User.where(:team_id => @team.id,
-                          :isleader => true)
     logger.debug "These are the leaders of the curret Team: #{@leaders}"
   end
 
@@ -61,8 +57,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     @team.company_size_range = company_size_range
-    @leaders = User.where(:team_id => @team.id,
-                          :isleader => true)
+    @team.leader = get_user.id
                               
     respond_to do |format|
       if @team.save
@@ -79,8 +74,6 @@ class TeamsController < ApplicationController
   # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
-    @leaders = User.where(:team_id => @team.id,
-                          :isleader => true)
                               
     respond_to do |format|
       if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
@@ -114,6 +107,7 @@ class TeamsController < ApplicationController
     end
     return company_size_range
   end
+  
 
 
   

@@ -21,15 +21,15 @@
 				<%= link_to "Add Your Team", edit_user_url(@user.id) %>
 			<% end  %>
 	<% end %>
-	<% if @user.isleader == true %>
+	<% if @user.team.leader == @user.id %>
 		(Team Leader)
 	<% else %>
 	<% end %>
 </p>
-
+<br>
 <p>
-	<% if @user.isleader == true %>
-		<b>Newbie!</b>
+	<% if @user.isnewbie == true %>
+		<strong><%= "#{@user.fname} is a Bike Commuter Newbie!" %></strong>
 	<% else %>
 	<% end %>
 </p>
