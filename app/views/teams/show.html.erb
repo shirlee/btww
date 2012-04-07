@@ -2,9 +2,6 @@
 
 <h2>Team <%=  @team.company  %></h2>
 
-<div id="edit-link">
-
-</div>
 
 <p><%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
 <%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %> | 
@@ -38,7 +35,7 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
   <b>Mileage:</b>
   <%= @team.mileage %>;
   <b># Commutes:</b>
-  <%= @team.commutes.count %>;
+  <%= @team.total_commutes %>;
   <b># Newbies:</b>
   <%= @team.newbies %>;
 </p>
@@ -74,8 +71,9 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 		<th> Team Leader </th>		
 		<th> Newbie </th>		
 	 	<th> Self-Described Biker Type </th>
-		<th> Commutes </th>
-		<th> Current Mileage </th>
+		<th> Logged Commutes </th>
+		<th> Commutes during Commuter Challenge </th>
+		<th> BTWW Mileage </th>
 		</tr>
 		<% @team.users.each do |user| %>
 		<tr>
@@ -92,6 +90,7 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 		<% end %>	
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= user.commutes.count %> </td>
+		<td> <%= user.commutes_that_count.count %> </td>
 		<td> <%= user.mileage %> </td>		
 		<td> <%= link_to "View Commutes (#{user.commutes.count})", user_url(user.id) %> </td>		
 		</tr>
