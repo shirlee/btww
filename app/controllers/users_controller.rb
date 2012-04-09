@@ -17,6 +17,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user.team_id != nil
+      @award = Award.where(:company_type => @user.team.company_type,
+                           :company_size_range => @user.team.company_size_range,
+                           :goal => 'Participation Rate')
+      logger.debug "Award is #{@award}"
+      logger.debug "Award ID is #{@award[0].id}"
+    end
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,5 +1,4 @@
-<h1>New commute entry for <%= User.find_by_id(@commute.user_id).fname %></h1>
-	
+<h1>New commute entry for <%= User.find_by_id(@commute.user_id).fname %>
 <%= User.find_by_id(@commute.user_id).lname %> </h1>
 <br />
 <%= render 'form' %>

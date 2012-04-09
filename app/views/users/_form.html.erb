@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :fname, "First Name" %>
     <%= f.text_field :fname %>
-  </div>
+  </div><br>
 <br>
   <div class="field">
     <%= f.label :lname, "Last Name" %>
@@ -33,9 +33,13 @@
     <%= f.password_field :password_confirmation %>
   </div><br />
   <div class="field">
-    <%= f.label :team_id, "Team (Required)" %>
-    <%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Company/Department") %>
-	Not seeing your company? <%= link_to "Create a new team", new_team_url %>
+	<% if @user.id == nil %>
+   		<%= f.label :team_id, "Team: If your company isn't listed, you can create it later." %>
+	<% else %>
+   		<%= f.label :team_id, "Team:" %>
+   		Don't see your team? <%= link_to "Create a New Team", new_team_url %>
+	<% end %>
+    <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
   </div>
 <br />
 <br />

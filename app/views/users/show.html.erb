@@ -20,6 +20,7 @@
 				(Team Leader)
 			<% else %>
 			<% end %>
+<p>		<%= link_to "Check the Scoreboard for #{@user.team.company}!", award_url(@award[0].id) %></p>
 	<% else  %>
 			<% if logged_in? && get_user.id ==  @user.id %>
 				<%= link_to "Add Your Team", edit_user_url(@user.id) %>
