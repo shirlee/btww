@@ -8,7 +8,7 @@ Btww1::Application.routes.draw do
 
   resources :sessions
 
-  root :to => 'teams#index'
+  root :to => 'teams#index' #why you here?
   
   get '/logout' => 'sessions#destroy', :as => :logout
 
