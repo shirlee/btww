@@ -16,15 +16,16 @@
   <b>Team:</b>
 	<% if @user.team_id != nil  %>
   		<%= link_to "#{@user.team.company}", team_url(@user.team.id) %>
+			<% if @user.team.leader == @user.id %>
+				(Team Leader)
+			<% else %>
+			<% end %>
 	<% else  %>
 			<% if logged_in? && get_user.id ==  @user.id %>
 				<%= link_to "Add Your Team", edit_user_url(@user.id) %>
 			<% end  %>
 	<% end %>
-	<% if @user.team.leader == @user.id %>
-		(Team Leader)
-	<% else %>
-	<% end %>
+
 </p>
 <br>
 <p>
@@ -39,6 +40,42 @@
   <%= @user.bikerclass %>
 </p>
 <br>
+
+<div id='fb-share-button'> </div>
+
+<div id='fb-root'></div>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '60') %></a>
+
+
+    <script> 
+       FB.init({appId: ENV['FACEBOOK_KEY'], status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: '<%= url_for user_url %>',
+          picture: 'http://www.cyclingnews.com/photos/2006/jul06/qinghai06/qinghai066/17.jpg',
+          name: 'Check out my progress on Bike To Work Week!',
+          caption: 'Active Transportation Alliance Commuter Challenge',
+          description: 'Sign up your company to compete!',
+		  message: 'Check out my progress on Bike To Work Week'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+
+    </script>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out my progress on Bike To Work Week!" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+	    <p id='msg'></p>
 
 <p>
   <b><%= @user.fname %>'s Commutes During Commuter Challenge (Jun 9 - Jun 15):</b>

@@ -12,21 +12,6 @@
   <%= @commute.commute_date.strftime("%A %B %d, %Y") %>
 </p>
 
-
-<% if @commute.departure_address != ""%>
-<p>
-  <b>Departure address:</b>
-  <%= @commute.departure_address %>
-</p>
-<% end  %>
-
-<% if @commute.arrival_address != "" %>
-<p>
-  <b>Arrival address:</b>
-  <%= @commute.arrival_address %>
-</p>
-<% end  %>
-
 <p>
   <b>Distance:</b>
   <%= @commute.mileage %>
@@ -42,25 +27,16 @@
   <%= @commute.comments %>
 </p>
 
-<% if @commute.departure_address? &&  @commute.arrival_address? %>
-	<% if @commute.departure_address != ""  &&  @commute.arrival_address != ""  %>
-		<div id="commute_map">
-			<% markers = "markers=color:blue|label:A|#{@commute.departure_address}&markers=color:blue|label:B|#{@commute.arrival_address}" %>
-			<p><img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @commute.arrival_address %>&zoom=12&size=400x300&sensor=false&<%= markers %>" alt="#{@commute.user.full-name}'s Commute" /></p>
-		</div>
-	<% end %>
-<% end  %>
 
 <div id='fb-share-button'> </div>
 
 <div id='fb-root'></div>
     <script src='http://connect.facebook.net/en_US/all.js'></script>
-    <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '100') %></a></p>
-    <p id='msg'></p>
+    <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '60') %></a>
+
 
     <script> 
-      // FB.init({appId: "204090116364336", status: true, cookie: true});
-       FB.init({appId: "299340683464316", status: true, cookie: true});
+       FB.init({appId: ENV['FACEBOOK_KEY'], status: true, cookie: true});
 
       function postToFeed() {
 
@@ -69,9 +45,9 @@
           method: 'feed',
           link: '<%= url_for commute_url %>',
           picture: 'http://www.cyclingnews.com/photos/2006/jul06/qinghai06/qinghai066/17.jpg',
-          name: 'Bike2WorkWeek: Commute for <%= @commute.user.full_name  %>',
-          caption: 'Weeklong bike-related awesomeness',
-          description: 'Join Us!',
+          name: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!',
+          caption: 'Active Transportation Alliance Commuter Challenge',
+          description: 'Sign up your company to compete!',
 		  message: 'I just biked to work today for Bike2WorkWeek!'
         };
 
@@ -83,6 +59,10 @@
       }
     
     </script>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="I just logged my commute for Bike To Work Week!" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+	    <p id='msg'></p>
 <br>
 
 <% if logged_in? && get_user.id == @commute.user_id %>

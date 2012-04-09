@@ -2,13 +2,50 @@
 
 <% if @award.isteam = true %>
 	<h1>Welcome to the SCOREBOARD! </h1>
-	
+
 <br>
 	<h3>This scoreboard is for Teams Competing in the Category of: </h3>
 	<p>Type: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees (<%= link_to 'Scoreboards for Other Categories', awards_path %>)</p>
 	
-<br>
+	<div id='fb-share-button'> </div>
 
+	<div id='fb-root'></div>
+	    <script src='http://connect.facebook.net/en_US/all.js'></script>
+	    <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '60') %></a>
+
+
+	    <script> 
+	       FB.init({appId: ENV['FACEBOOK_KEY'], status: true, cookie: true});
+
+	      function postToFeed() {
+
+	        // calling the API ...
+	        var obj = {
+	          method: 'feed',
+	          link: '<%= url_for award_url %>',
+	          picture: 'http://www.cyclingnews.com/photos/2006/jul06/qinghai06/qinghai066/17.jpg',
+	          name: 'Check out my company scoreboard for Bike To Work Week!',
+	          caption: 'Active Transportation Alliance Commuter Challenge',
+	          description: 'Sign up your company to compete!',
+			  message: 'Check our my company on the Bike To Work Week Scoreboard'
+	        };
+
+	        function callback(response) {
+	          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+	        }
+
+	        FB.ui(obj, callback);
+	      }
+
+	    </script>
+
+		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out our Bike To Work Week Scoreboard!" data-count="none">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+		    <p id='msg'></p>
+	<br>
+
+<br>
+<br>
 <p> 
 	<% @award_list.each do |award| %>
 		<% if award.id != @award.id  %>
@@ -74,6 +111,8 @@
 
 
 <% end %>
+<br>
+
 
 <br>
 <br>
