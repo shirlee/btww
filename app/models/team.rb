@@ -11,9 +11,9 @@ class Team < ActiveRecord::Base
   
   def self.search(search_name)
     if search_name
-      find(:all, :conditions => ['UPPER(company) LIKE ?', "%#{search_name.upcase}%"], :order => 'size desc')
+      find(:all, :conditions => ['UPPER(company) LIKE ?', "%#{search_name.upcase}%"], :order => 'company asc')
     else
-      find(:all, :order => 'size desc')
+      find(:all, :order => 'company asc')
     end
   end
   
