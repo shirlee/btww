@@ -97,23 +97,9 @@
                 <li><%= link_to "Teams", teams_url  %></li>
                 <li><%= link_to "Bikers", users_url  %></li>
                 <li><%= link_to "How to Bike to Work", "http://www.activetrans.org/tricks-tips", :target => :blank  %></li>
+                <li> --- </li>
                 <li><%= link_to "About Us", '/index' %></li>
                 <li><%= link_to "Contact Us", '/index' %></li>
-                <li> --- </li>
-
-				<% if session[:user_id] != nil && get_user != nil %>
-					<% if get_user.provider != nil %>
-						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
-						<li>  (logged in via <%= get_user.provider %>) </li>
-						<li><%= link_to "Sign Out", logout_url %></li>
-					<% else %>
-						<li><%= link_to "#{get_user.fname}'s Profile", user_url(get_user.id)%> </li>
-						<li><%= link_to "Sign Out", logout_url %></li>
-					<% end %>
-				<% else %>
-				<li><%= link_to "Sign In", new_session_url %></li>
-				<li> <%= link_to "Sign Up", new_user_url  %></li>
-				<% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

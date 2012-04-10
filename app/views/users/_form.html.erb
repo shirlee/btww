@@ -15,7 +15,6 @@
     <%= f.label :fname, "First Name" %>
     <%= f.text_field :fname %>
   </div><br>
-<br>
   <div class="field">
     <%= f.label :lname, "Last Name" %>
     <%= f.text_field :lname %>
@@ -41,7 +40,6 @@
 	<% end %>
     <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
   </div>
-<br />
 <br />
   <div class="field">
     <%= f.label :isnewbie, "First Time Biking to Work?" %>

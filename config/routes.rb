@@ -7,8 +7,6 @@ Btww1::Application.routes.draw do
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'
 
   resources :sessions
-
-  root :to => 'teams#index'
   
   get '/logout' => 'sessions#destroy', :as => :logout
 
