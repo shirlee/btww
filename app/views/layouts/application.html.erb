@@ -4,7 +4,7 @@
   xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <meta charset="utf-8">
-    <title>Bike2WorkWeek.com (beta!)</title>
+    <title>Bike Commuter Challenge Registration</title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -41,7 +41,7 @@
 	  })();
 
 	</script>
-	
+
     <!-- UserVoice -->
 	<script type="text/javascript">
 	  var uvOptions = {};
@@ -53,10 +53,14 @@
 	</script>	
   </head>
   <body>
-
+      <div class="atabrand">
+          <div class="float-left" ><%= image_tag("activetrans_logo.gif") %></div>
+          <div class="float-right"><%= image_tag("make_it_better.png") %></div>
+      </div>
+      <div class="clearboth"></div>   
 	<%= render 'layouts/facebook_dialogs' %>
-
-    <div class="navbar navbar-fixed-top">
+    
+    <div class="navbar">
       <div class="navbar-inner">
           <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -64,7 +68,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">Bike2WorkWeek.com (beta)</a>
+          <a class="brand" href="/">Bike Commuter Challenge Registration</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
 				<% if session[:user_id] != nil && get_user != nil %>
@@ -92,14 +96,16 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Resources</li>
-                <p><strong><li><%= link_to "** SCOREBOARDS! **", awards_url  %></li></strong></p>
+              <li class="nav-header">RESOURCES</li>
+                <li><%= link_to "Scoreboards", awards_url  %></li>
                 <li><%= link_to "Teams", teams_url  %></li>
                 <li><%= link_to "Bikers", users_url  %></li>
                 <li><%= link_to "How to Bike to Work", "http://www.activetrans.org/tricks-tips", :target => :blank  %></li>
-                <li> --- </li>
+                <li>--</li>
                 <li><%= link_to "About Us", '/index' %></li>
                 <li><%= link_to "Contact Us", '/index' %></li>
+
+                
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
