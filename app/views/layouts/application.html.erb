@@ -4,7 +4,7 @@
   xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <meta charset="utf-8">
-    <title>Bike2WorkWeek.com (beta!)</title>
+    <title>Bike Commuter Challenge Registration</title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -53,10 +53,14 @@
 	</script>	
   </head>
   <body>
-
+      <div class="atabrand">
+          <div class="float-left" ><%= image_tag("activetrans_logo.gif") %></div>
+          <div class="float-right"><%= image_tag("make_it_better.png") %></div>
+      </div>
+      <div class="clearboth"></div>   
 	<%= render 'layouts/facebook_dialogs' %>
-
-    <div class="navbar navbar-fixed-top">
+    
+    <div class="navbar">
       <div class="navbar-inner">
           <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -64,7 +68,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">Bike2WorkWeek.com (beta)</a>
+          <a class="brand" href="/">Bike Commuter Challenge Registration</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
 				<% if session[:user_id] != nil && get_user != nil %>
