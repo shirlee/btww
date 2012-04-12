@@ -19,6 +19,8 @@
 
 <% if logged_in? && get_user.team == nil %>
 <p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
+<% elsif logged_in? && isadmin? %>
+<p><strong> <%= link_to '+Add Another Team (Admins Only)', new_team_path %></strong></p>
 <% elsif !logged_in? %>
 <p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
 <% end %>

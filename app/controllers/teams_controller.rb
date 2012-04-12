@@ -58,9 +58,16 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
     @team.company_size_range = company_size_range
     @team.leader = get_user.id
+    @user = get_user
                               
     respond_to do |format|
       if @team.save
+        logger.debug "team saved"
+        if @user.team == nil
+          logger.debug "user team is #{@user.team}"
+          @user.update_attributes(:team_id => @team.id)
+          logger.debug "New team for #{@user.fname} is #{@user.team.company}"
+        end
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
