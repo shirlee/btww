@@ -19,7 +19,6 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
 <% end  %>
 Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 </p>
-<br>
 
 <%= button_to "Log Your Commute for This Team", new_commute_url, :method => 'get' %>
 
@@ -51,7 +50,42 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
   <b># Newbies:</b>
   <%= @team.newbies %>;
 </p>
-<br>
+<div id='fb-share-button'> </div>
+
+<div id='fb-root'></div>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '60') %></a>
+
+
+    <script> 
+       FB.init({appId: 204090116364336, status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: '<%= url_for award_url %>',
+          picture: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/373031_57362894871_1320843512_n.jpg',
+          name: 'Bike To Work Week stats for Team <%= @team.company  %>',
+          caption: 'Active Transportation Alliance Commuter Challenge',
+          description: 'Sign up your company to compete!',
+		  message: 'Check out my company on Bike To Work Week'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+
+    </script>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out our Bike To Work Week Scoreboard!" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+	    <p id='msg'></p>
+
 <p><strong>HOW DO WE STACK UP AGAINST THE COMPETITION?</strong>
 </p>
 <div id= "scoreboards" >
