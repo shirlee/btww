@@ -8,7 +8,7 @@
 <h2>Meet The Competing Teams!</h2>
 <br>
 
-<p><strong>Search for your company here:</strong></p>
+<p><strong>Search for a team here:</strong></p>
 
 <%= form_tag teams_url, :method => 'get' do %>
 <p>
@@ -17,8 +17,11 @@
 </p>
 <% end %>
 
+<% if logged_in? && get_user.team == nil %>
 <p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
-
+<% elsif !logged_in? %>
+<p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
+<% end %>
 <br>
 
 
