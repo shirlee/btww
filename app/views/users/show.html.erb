@@ -3,8 +3,17 @@
 <p>
   <b>Name: </b>
   <%= @user.fname %>  <%= @user.lname %>
-	<% if logged_in? && get_user == @user  %>
-		<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+	<% if get_user == @user  %>
+		<% if isadmin?  %>
+			<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+		<% else %>
+			<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+		<% end %>
+
+	<% else  %>
+		<% if isadmin?  %>
+			<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+		<% end %>
 	<% end  %>
 </p>
 
@@ -18,7 +27,6 @@
   		<%= link_to "#{@user.team.company}", team_url(@user.team.id) %>
 			<% if @user.team.leader == @user.id %>
 				(Team Leader)
-			<% else %>
 			<% end %>
 <p>		<%= link_to "Check the Scoreboard for #{@user.team.company}!", award_url(@award[0].id) %></p>
 	<% else  %>
@@ -58,7 +66,7 @@
         var obj = {
           method: 'feed',
           link: '<%= url_for user_url %>',
-          picture: 'http://www.cyclingnews.com/photos/2006/jul06/qinghai06/qinghai066/17.jpg',
+          picture: 'activetrans_logo.gif',
           name: 'Check out my progress on Bike To Work Week!',
           caption: 'Active Transportation Alliance Commuter Challenge',
           description: 'Sign up your company to compete!',

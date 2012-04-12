@@ -24,9 +24,11 @@ module ApplicationHelper
   def is_the_team_leader?
         logger.debug "is_the_team_leader? is running"
     if @user != nil
-      if logged_in? && User.find(@user.team.leader) == get_user
-        return true
-      end
+      if @user.team != nil
+        if logged_in? && User.find(@user.team.leader) == get_user
+          return true
+        end
+      end 
     elsif @team != nil
       if logged_in? && @team.leader == get_user.id
         return true

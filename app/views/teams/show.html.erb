@@ -2,9 +2,21 @@
 
 <h2>Team <%=  @team.company  %></h2>
 
+<% if isadmin?  %>
+	<%= link_to '(Edit Team)', edit_team_path(@team) %> | <%= link_to 'Delete Team', team_url(@team), :method => 'delete', :confirm => "Hello, Admin User. Are you sure you want to delete Team #{@team.company}? #{@team.users.count} user(s) will have their Team deleted, but their Commutes will not be removed.
 
-<p><%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
+If you proceed, when these #{@team.users.count} user(s) add themselves to the correct team, their commutes will be attributed to that team the next time stats are updated." %>
+<% elsif is_the_team_leader?  %>
+	<%= link_to '(Edit Team)', edit_team_path(@team) %>
+<% end %>
+
+<p>
+<% if @team.website != "" %>
+	<%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
+<% end  %>
+<% if @team.twitter_handle != "" %>
 <%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %> | 
+<% end  %>
 Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 </p>
 <br>
@@ -54,9 +66,9 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 <br>
 <p>
 	<% if logged_in? != true %>
-  <b>Team Members: <%= link_to '(Join This Team!)', new_user_url %></b>
+  <b>Team Members: <%= link_to '(Join This Team!)', new_user_url(:team_id => "#{@team.id}") %></b>
 	<% elsif logged_in? && get_user.team_id == nil %>
-		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user) %></b>	
+		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user, :team_id => "#{@team.id}") %></b>	
 	<% else %>
   <b>Team Members:</b>	
 	<% end %>
@@ -98,13 +110,3 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	</table>
 	
 <br>
-
-
-<% if logged_in? && is_the_team_leader?  %>
-	<%= link_to 'Edit Team', edit_team_path(@team) %> |
-<% elsif logged_in? && isadmin?  %>
-	<%= link_to 'Edit Team', edit_team_path(@team) %> |
-<% else %>
-<% end  %>
-
-<%= link_to 'All Teams', teams_path %>

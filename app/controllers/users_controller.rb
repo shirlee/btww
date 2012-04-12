@@ -35,7 +35,9 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+    @user.team_id = params[:team_id]
+    @user.btww_email_list = true
+    @user.general_email_list = true
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -44,7 +46,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
+    if params[:team_id] != nil
+      @user.team_id = params[:team_id]
+    end
   end
 
   # POST /users
@@ -84,9 +88,17 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-
+    old_team = @user.team
+    
     respond_to do |format|
+      
       if @user.update_attributes(params[:user])
+        if old_team != nil
+          update_team_stats(old_team)
+        end
+        if @user.team != nil
+          update_team_stats(@user.team)
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :ok }
       else
@@ -99,8 +111,12 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    team = @user.team_id
     @user.destroy
-
+      if team != nil
+        update_team_stats(team)
+      end
+      
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :ok }

@@ -90,6 +90,9 @@ class TeamsController < ApplicationController
   # DELETE /teams/1.json
   def destroy
     @team = Team.find(params[:id])
+      @team.users.each do |user|
+        user.update_attributes(:team_id => nil)
+      end
     @team.destroy
 
     respond_to do |format|

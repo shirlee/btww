@@ -23,6 +23,12 @@
     <%= f.label :email, "Email Address" %>
     <%= f.text_field :email %>
   </div><br />
+<% if isadmin? %>
+  <div class="field">
+    <%= f.label :isadmin, "Check box if this User should have Admin rights" %>
+    <%= f.check_box :isadmin %>
+  </div><br />
+<% end %>
   <div class="field">
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
