@@ -5,7 +5,7 @@ class AwardsController < ApplicationController
   before_filter :require_admin, :except =>  [:index, :show]
 
   def index
-    @awards = Award.find_all_by_goal 'Participation Rate'
+    @awards = Award.find_all_by_goal('Participation Rate')
 
     respond_to do |format|
       format.html # index.html.erb

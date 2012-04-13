@@ -23,7 +23,7 @@
 	<% if num_competing_teams(award) > 0 %>
 		<td><%= link_to "Display Scoreboard", award_url(award.id) %></td>
 	<% else %>
-		<td><%= link_to "+ Add Your Team", new_team_url %></td>
+		<td><%= link_to "+ Add a Team", new_team_url %></td>
 	<% end %>
   </tr>
 <% end %>

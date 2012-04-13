@@ -13,6 +13,8 @@ gem 'omniauth-facebook'
 
 gem 'gmaps4rails'
 
+gem 'newrelic_rpm'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
