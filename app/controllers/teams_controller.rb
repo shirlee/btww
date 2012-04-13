@@ -26,8 +26,10 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @team_leader = User.find(@team.leader)
-    @award_list = Award.where(:company_type => @team.company_type,
-                                :company_size_range => @team.company_size_range)
+    @award = Award.where(:company_type => @team.company_type,
+                         :company_size_range => @team.company_size_range,
+                         :goal => 'Participation Rate')
+                  .first
 
     respond_to do |format|
       format.html # show.html.erb

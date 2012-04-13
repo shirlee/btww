@@ -1,11 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <% if @award.isteam = true %>
-	<h1>Welcome to the SCOREBOARD! </h1>
-
-<br>
-	<h3>This scoreboard is for Teams Competing in the Category of: </h3>
-	<p>Type: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees (<%= link_to 'Scoreboards for Other Categories', awards_path %>)</p>
+	<h1>Commuter Challenge Scoreboard </h1>
+	<p><b>Category: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees (<%= link_to 'Scoreboards for Other Categories', awards_path %>)</b></p>
 	
 	<div id='fb-share-button'> </div>
 
@@ -44,8 +41,9 @@
 		    <p id='msg'></p>
 
 <br>
+
 <p> 
-	<% @award_list.each do |award| %>
+<b>	Winners By: </b><% @award_list.each do |award| %>
 		<% if award.id != @award.id  %>
 			<%= link_to "#{award.goal}", award_url(award.id) %> | 
 			<% else  %>

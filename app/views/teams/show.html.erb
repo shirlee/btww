@@ -9,7 +9,14 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
 <% elsif is_the_team_leader?  %>
 	<%= link_to '(Edit Team)', edit_team_path(@team) %>
 <% end %>
-
+<p>
+  <b>Company type:</b>
+  <%= @team.company_type %>; 
+  <b>Size:</b>
+  <%= @team.size %>; 
+  <b>Size Range:</b>
+  <%= @team.company_size_range %>
+</p>
 <p>
 <% if @team.website != "" %>
 	<%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
@@ -19,25 +26,8 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
 <% end  %>
 Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 </p>
-
-<%= button_to "Log Your Commute for This Team", new_commute_url, :method => 'get' %>
-
-<p>
-  <b>Company type:</b>
-  <%= @team.company_type %>; 
-  <b>Size:</b>
-  <%= @team.size %>; 
-  <b>Size Range:</b>
-  <%= @team.company_size_range %>
-</p>
-
-
-
 <br>
-
 <h3><%=  @team.company  %> Stats:</h3>
-
-
 <p> 
   <b>Commuters:</b>
   <%= @team.commuters %>; 
@@ -86,21 +76,16 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
-<p><strong>HOW DO WE STACK UP AGAINST THE COMPETITION?</strong>
-</p>
-<div id= "scoreboards" >
-<p><strong>View Scoreboards:
-	<% if @award_list != nil %>
-		<% @award_list.each do |award| %>
-			<%= link_to "#{award.goal}", award_url(award.id) %> | 
-		<% end  %></strong>
-	<% end  %>
-</p>
-</dev>
-<br>
+		<p>
+		<%= button_to "Log Your Commute for #{@team.company}", new_commute_url, :method => 'get' %>
+		<% if @award != nil %>
+				<%= button_to "See #{@team.company} in the Scoreboards", award_url(@award), :method => 'get' %> </strong>
+		<% end  %>
+		</p>
+
 <p>
 	<% if logged_in? != true %>
-  <b>Team Members: <%= link_to '(Join This Team!)', new_user_url(:team_id => "#{@team.id}") %></b>
+  <h3>Team Members:</h3> <p>Work for <%= "#{@team.company}" %>?  <%= link_to 'Join this team!', new_user_url(:team_id => "#{@team.id}") %></p>
 	<% elsif logged_in? && get_user.team_id == nil %>
 		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user, :team_id => "#{@team.id}") %></b>	
 	<% else %>
