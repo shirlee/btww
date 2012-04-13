@@ -16,22 +16,23 @@
   </div>
 
   <div class="field">
-    <%= f.label :commute_date %>
+    <%= f.label :commute_date, "Commute Date: (The date you biked at least part of your commute)" %>
+
     <%= f.text_field :commute_date %>
-  </div>
+  </div> <br />
   <div class="field">
     <%= f.label :distance, "Distance in Miles: Add up all mileage TO and FROM work" %>
     <%= f.text_field :distance %>
-  </div>
+  </div> <br />
   <div class="field">
     <%= f.label :ridescore, "How did you feel?" %>
     <%= f.select(:ridescore, ['Fan-freakin-tastic!', 'Hella Good', 'Meh', "Hurtin'", 'Abysmal'],
  				:prompt => "Select One") %>
-  </div>
+  </div> <br />
   <div class="field">
-    <%= f.label :comments %>
+    <%= f.label :comments, "Your Comments: (e.g. road/traffic conditions, weather, route)" %>
     <%= f.text_area :comments, :size => "50x5" %>
-  </div>
+  </div> <br />
   <div class="actions">
     <%= f.submit %>
   </div>
