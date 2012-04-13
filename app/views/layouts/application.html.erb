@@ -80,10 +80,14 @@
 					<% else %>
 						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
+						<li><a href="logcommute">log commute</a></li>
+						<li><a href="myteam">my team</a></li>
+        				<li><a href="scoreboards">our scoreboards</a></li>
+        				<li><a href="mycommutes">my commutes/profile</a></li>
 					<% end %>
 				<% else %>
-				<li><a href="log">Log commute</a></li>
-				<li><a href="scoreboards">Scoreboards</a></li>
+                <!-- <li><a href="log">log commute</a></li> -->
+                <!-- <li><a href="scoreboards">scoreboards</a></li> -->
 				<li><%= link_to "Sign In", new_session_url %></li>
 				<li> <%= link_to "Sign Up", new_user_url  %></li>
 				<li> <%= link_to image_tag("login_fb.jpeg", :border=>0), '/auth/facebook' %> </li>
@@ -92,8 +96,18 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
+      <% if session[:user_id] != nil && get_user != nil %>
+      <% else %>
+      <div class="subnav subnav-fixed">
+          <ul class="nav nav-pills pull-right">
+              <li id="subtn"><a href="#">log commute</a></li>
+              <li id="subtn"><a href="#">scoreboards</a></li>
+          </ul>  		
+        </div>
+      </div>
+      <% end %>
     </div>
-
+    <!-- navbar ends -->
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
