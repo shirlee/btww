@@ -3,8 +3,6 @@
 <h1>Team Registration</h1>
 <br>
 
-<%= button_to "Log Your Commute", new_commute_url, :method => 'get' %>
-
 <h2>Meet The Competing Teams!</h2>
 <br>
 
@@ -18,14 +16,12 @@
 <% end %>
 
 <% if logged_in? && get_user.team == nil %>
-<p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
+<p><strong>Can't Find Your Company? <%= link_to '+ Add a New Team', new_team_path %></strong></p>
 <% elsif logged_in? && isadmin? %>
 <p><strong> <%= link_to '+Add Another Team (Admins Only)', new_team_path %></strong></p>
 <% elsif !logged_in? %>
-<p><strong>Can't Find Your Company? <%= link_to '--Add Your Company Now--', new_team_path %></strong></p>
+<p><strong>Can't Find Your Company? <%= link_to '+ Add a New Team', new_team_path %></strong></p>
 <% end %>
-<br>
-
 
 <table class="table table-striped table-bordered table-condensed">
   <tr>
