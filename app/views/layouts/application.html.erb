@@ -78,12 +78,14 @@
 						<li><%= link_to "#{get_user.fname} (logged in via #{get_user.provider})", user_url(get_user.id)%> </li>
 						<li><%= link_to "Sign Out", logout_url %></li>
 					<% else %>
-						<li><%= link_to "Team #{get_user.team.company}", team_url(get_user.team.id) %></li>
-						<li><%= link_to "Scoreboards", awards_url %></li>
-						<li><%= link_to "My Commutes", user_url(get_user.id) %></li>
-						<li><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
-						<li><%= link_to "#{get_user.fname}'s Profile", user_url(get_user.id)%> </li>
-						<li><%= link_to "Sign Out", logout_url %></li>
+						<% if get_user.team != nil %>
+							<li><%= link_to "Team #{get_user.team.company}", team_url(get_user.team.id) %></li>
+						<% end %>
+							<li><%= link_to "Scoreboards", awards_url %></li>
+							<li><%= link_to "My Commutes", user_url(get_user.id) %></li>
+							<li><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
+							<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
+							<li><%= link_to "Sign Out", logout_url %></li>
 					<% end %>
 				<% else %>
                 <!-- <li><a href="log">log commute</a></li> -->
@@ -96,16 +98,17 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
+
       <% if session[:user_id] != nil && get_user != nil %>
-      <% else %>
+		<% else %>	
       <div class="subnav subnav-fixed">
-          <ul class="nav nav-pills pull-right">
-              <li id="subtn"><%= link_to "Log New Commute", new_commute_url %></li>
-              <li id="subtn"><%= link_to "Scoreboards", awards_url %></li>
-          </ul>  		
+        <ul class="nav nav-pills pull-right">
+            <li id="subtn"><%= link_to "Log New Commute", new_commute_url %></li>
+            <li id="subtn"><%= link_to "Scoreboards", awards_url %></li>
+        </ul>  		
+		<% end %>	
         </div>
       </div>
-      <% end %>
     </div>
     <!-- navbar ends -->
     <div class="container-fluid">
