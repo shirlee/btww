@@ -46,5 +46,12 @@ module ApplicationHelper
   			.count
   end
   
+  def after_btww_start?
+    if Date.today.to_s > "2012-06-09"
+      return true
+    else
+      return false
+    end
+  end
   
 end

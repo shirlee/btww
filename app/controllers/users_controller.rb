@@ -35,7 +35,10 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @user.team_id = params[:team_id]
+      if params[:team_id] != nil
+        @user.team_id = params[:team_id]
+        @team = Team.find(params[:team_id])
+      end
     @user.btww_email_list = true
     @user.general_email_list = true
     respond_to do |format|
