@@ -21,8 +21,8 @@
  				{:prompt => 'Select One'}) %>
   </div><br />
   <div class="field">
-    <%= f.label :size, "Number of Employees" %>
-    <%= f.number_field :size %>
+    <%= f.label :size, "Number of Employees (minimum 5)" %>
+    <%= f.text_field :size %>
   </div><br />
 
   <% if @team.id != nil  %>

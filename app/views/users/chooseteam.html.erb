@@ -1,0 +1,28 @@
+<h1>Select Team for <%= @user.full_name %></h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br>
+<br>
+
+<h3>Select an Existing Team</h3>
+
+  <div class="field">
+    <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
+  </div>
+<% end %>
+
+<h2>OR</h2>
+<br>
+<%= button_to "Create a New Team", new_team_url, :method => 'get' %>

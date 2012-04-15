@@ -3,6 +3,8 @@ Btww1::Application.routes.draw do
   get '/index' => 'greetings#index'
 
   root :to => 'teams#index'
+  
+  get '/users/:id/chooseteam' => 'users#edit', :as => :chooseteam
 
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'
 

@@ -46,6 +46,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if @user.team == nil
+      render 'chooseteam'
+    end
     if params[:team_id] != nil
       @user.team_id = params[:team_id]
     end
@@ -73,7 +76,7 @@ class UsersController < ApplicationController
         format.html { redirect_to team_url(@user.team.id), notice: "You're in! Let's get started!" }
         format.json { render json: @user, status: :created, location: @user }
         else
-        format.html { redirect_to edit_user_url(@user.id), notice: "Choose a Team, or add a New Team" }
+        format.html { redirect_to chooseteam_url(@user.id) }
         end
       
       else
