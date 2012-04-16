@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   
   validates :company, :presence => :true, :uniqueness => :true
   validates :company_type, :size, :leader, :address_line_1, :city, :state, :zip, :phone, :presence => :true
-  validates :size, :numericality => { :greater_than_or_equal_to => 5 }
+  validates :size, :numericality => { :greater_than_or_equal_to => 1 }
   
   
   def self.search(search_name)
