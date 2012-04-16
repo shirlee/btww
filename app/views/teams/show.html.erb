@@ -34,7 +34,7 @@
 
     </script>
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out our Bike To Work Week Scoreboard!" data-count="none">Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out our Bike To Work Week Team!" data-count="none">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
@@ -45,6 +45,9 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
 <% elsif is_the_team_leader?  %>
 	<%= link_to '(Edit Team)', edit_team_path(@team) %>
 <% end %>
+
+<br>
+
 <p>
   <b>Company type:</b>
   <%= @team.company_type %>; 
@@ -63,30 +66,31 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
 Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 </p>
 
-<h3><%=  @team.company  %> Stats:</h3>
-<p> 
-  <b>Commuters:</b>
-  <%= @team.commuters %>; 
-  <b>Participation:</b>
-  <%= @team.team_participation %>%;
-  <b>Mileage:</b>
-  <%= @team.mileage %>;
-  <b># Commutes:</b>
-  <%= @team.total_commutes %>;
-  <b># Newbies:</b>
-  <%= @team.newbies %>;
-</p>
+<% if @award != nil && after_btww_start? %>
+	<h3><%=  @team.company  %> Stats:</h3>
+	<p> 
+	  <b>Commuters:</b>
+	  <%= @team.commuters %>; 
+	  <b>Participation:</b>
+	  <%= @team.team_participation %>%;
+	  <b>Mileage:</b>
+	  <%= @team.mileage %>;
+	  <b># Commutes:</b>
+	  <%= @team.total_commutes %>;
+	  <b># Newbies:</b>
+	  <%= @team.newbies %>;
+	</p>
 
-		<p>
-		<%= button_to "Log Your Commute for #{@team.company}", new_commute_url, :method => 'get' %>
-		<% if @award != nil && after_btww_start? %>
-				<%= button_to "See #{@team.company} in the Scoreboards", award_url(@award), :method => 'get' %> </strong>
-		<% end  %>
-		</p>
+	<p>
+	<%= button_to "Log Your Commute for #{@team.company}", new_commute_url, :method => 'get' %>
 
+			<%= button_to "See #{@team.company} in the Scoreboards", award_url(@award), :method => 'get' %> </strong>
+	</p>
+	<% end  %>
 <p>
+<br>
 	<% if logged_in? != true %>
-  <h3>Team Members:</h3> <p>Work for <%= "#{@team.company}" %>?  <%= link_to 'Join this team!', new_user_url(:team_id => "#{@team.id}") %></p>
+  <h3>Team Members:</h3> <p><b>Work for <%= "#{@team.company}" %>?  <%= link_to 'Join this team!', new_user_url(:team_id => "#{@team.id}") %></b></p>
 	<% elsif logged_in? && get_user.team_id == nil %>
 		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user, :team_id => "#{@team.id}") %></b>	
 	<% else %>
@@ -94,7 +98,7 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	<% end %>
 </p>
 	 
-	<%= link_to "+ Invite more co-workers to join this team!", "mailto:mycoworkers%40mycompany.com?subject=Sign%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!&body=Hi!%20%20I%20just%20signed%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!%20%20Join%20our%20team%20by%20clicking%20the%20link%20below.%20%20%0Ahttp%3A%2F%2Fwww.bike2workweek.com%2Fusers%2Fnew%3Fteam_id%3D#{@team.id}" %>
+	<p><b><%= link_to "+ Invite more co-workers to join this team!", "mailto:mycoworkers%40mycompany.com?subject=Sign%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!&body=Hi!%20%20I%20just%20signed%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!%20%20Join%20our%20team%20by%20clicking%20the%20link%20below.%20%20%0Ahttp%3A%2F%2Fwww.bike2workweek.com%2Fusers%2Fnew%3Fteam_id%3D#{@team.id}" %></b></p>
 	
 	<table class="table table-striped table-bordered table-condensed">
 
