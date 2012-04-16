@@ -112,6 +112,7 @@ class TeamsController < ApplicationController
   
   def company_size_range
     company_size_range = case @team.size
+      when 1..4 then '1-4'
       when 5..24 then '5-24'
       when 25..99 then '25-99'
       when 100..499 then '100-499'
