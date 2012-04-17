@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20120407152209) do
     t.integer  "zero_commutes"
     t.float    "team_participation"
     t.integer  "newbies"
-    t.integer  "leader"
+    t.integer  "leader"               #id for a team leader user points to users table below
     t.boolean  "shirt"
     t.string   "shirt_size"
     t.string   "address_line_1"
@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(:version => 20120407152209) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "fname"
-    t.string   "lname"
+    t.string   "fname"                #Team leader fname lives here
+    t.string   "lname"                #Team leader lname lives here
     t.integer  "team_id"
     t.boolean  "isadmin"
     t.boolean  "isnewbie"
-    t.string   "email"
+    t.string   "email"                #Team leader email lives here via id above
     t.string   "bikerclass"
     t.datetime "created_at"
     t.datetime "updated_at"
