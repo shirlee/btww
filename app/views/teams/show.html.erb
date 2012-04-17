@@ -57,10 +57,10 @@ If you proceed, when these #{@team.users.count} user(s) add themselves to the co
   <%= @team.company_size_range %>
 </p>
 <p>
-<% if @team.website != "" %>
+<% if @team.website != "" &&  @team.website != nil %>
 	<%= link_to "#{@team.website}", @team.website, :target => "_blank" %> |
 <% end  %>
-<% if @team.twitter_handle != "" %>
+<% if @team.twitter_handle != "" &&  @team.twitter_handle != nil %>
 <%= link_to "#{@team.twitter_handle}", "https://twitter.com/#!/#{@team.twitter_handle}", :target => "_blank" %> | 
 <% end  %>
 Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>

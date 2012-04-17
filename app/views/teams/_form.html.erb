@@ -21,7 +21,7 @@
  				{:prompt => 'Select One'}) %>
   </div><br />
   <div class="field">
-    <%= f.label :size, "Number of Employees (minimum 5)" %>
+    <%= f.label :size, "Number of Employees" %>
     <%= f.text_field :size %>
   </div><br />
 
@@ -54,7 +54,7 @@
     <%= f.text_field :zip %>
   </div><br />
   <div class="field">
-    <%= f.label :phone, "Phone Number (xxx-xxx-xxx)" %>
+    <%= f.label :phone, "Team Leader Phone Number (xxx-xxx-xxx)" %>
     <%= f.text_field :phone %>
   </div><br />
   <div class="field" id="shirt_size">
@@ -67,7 +67,11 @@
   </div><br />
   <div class="field">
     <%= f.label :twitter_handle %>
-    <%= f.text_field :twitter_handle, :value => '@' %>
+		<% if @team.twitter_handle == nil || @team.twitter_handle == "" %>
+    		<%= f.text_field :twitter_handle, :value => '@' %>
+		<% else %>
+    		<%= f.text_field :twitter_handle %>
+		<% end %>
   </div>
 <br>
   <div class="actions">

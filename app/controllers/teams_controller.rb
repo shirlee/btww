@@ -51,7 +51,6 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
-    logger.debug "These are the leaders of the curret Team: #{@leaders}"
   end
 
   # POST /teams
@@ -68,6 +67,9 @@ class TeamsController < ApplicationController
           if @user.team == nil
             @user.update_attributes(:team_id => @team.id)
           end
+          if @team.twitter_handle == '@'
+             @team.update_attributes(:twitter_handle => nil)
+          end
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
@@ -81,7 +83,9 @@ class TeamsController < ApplicationController
   # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
-                              
+      if params[:team][:twitter_handle] == '@'
+         params[:team][:twitter_handle] = nil
+      end
     respond_to do |format|
       if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
