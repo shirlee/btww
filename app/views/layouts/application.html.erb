@@ -83,7 +83,9 @@
 					<% end %>
 						<li><%= link_to "My Commutes", user_url(get_user.id) %></li>
 						<li><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
-						<li><%= link_to "Scoreboards", awards_url %></li>
+						<li><%= link_to "Scoreboard", award_url(Award.where(:company_size_range => get_user.team.company_size_range,
+																			 :company_type => get_user.team.company_type,
+																			 :goal => 'Participation Rate').first) %></li>
 						<li><%= link_to "Sign Out", logout_url %></li>						
 				<% else %>
                 <!-- <li><a href="log">log commute</a></li> -->
@@ -128,7 +130,7 @@
                 <li><%= link_to "How to Bike to Work", "http://www.activetrans.org/tricks-tips", :target => :blank  %></li>
                 <li><%= link_to "Bike Pit Stops", "http://www.activetrans.org/bikepitstops", :target => :blank  %></li>
                 <li><%= link_to "Active Transportation Alliance", "http://www.activetrans.org/", :target => :blank  %></li>
-                <li><%= link_to "Donate to Active Trans", "https://www.activetrans.org/donate", :target => :blank  %></li>
+                <li><%= link_to "Support Active Trans", "https://www.activetrans.org/donate", :target => :blank  %></li>
                 <li>--</li>
                 <li><%= link_to "Contact Us", '/index' %></li>
 
