@@ -15,9 +15,6 @@ gem 'gmaps4rails'
 
 gem 'newrelic_rpm'
 
-# used for excell tsv (tab seperated) file
-gem 'csv_builder'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
