@@ -11,6 +11,10 @@ Btww1::Application.routes.draw do
   resources :sessions
   
   get '/logout' => 'sessions#destroy', :as => :logout
+  
+  get '/reports' => 'reports#index', :as => :reports
+  get '/reports/teams' => 'reports#teams', :as => :teamsreport
+  get '/reports/users' => 'reports#users', :as => :usersreport
 
   resources :awards
 

@@ -1,0 +1,51 @@
+<h1>Users</h1>
+<br>
+	<table>
+
+		<tr>
+		<th> First Name </th>
+		<th> Last Name </th>
+		<th> Email Address</th>
+		<th> 3rd party Login?</th>
+		<th> ActiveTrans Email List Opt-in </th>
+		<th> BTWW event Email List Opt-in </th>
+		<th> Team </th>		
+		<th> Team Leader? </th>		
+		<th> Created On </th>		
+		<th> Updated On </th>		
+		<th> Newbie? </th>		
+	 	<th> Self-Described Biker Type </th>
+	 	<th> User Profile Link </th>
+		</tr>
+
+		<% @users.each do |user| %>
+		<tr>
+		<td> <%= user.fname %> </td>
+		<td> <%= user.lname %> </td>
+		<td> <%= user.email %> </td>
+		<td> <%= user.provider %> </td>
+		<td> <%= user.general_email_list %> </td>
+		<td> <%= user.btww_email_list %> </td>
+			<% if user.team != nil %>
+				<td> <%= "#{user.team.company}" %> </td>
+				<% if user.id == user.team.leader %>
+				<td> Y </td>		
+				<% else %>
+				<td> N </td>	
+				<% end %>
+			<% else  %>
+				<td>  </td>
+				<td> N </td>				
+			<% end  %>	
+		<td> <%= user.created_at %> </td>
+		<td> <%= user.updated_at %> </td>
+		<% if user.isnewbie == true %>
+		<td> Y </td>		
+		<% else %>
+		<td> N </td>	
+		<% end %>	
+		<td> <%= user.bikerclass %> </td>
+		<td> <%= link_to "#{user.full_name}", user_url(user) %> </td>
+		</tr>
+<% end %>
+	</table>

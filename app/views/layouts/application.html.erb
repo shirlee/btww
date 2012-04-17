@@ -84,7 +84,7 @@
 						<li><%= link_to "My Commutes", user_url(get_user.id) %></li>
 						<li><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
 						<li><%= link_to "Scoreboards", awards_url %></li>
-						<li><%= link_to "Sign Out", logout_url %></li>
+						<li><%= link_to "Sign Out", logout_url %></li>						
 				<% else %>
                 <!-- <li><a href="log">log commute</a></li> -->
                 <!-- <li><a href="scoreboards">scoreboards</a></li> -->
@@ -98,6 +98,14 @@
       </div>
 
       <% if session[:user_id] != nil && get_user != nil %>
+		<% if get_user.isadmin? %>
+      <div class="subnav subnav-fixed">
+        <ul class="nav nav-pills pull-right">
+			<li id="subtn"><%= link_to "Teams Report", teamsreport_url %></li>
+			<li id="subtn"><%= link_to "Users Report", usersreport_url %></li>
+		</ul> 
+	  </div>
+		<% end %>
 		<% else %>	
       <div class="subnav subnav-fixed">
         <ul class="nav nav-pills pull-right">

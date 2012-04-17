@@ -57,6 +57,7 @@ class ApplicationController < ActionController::Base
       get_user.isadmin
     end
   end
+
   
   def require_login
     unless logged_in?
@@ -80,7 +81,6 @@ class ApplicationController < ActionController::Base
   
   
   def is_the_team_leader?
-        logger.debug "is_the_team_leader? is running"
     if @user != nil
       if logged_in? && User.find(@user.team.leader) == get_user
         return true
@@ -88,7 +88,6 @@ class ApplicationController < ActionController::Base
     elsif @team != nil
       if logged_in? && @team.leader == get_user.id
         return true
-        logger.debug "the team leader id for this team is #{@team.leader}, and the logged in user's id is #{get_user.id}"
       end
     else
       return false
