@@ -8,10 +8,7 @@
 	<% end %>
 		<td><%= button_to "My Commutes", user_url(get_user.id), :method => 'get' %></td>
 		<td><%= button_to "+ Log New Commute", new_commute_url, :user_id => get_user.id, :method => 'get' %></td>
-		<td><%= button_to "Scoreboard", award_url(Award.where(:company_size_range => get_user.team.company_size_range,
-															 :company_type => get_user.team.company_type,
-															 :goal => 'Participation Rate')
-														.first), :method => 'get' %></td>
+
 <% end %>
 </tr>
 </table>

@@ -104,7 +104,7 @@ users = Array.new
   end
 
 
-Team.create(:company => 'HomeFinder.com', :company_type => 'Business/Non-Profit', :size => 72,
+Team.create(:company => 'HomeFinder.com', :company_type => 'Business/Non-Profit', :size => 72, 
             :website => 'http://www.homefinder.com', :twitter_handle => 'HomeFinder1', :leader => users[0].id,
             :address_line_1 => '175 W Jackson', :city => 'Chicago', :state => 'IL', :zip => '60642', :phone => '312.555.5555')
 users[0].update_attributes(:team_id => Team.last.id)
