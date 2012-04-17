@@ -37,9 +37,6 @@ class AwardsController < ApplicationController
       @teams = Team.where(:company_type => @award.company_type,
                           :company_size_range => @award.company_size_range,)
                     .order("#{goal}")
-                                    
-        logger.debug "Teams in this category: #{@teams}"
-        logger.debug "Goal: #{@award.goal}"
             
       @award_list = Award.where(:company_type => @award.company_type,
                                   :company_size_range => @award.company_size_range)

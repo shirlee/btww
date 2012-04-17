@@ -58,8 +58,7 @@
 		<table class="table table-striped table-bordered table-condensed">
 			<tr>
 				<th> Team Name </th>
-				<th> Total Commutes </th>			
-				<th> Commutes That Count for BTWW  </th>		
+				<th> Commutes During Commuter Challenge  </th>		
 				<th> Total Commuters </th>			
 				<th> Total Mileage </th>			
 				<th> Total Employees </th>			
@@ -72,7 +71,6 @@
 			<% @teams.each do |team| %>
 				<tr>
 					<td> <%= link_to "#{team.company}", team_url(team.id) %> </td>
-					<td> <%= team.commutes.count %> </td>
 					<td> <%= team.commutes_that_count.count %> </td>
 					<td> <%= team.commuters %> </td>
 					<td> <%= team.mileage %> </td>

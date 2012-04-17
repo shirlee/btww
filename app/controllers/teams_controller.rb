@@ -64,12 +64,10 @@ class TeamsController < ApplicationController
                               
     respond_to do |format|
       if @team.save
-        logger.debug "team saved"
-        if @user.team == nil
-          logger.debug "user team is #{@user.team}"
-          @user.update_attributes(:team_id => @team.id)
-          logger.debug "New team for #{@user.fname} is #{@user.team.company}"
-        end
+        update_team_stats(@team)
+          if @user.team == nil
+            @user.update_attributes(:team_id => @team.id)
+          end
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
