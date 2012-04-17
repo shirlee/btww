@@ -1,0 +1,66 @@
+<h1> Teams Report </h1>
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Company type</th>
+    <th>Size</th>
+    <th>Size Range</th>
+    <th>Leader First Name</th>
+    <th>Leader Last Name</th>
+    <th>Leader Email</th>
+    <th>Shirt</th>
+    <th>Address Line 1</th>
+    <th>Address Line 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>ZIP</th>
+    <th>Phone</th>
+    <th>Twitter</th>
+    <th>Website</th>
+    <th>Team Created</th>
+    <th>Team Updated</th>
+    <th>Company Size</th>
+    <th>Members who Logged at least 1 Commute during BTTW</th>
+    <th>Team Participation Rate</th>
+    <th>Team Commutes</th>
+    <th>Team Mileage</th>
+    <th>Team Members with 0 Commutes</th>
+    <th>Team Page</th>
+
+
+  </tr>
+
+<% @teams.each do |team| %>
+    <% #tsv_str = FasterCSV.generate(:col_sep => "\t") do |tsv| %>
+    <%  #headers %>
+  <tr>
+    <td><%= csv << "#{team.company}" %></td>
+    <td><%= csv << team.company_type %></td>
+    <td><%= csv << team.size %></td>
+    <td><%= csv << team.company_size_range %></td>
+    <td><%= csv << "#{User.find(team.leader).fname}" %></td>
+    <td><%= csv << "#{User.find(team.leader).lname}" %></td>
+    <td><%= csv << "#{User.find(team.leader).email}" %></td>
+    <td><%= csv << team.shirt_size %></td>
+    <td><%= csv << team.address_line_1 %></td>
+    <td><%= csv << team.address_line_2 %></td>
+    <td><%= csv << team.city %></td>
+    <td><%= csv << team.state %></td>
+    <td><%= csv << team.zip %></td>
+    <td><%= csv << team.phone %></td>
+    <td><%= csv << team.twitter_handle %></td>
+    <td><%= csv << team.website %></td>
+    <td><%= csv << team.created_at %></td>
+    <td><%= csv << team.updated_at %></td>
+    <td><%= csv << team.size %></td>
+    <td><%= csv << team.commuters %></td>
+    <td><%= csv << team.team_participation %></td>
+    <td><%= csv << team.total_commutes %></td>
+    <td><%= csv << team.mileage %></td>
+    <td><%= csv << team.zero_commutes %></td>
+    <td><%= csv << link_to "#{team.company}", team_url(team) %></td>
+  </tr>
+  <% #end %> <!-- end fastercsv -->
+<% end %>
+</table>
