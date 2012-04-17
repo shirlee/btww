@@ -13,12 +13,8 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.search(params[:search])
-    #for excel export
-    @filename = 'teamreport.csv'
-    @output_encoding = 'UTF-16'
-    @csv_options = { :force_quotes => true, :col_sep => '/t' }
-    #for excel export - end
-    
+  
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teams }
