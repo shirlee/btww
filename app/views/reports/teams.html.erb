@@ -1,6 +1,6 @@
 <h1> Teams Report </h1>
 
-<table>
+<table id="report">
   <tr>
     <th>Company</th>
     <th>Company type</th>
@@ -62,3 +62,7 @@
   </tr>
 <% end %>
 </table>
+
+<!-- <input value="Export as CSV" type="button" onclick="$('#report').table2CSV(separator : '/t')"> -->
+
+<%= link_to 'Download Report as CSV', csvfile_path(:format => :csv) %>

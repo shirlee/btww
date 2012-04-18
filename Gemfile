@@ -28,6 +28,9 @@ end
 
 gem 'jquery-rails'
 
+# To get csv file
+gem 'csv_builder'
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
