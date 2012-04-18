@@ -1,0 +1,41 @@
+# header row
+# TODO - add team name csv << ["Revenue report for site: #{@site.name}"]
+csv << ["Team report for your team"]
+csv << [] # gap between header and data for visibility
+
+row_data = [] #for scoping
+@teams = Team.all
+@teams.each do |team|
+    row_data = [team.created_at.to_s(:short)]
+    row_data << "" # column gap for visibility
+    # note you can use the usual view-helpers
+    row_data << team.company
+    row_data << team.company_type
+    row_data << team.size
+    row_data << team.company_size_range
+    row_data << "#{User.find(team.leader).fname}"
+    row_data << "#{User.find(team.leader).lname}"
+    row_data << "#{User.find(team.leader).email}"
+    row_data << team.shirt_size
+    row_data << team.address_line_1
+    row_data << team.address_line_2
+    row_data << team.city
+    row_data << team.state
+    row_data << team.zip
+    row_data << team.phone
+    row_data << team.twitter_handle
+    row_data << team.website
+    row_data << team.created_at
+    row_data << team.updated_at
+    row_data << team.size
+    row_data << team.commuters
+    row_data << team.team_participation
+    row_data << team.total_commutes
+    row_data << team.mileage
+    row_data << team.zero_commutes
+    
+    # and don't forget to add the row to the csv 
+    csv << row_data.dup # it breaks if you don't dup
+    
+end # each date in date-range 
+csv << [] # gap for visbility
