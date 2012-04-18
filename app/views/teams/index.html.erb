@@ -5,6 +5,9 @@
 <% if session[:user_id] != nil && get_user != nil %>
 	<% if get_user.team != nil %>
 		<td><%= button_to "Team #{get_user.team.company}", team_url(get_user.team.id), :method => 'get' %></td>
+		<% if get_user.team.company_size_range != nil || get_user.team.company_size_range != "" %>
+			<td><%= button_to "Our Scoreboard", award_url(users_scoreboard(get_user).id), :method => 'get' %></td>
+		<% end %>
 	<% end %>
 		<td><%= button_to "My Commutes", user_url(get_user.id), :method => 'get' %></td>
 		<td><%= button_to "+ Log New Commute", new_commute_url, :user_id => get_user.id, :method => 'get' %></td>

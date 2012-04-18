@@ -22,7 +22,6 @@ module ApplicationHelper
   
  
   def is_the_team_leader?
-        logger.debug "is_the_team_leader? is running"
     if @user != nil
       if @user.team != nil
         if logged_in? && User.find(@user.team.leader) == get_user
@@ -32,7 +31,6 @@ module ApplicationHelper
     elsif @team != nil
       if logged_in? && @team.leader == get_user.id
         return true
-        logger.debug "the team leader id for this team is #{@team.leader}, and the logged in user's id is #{get_user.id}"
       end
     else
       return false
@@ -45,6 +43,17 @@ module ApplicationHelper
   					   :company_size_range => award.company_size_range)
   			.count
   end
+  
+  def users_scoreboard(get_user)
+    if get_user.team != nil && get_user.team.company_size_range != nil
+      a = Award.where(:company_size_range => get_user.team.company_size_range,
+                       :company_type => get_user.team.company_type,
+                       :goal => 'Participation Rate')
+                .first
+      return a
+    end
+  end
+
   
   def after_btww_start?
     if Date.today.to_s > "2012-06-09"
