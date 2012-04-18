@@ -74,11 +74,10 @@
 	    <p id='msg'></p>
 
 <br>
-<% if logged_in? && get_user.id == @commute.user_id %>
-		<% if get_user.team != nil && get_user.team.company_size_range != nil && get_user.team.company_size_range != "" %>
-			<%= button_to "Check Your Team's Scoreboard", award_url(users_scoreboard(get_user).id), :method => 'get' %>
+		<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
+			<%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %>
 		<% end %>
-<% end %>	
+
 <br>
 
   <b>All <%= @user.fname %>'s Logged Commutes:</b>
