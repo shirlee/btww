@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :ensure_domain
+  before_filter :ensure_domain, :kill_deleted_user_session
 
   APP_DOMAIN = 'www.bike2workweek.com'
 
@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'
       # HTTP 301 is a "permanent" redirect
        redirect_to "http://#{APP_DOMAIN}#{request.env['REQUEST_PATH']}", :status => 301
+    end
+  end
+
+  def kill_deleted_user_session
+    if logged_in? && get_user == nil 
+      reset_session
     end
   end
 
