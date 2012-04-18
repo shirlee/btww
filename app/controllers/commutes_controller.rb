@@ -26,6 +26,7 @@ class CommutesController < ApplicationController
   # GET /commutes/1.json
   def show
     @commute = Commute.find(params[:id])
+    @user = User.find(@commute.user_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -58,7 +59,7 @@ class CommutesController < ApplicationController
     respond_to do |format|
       if @commute.save
           if update_team_stats(@commute.user.team)
-          format.html { redirect_to @commute, notice: 'Commute was successfully created.' }
+          format.html { redirect_to @commute, notice: 'Congratulations!  Now Tell the World and check your scoreboard!' }
           format.json { render json: @commute, status: :created, location: @commute }
         else
           format.html { redirect_to @commute, notice: 'Commute was successfully updated, but Team Stats were not updated because the Team does not have all the required information. A leader might be missing.' }

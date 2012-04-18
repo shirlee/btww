@@ -44,10 +44,10 @@ module ApplicationHelper
   			.count
   end
   
-  def users_scoreboard(get_user)
-    if get_user.team != nil && get_user.team.company_size_range != nil
-      a = Award.where(:company_size_range => get_user.team.company_size_range,
-                       :company_type => get_user.team.company_type,
+  def users_scoreboard(user)
+    if user.team != nil && user.team.company_size_range != nil
+      a = Award.where(:company_size_range => user.team.company_size_range,
+                       :company_type => user.team.company_type,
                        :goal => 'Participation Rate')
                 .first
       return a

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Team <%=  @team.company  %></h2>
+<p><b><%= mail_to nil, "+ Invite more co-workers to join this team!",
+						:subject => "Sign Up for our Bike Commuter Challenge team!",
+						:body => "Hello Team #{@team.company}!  I just signed up for our Bike Commuter Challenge Team! Join our team by clicking this link.  http://www.bike2workweek.com/users/new?team_id=#{@team.id}" %></b></p>
 
 <div id='fb-share-button'> </div>
 
@@ -39,11 +42,11 @@
 	    <p id='msg'></p>
 
 <% if isadmin?  %>
-	<%= link_to '(Edit Team)', edit_team_path(@team) %> | <%= link_to 'Delete Team', team_url(@team), :method => 'delete', :confirm => "Hello, Admin User. Are you sure you want to delete Team #{@team.company}? #{@team.users.count} user(s) will have their Team deleted, but their Commutes will not be removed.
+	<%= link_to 'Edit Team', edit_team_path(@team) %> | <%= link_to 'Delete Team', team_url(@team), :method => 'delete', :confirm => "Hello, Admin User. Are you sure you want to delete Team #{@team.company}? #{@team.users.count} user(s) will have their Team deleted, but their Commutes will not be removed.
 
 If you proceed, when these #{@team.users.count} user(s) add themselves to the correct team, their commutes will be attributed to that team the next time stats are updated." %>
 <% elsif is_the_team_leader?  %>
-	<%= link_to '(Edit Team)', edit_team_path(@team) %>
+	<%= link_to 'Edit Team', edit_team_path(@team) %>
 <% end %>
 
 <br>
@@ -98,7 +101,9 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	<% end %>
 </p>
 	 
-	<p><b><%= link_to "+ Invite more co-workers to join this team!", "mailto:mycoworkers%40mycompany.com?subject=Sign%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!&body=Hi!%20%20I%20just%20signed%20up%20for%20our%20Bike%20Commuter%20Challenge%20team!%20%20Join%20our%20team%20by%20clicking%20the%20link%20below.%20%20%0Ahttp%3A%2F%2Fwww.bike2workweek.com%2Fusers%2Fnew%3Fteam_id%3D#{@team.id}" %></b></p>
+	<p><b><%= mail_to nil, "+ Invite more co-workers to join this team!",
+							:subject => "Sign Up for our Bike Commuter Challenge team!",
+							:body => "Hello Team #{@team.company}!  I just signed up for our Bike Commuter Challenge Team! Join our team by clicking this link.  http://www.bike2workweek.com/users/new?team_id=#{@team.id}" %></b></p>
 	
 	<table class="table table-striped table-bordered table-condensed">
 
@@ -106,10 +111,10 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 		<th> Name </th>
 		<th> Team Leader </th>		
 		<th> Newbie </th>		
-	 	<th> Self-Described Biker Type </th>
-		<th> Logged Commutes </th>
+	 	<th> Primary Biker Type </th>
+		<th> Total Logged Commutes </th>
 		<th> Commutes during Commuter Challenge </th>
-		<th> BTWW Mileage </th>
+		<th> Commuter Challenge Mileage </th>
 		</tr>
 		<% @team.users.each do |user| %>
 		<tr>

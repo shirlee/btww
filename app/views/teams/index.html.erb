@@ -5,7 +5,7 @@
 <% if session[:user_id] != nil && get_user != nil %>
 	<% if get_user.team != nil %>
 		<td><%= button_to "Team #{get_user.team.company}", team_url(get_user.team.id), :method => 'get' %></td>
-		<% if get_user.team.company_size_range != nil || get_user.team.company_size_range != "" %>
+		<% if get_user.team.company_size_range != nil && get_user.team.company_size_range != "" %>
 			<td><%= button_to "Our Scoreboard", award_url(users_scoreboard(get_user).id), :method => 'get' %></td>
 		<% end %>
 	<% end %>
@@ -20,7 +20,7 @@
 
 <br>
 
-<p><strong>Search for a team here:</strong></p>
+<p><strong>Search for Your Company or Team Here:</strong></p>
 
 <%= form_tag teams_url, :method => 'get' do %>
 <p>
@@ -30,16 +30,16 @@
 <% end %>
 
 <% if logged_in? && get_user.team == nil %>
-<p><strong>Can't Find Your Company? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
+<p><strong>Can't Find Your Team? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
 <% elsif logged_in? && isadmin? %>
 <p><strong> <%= button_to '+Add Another Team (Admins Only)', new_team_path, :method => 'get' %></strong></p>
 <% elsif !logged_in? %>
-<p><strong>Can't Find Your Company? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
+<p><strong>Can't Find Your Team? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
 <% end %>
 
 <table class="table table-striped table-bordered table-condensed">
   <tr>
-    <th>Company</th>
+    <th>Team</th>
     <th>Company type</th>
     <th>Size</th>
     <th>Size Range</th>

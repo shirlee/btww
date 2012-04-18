@@ -80,7 +80,7 @@
 						<li><%= link_to "#{get_user.fname}", user_url(get_user.id)%> </li>
 					<% if get_user.team != nil %>
 						<li><%= link_to "My Team", team_url(get_user.team.id) %></li>
-							<% if get_user.team.company_size_range != nil || get_user.team.company_size_range != "" %>
+							<% if get_user.team.company_size_range != nil && get_user.team.company_size_range != "" %>
 								<li><%= link_to "Our Scoreboard", award_url(users_scoreboard(get_user).id) %></li>
 							<% end %>
 					<% end %>

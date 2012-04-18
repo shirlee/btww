@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @user.full_name %>'s Bike Commuting Stats</h2>
+<br>
 <p>
-  <b>Name: </b>
+  <b>Biker: </b>
   <%= @user.fname %>  <%= @user.lname %>
 	<% if get_user == @user  %>
 		<% if isadmin?  %>
@@ -22,13 +24,20 @@
 <% end  %>
 
 <p>
+  <b>Primary Biker Type:</b>
+  <%= @user.bikerclass %>
+</p>
+
+	<% if @user.isnewbie == true %>
+<p><strong><%= "#{@user.fname} is a Bike Commuter Newbie!" %></strong></p>
+	<% else %>
+	<% end %>
+
+<p>
   <b>Team:</b>
 	<% if @user.team_id != nil  %>
   		<%= link_to "#{@user.team.company}", team_url(@user.team.id) %>
-			<% if @user.team.leader == @user.id %>
-				(Team Leader)
-			<% end %>
-<p>		<%= link_to "Check the Scoreboard for #{@user.team.company}!", award_url(@award[0].id) %></p>
+<p>		<%= button_to "Check the Scoreboard for #{@user.team.company}!", award_url(users_scoreboard(@user).id), :method => 'get' %></p>
 	<% else  %>
 			<% if logged_in? && get_user.id ==  @user.id %>
 				<%= link_to "Add Your Team", edit_user_url(@user.id) %>
@@ -36,23 +45,12 @@
 	<% end %>
 
 </p>
-<br>
-<p>
-	<% if @user.isnewbie == true %>
-		<strong><%= "#{@user.fname} is a Bike Commuter Newbie!" %></strong>
-	<% else %>
-	<% end %>
-</p>
 
-<p>
-  <b>Bikerclass:</b>
-  <%= @user.bikerclass %>
-</p>
-<br>
 
 <div id='fb-share-button'> </div>
 
 <div id='fb-root'></div>
+	<i>Share <%= @user.fname %>'s Progress! </i>
     <script src='http://connect.facebook.net/en_US/all.js'></script>
     <p><a onclick='postToFeed(); return false;'> <%= image_tag("facebook_share_button.jpg", :width => '60') %></a>
 
@@ -86,6 +84,7 @@
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
+<br>
 <p>
   <b><%= @user.fname %>'s Commutes During Commuter Challenge (Jun 9 - Jun 15):</b>
 </p>
