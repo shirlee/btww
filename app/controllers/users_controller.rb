@@ -76,7 +76,7 @@ class UsersController < ApplicationController
         end
         
         if @user.team != nil
-        format.html { redirect_to team_url(@user.team.id), notice: "You're in! Let's get started!" }
+        format.html { redirect_to team_url(@user.team.id), notice: "You're in!  Now invite more co-workers!" }
         format.json { render json: @user, status: :created, location: @user }
         else
         format.html { redirect_to chooseteam_url(@user.id) }
@@ -105,8 +105,12 @@ class UsersController < ApplicationController
         if @user.team != nil
           update_team_stats(@user.team)
         end
+        if old_team != @user.team          
+        format.html { redirect_to team_url(@user.team), notice: "You're in!  Now invite more co-workers!" }
+        else
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :ok }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
