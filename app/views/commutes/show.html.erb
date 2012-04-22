@@ -6,7 +6,8 @@
 
 <p>
   <b>Biker:</b>
-  <%= link_to "#{@user.full_name}", user_url(@user) %>
+  <%= @user.full_name%> -
+  <%= link_to "View Biker Profile & Stats", user_url(@commute.user_id) %>
 </p>
 
 <p>
@@ -34,7 +35,16 @@
   <b>Comments:</b>
   <%= @commute.comments %>
 </p>
+
+<% if logged_in? && get_user.id == @commute.user_id %>
+<%= link_to 'Edit Commute', edit_commute_path(@commute) %> |
+<%= link_to 'Delete Commute', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
+<%= link_to '+ Add A Commute', new_commute_url %>
 <br>
+<br>
+<% end %>
+
+
 
 <div id='fb-share-button'> </div>
 
@@ -73,11 +83,18 @@
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
-<br>
-		<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
-			<%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %>
-		<% end %>
 
+<br>
+<table>
+	<% if logged_in? && @user == get_user %>		
+		<td><%= button_to "+ Add a Commute", award_url(users_scoreboard(@user).id), :method => 'get' %>
+	<% end %>
+	<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
+		<td><%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
+	<% end %>
+</td>
+
+</table>
 <br>
 
   <b>All <%= @user.fname %>'s Logged Commutes:</b>
@@ -101,11 +118,4 @@
 	</table>
 
 
-<% if logged_in? && get_user.id == @commute.user_id %>
-<%= link_to 'Edit', edit_commute_path(@commute) %> |
-<%= link_to 'Delete', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
-<%= link_to '+ Add A Commute', new_commute_url %>
-<% end %>
-<br>
-<br>
-<%= link_to "All #{@commute.user.fname}'s Commutes", user_url(@commute.user_id) %>
+

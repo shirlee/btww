@@ -30,6 +30,7 @@ class TeamsController < ApplicationController
                          :company_size_range => @team.company_size_range,
                          :goal => 'Participation Rate')
                   .first
+    @users = @team.users.find(:all, :order => 'lname')
 
     respond_to do |format|
       format.html # show.html.erb

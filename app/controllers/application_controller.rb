@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :ensure_domain, :kill_deleted_user_session
 
-#  APP_DOMAIN = 'www.bike2workweek.com'
-  APP_DOMAIN = 'reg.bikecommuterchallenge.org'
+  APP_DOMAIN = 'www.bike2workweek.com'
+#  APP_DOMAIN = 'reg.bikecommuterchallenge.org'
 
   def ensure_domain
     if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'

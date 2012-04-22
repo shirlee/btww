@@ -58,29 +58,31 @@
 		<table class="table table-striped table-bordered table-condensed">
 			<tr>
 				<th> Team Name </th>
-				<th> Commutes During Commuter Challenge  </th>		
-				<th> Total Commuters </th>			
-				<th> Total Mileage </th>			
-				<th> Total Employees </th>			
+				<th> Current Place </th>			
 				<th> Total Participation Rate </th>			
+				<th> Total Employees </th>			
+				<th> Total Commuters </th>			
+				<th> Commutes During Commuter Challenge  </th>		
+				<th> Total Mileage </th>			
 				<th> Newbies </th>			
 				<th> Team Members yet to Log a Commute  </th>			
 	
 			</tr>
 		<% if @teams != nil %>
+			<% place = 1 %>
 			<% @teams.each do |team| %>
 				<tr>
 					<td> <%= link_to "#{team.company}", team_url(team.id) %> </td>
-					<td> <%= team.commutes_that_count.count %> </td>
-					<td> <%= team.commuters %> </td>
-					<td> <%= team.mileage %> </td>
-					<td> <%= team.size %> </td>
+					<td> <%= place %> </td>
 					<td> <%= team.team_participation %>% </td>
+					<td> <%= team.size %> </td>
+					<td> <%= team.commuters %> </td>
+					<td> <%= team.commutes_that_count.count %> </td>
+					<td> <%= team.mileage %> </td>
 					<td> <%= team.newbies %> </td>
 					<td> <%= team.zero_commutes %> </td>
-
-
 				</tr>
+				<% place = place + 1 %>
 				<% end %>
 			<% end %>
 		</table>
