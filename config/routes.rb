@@ -16,7 +16,8 @@ Btww1::Application.routes.draw do
   get '/reports/teams' => 'reports#teams', :as => :teamsreport
   get '/reports/users' => 'reports#users', :as => :usersreport
   
-  get '/reports/team_report' => 'reports#team_report', :as => :csvfile
+  get '/reports/team_report' => 'reports#team_report', :as => :teamcsvfile
+  get '/reports/user_report' => 'reports#user_report', :as => :usercsvfile
 
   resources :awards
 

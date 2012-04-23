@@ -1,0 +1,46 @@
+# header row
+# TODO - add team name csv << ["Report for site: #{@site.name}"]
+csv << ["User report"]
+csv << [] # gap between header and data for visibility
+# header-row for the data
+  csv << ["Date", "Company", "Company type", "Size","Size Range","Leader First Name","Leader Last Name","Leader Email","Shirt","Address Line 1","Address Line 2","City","State","Zip","Phone","Twitter","Website","Team Created","Team Updated","Company Size","Members who Logged at least 1 Commute during BTTW", "Team Participation Rate","Team Commutes","Team Mileage","Team members with 0 Commutes","Team Page"]
+  csv << [] # gap between header and data for visibility
+  
+row_data = [] #for scoping
+@users = User.all
+@users.each do |user|
+    row_data = [user.created_at.to_s(:short)]
+    # row_data << "" # column gap for visibility
+    # note you can use the usual view-helpers
+    row_data << user.fname
+    row_data << user.lname
+    row_data << user.email
+    row_data << user.provider
+    row_data << user.general_email_list
+    row_data << user.btww_email_list
+    if user.team != nil 
+	    row_data << user.team.company
+			 if user.id == user.team.leader 
+			row_data << Y 		
+			 else 
+			row_data << N 	
+			 end 
+		 else  
+			row_data << N 			
+		 end   
+    row_data << user.created_at
+    row_data << user.updated_at
+    if user.isnewbie == true 
+	row_data << Y 		
+	 else 
+	row_data << N 
+	 end 
+    row_data << user.bikerclass
+    # row_data << "http://#{request.env['HTTP_HOST']}/teams/#{team.id}"
+    end
+    
+    # and don't forget to add the row to the csv 
+    csv << row_data.dup # it breaks if you don't dup
+    
+end # each date in date-range 
+csv << [] # gap for visbility
