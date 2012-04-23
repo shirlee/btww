@@ -3,7 +3,7 @@
 csv << ["User report"]
 csv << [] # gap between header and data for visibility
 # header-row for the data
-  csv << ["Date", "Company", "Company type", "Size","Size Range","Leader First Name","Leader Last Name","Leader Email","Shirt","Address Line 1","Address Line 2","City","State","Zip","Phone","Twitter","Website","Team Created","Team Updated","Company Size","Members who Logged at least 1 Commute during BTTW", "Team Participation Rate","Team Commutes","Team Mileage","Team members with 0 Commutes","Team Page"]
+  csv << ["Date","First Name", "Last Name", "Email Address", "3rd party Login?","ActiveTrans Email List Opt-in","BTWW event Email List Opt-in","Team","Team Leader?","Created ON","Updated On","Newbie?","Self-Described Biker Type","User Profile Link"]
   csv << [] # gap between header and data for visibility
   
 row_data = [] #for scoping
@@ -21,22 +21,22 @@ row_data = [] #for scoping
     if user.team != nil 
 	    row_data << user.team.company
 			 if user.id == user.team.leader 
-			row_data << Y 		
+			row_data << "Y" 		
 			 else 
-			row_data << N 	
+			row_data << "N" 	
 			 end 
-	else  
-		row_data << N 			
-	end   
+	  else  
+		  row_data << "N" 			
+	  end   
     row_data << user.created_at
     row_data << user.updated_at
     if user.isnewbie == true 
-	    row_data << Y 		
-	else 
-	    row_data << N 
-	end 
+	    row_data << "Y" 		
+	  else 
+	    row_data << "N" 
+	  end 
     row_data << user.bikerclass
-    # row_data << "http://#{request.env['HTTP_HOST']}/teams/#{team.id}"
+    row_data << "http://#{request.env['HTTP_HOST']}/users/#{user.id}"
     
     # and don't forget to add the row to the csv 
     csv << row_data.dup # it breaks if you don't dup
