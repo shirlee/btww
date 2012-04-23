@@ -25,19 +25,18 @@ row_data = [] #for scoping
 			 else 
 			row_data << N 	
 			 end 
-		 else  
-			row_data << N 			
-		 end   
+	else  
+		row_data << N 			
+	end   
     row_data << user.created_at
     row_data << user.updated_at
     if user.isnewbie == true 
-	row_data << Y 		
-	 else 
-	row_data << N 
-	 end 
+	    row_data << Y 		
+	else 
+	    row_data << N 
+	end 
     row_data << user.bikerclass
     # row_data << "http://#{request.env['HTTP_HOST']}/teams/#{team.id}"
-    end
     
     # and don't forget to add the row to the csv 
     csv << row_data.dup # it breaks if you don't dup
