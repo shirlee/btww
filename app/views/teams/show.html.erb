@@ -100,7 +100,7 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 		    <td><%= button_to "+ Log New Commute", new_commute_url, :method => 'get' %></td>
 			<% if logged_in? && get_user.team != nil %>
 			<% else %>
-			<td><%= button_to "Join This Team", new_user_url(:team_id => "#{@team.id}"), :method => 'get' %></td>
+				<td><%= button_to "Join This Team", new_user_url, :method => 'get' %></td>
 			<% end %>			
 		<% end %>
 </table>

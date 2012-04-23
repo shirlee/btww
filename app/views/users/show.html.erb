@@ -70,13 +70,11 @@
 
 	<table>
 		<% if logged_in? && @user == get_user %>		
-			<td><%= button_to "+ Add a Commute", award_url(users_scoreboard(@user).id), :method => 'get' %>
+			<td><%= button_to "+ Add a Commute", new_commute_url, :user_id => get_user.id, :method => 'get' %></td>
 		<% end %>
 		<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
 			<td><%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
 		<% end %>
-	</td>
-
 	</table>
 
 
