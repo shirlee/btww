@@ -3,7 +3,8 @@
 <h2><%= @user.full_name %>'s Commute on <%= @commute.commute_date.strftime("%A %B %d, %Y") %></h2>
 <br>
 
-
+<p><b>COMMUTE DETAILS:</b></p>
+<p><b>----------------</b></p>
 <p>
   <b>Biker:</b>
   <%= @user.full_name%> -
@@ -33,13 +34,15 @@
 
 <p>
   <b>Comments:</b>
-  <%= @commute.comments %>
+	<% if @commute.comments != nil && @commute.comments != "" %>
+  		<i>"<%= @commute.comments %>"</i>
+	<% end %>
 </p>
 
 <% if logged_in? && get_user.id == @commute.user_id %>
 <%= link_to 'Edit Commute', edit_commute_path(@commute) %> |
 <%= link_to 'Delete Commute', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
-<%= link_to '+ Add A Commute', new_commute_url %>
+<%= link_to '+ Add A Commute', new_commute_url(:user_id => get_user.id) %>
 <br>
 <br>
 <% end %>
@@ -67,7 +70,7 @@
           name: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!',
           caption: 'Active Transportation Alliance Commuter Challenge',
           description: 'Sign up your company to compete!',
-		  message: 'I just biked to work today for Bike2WorkWeek!'
+		  message: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!'
         };
 
         function callback(response) {
@@ -79,15 +82,15 @@
     
     </script>
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-text="I just logged my commute for Bike To Work Week!" data-count="none">Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!" data-count="none">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
+<p><b>----------------</b></p>
 
-<br>
 <table>
 	<% if logged_in? && @user == get_user %>		
-		<td><%= button_to "+ Add a Commute", award_url(users_scoreboard(@user).id), :method => 'get' %>
+		<td><%= button_to "+ Add a Commute", new_commute_url(:user_id => get_user.id), :method => 'get' %>
 	<% end %>
 	<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
 		<td><%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
