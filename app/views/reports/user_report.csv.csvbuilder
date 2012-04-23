@@ -26,7 +26,8 @@ row_data = [] #for scoping
 			row_data << "N" 	
 			 end 
 	  else  
-		  row_data << "N" 			
+		  row_data << "" 			
+		  row_data << "" 			
 	  end   
     row_data << user.created_at
     row_data << user.updated_at
