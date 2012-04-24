@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @title = "Login | Bike Commuter Challenge"
   end
 
   def fb_auth

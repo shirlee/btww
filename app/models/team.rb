@@ -9,11 +9,16 @@ class Team < ActiveRecord::Base
   validates :size, :numericality => { :greater_than_or_equal_to => 1 }
   
   
-  def self.search(search_name)
+  def self.search(search_name, page)
     if search_name
-      find(:all, :conditions => ['UPPER(company) LIKE ?', "%#{search_name.upcase}%"], :order => 'company asc')
+      paginate :per_page => 30,
+               :conditions => ['UPPER(company) LIKE ?', "%#{search_name.upcase}%"],
+               :order => 'company asc',
+               :page => page
     else
-      find(:all, :order => 'company asc')
+      paginate :per_page => 30,
+               :order => 'company asc',
+               :page => page
     end
   end
   

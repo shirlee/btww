@@ -42,7 +42,7 @@
 <%= form_tag teams_url, :method => 'get' do %>
 <p>
 <%= text_field_tag :search, params[:search]%>
-<%= submit_tag "Search", :name => nil %>
+<%= submit_tag "Search" %>
 </p>
 <% end %>
 
@@ -80,7 +80,7 @@
 
 </table>
 
-
+<%= will_paginate %>
 
 <iframe src="http://www.facebook.com/plugins/facepile.php? 
 app_id={299340683464316}" scrolling="no" frameborder="0" style="border:none;  

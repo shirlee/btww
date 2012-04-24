@@ -30,7 +30,7 @@ Contact our team leader, #{@team_leader.full_name}, if you have any questions." 
           method: 'feed',
           link: '<%= url_for team_url %>',
           picture: 'http://activetrans.org/htmlemail/ata.png',
-          name: 'Bike To Work Week stats for Team <%= @team.company  %>',
+          name: 'Bike To Work Week - TEAM <%= @team.company.upcase  %>',
           caption: 'Active Transportation Alliance Commuter Challenge',
           description: 'Sign up your company to compete!',
 		  message: 'Check out my company on Bike To Work Week'

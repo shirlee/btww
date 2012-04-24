@@ -6,7 +6,8 @@ class AwardsController < ApplicationController
 
   def index
     @awards = Award.find_all_by_goal('Participation Rate')
-
+    @title = "Scoreboards | Bike Commuter Challenge"
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @awards }
@@ -17,7 +18,7 @@ class AwardsController < ApplicationController
   # GET /awards/1.json
   def show
     @award = Award.find(params[:id])
-    
+    @title = "Team Standings for #{@award.company_type} & #{@award.company_size_range} Employees | Bike Commuter Challenge"    
 
     if @award.isindividual == nil || @award.isindividual == false
 

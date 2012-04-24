@@ -12,9 +12,8 @@ class TeamsController < ApplicationController
 
 
   def index
-    @teams = Team.search(params[:search])
-  
-
+      @teams = Team.search(params[:search], params[:page])
+      @title = "Bike Commuter Challenge Registration"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teams }
@@ -25,12 +24,14 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    @title = "Team #{@team.company} | Bike Commuter Challenge"
     @team_leader = User.find(@team.leader)
     @award = Award.where(:company_type => @team.company_type,
                          :company_size_range => @team.company_size_range,
                          :goal => 'Participation Rate')
                   .first
     @users = @team.users.find(:all, :order => 'lname')
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,7 +43,8 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     @team = Team.new
-
+    @title = "Register a New Team | Bike Commuter Challenge"
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @team }
@@ -50,8 +52,9 @@ class TeamsController < ApplicationController
   end
 
   # GET /teams/1/edit
-  def edit
+  def edit  
     @team = Team.find(params[:id])
+    @title = "Edit Team | Bike Commuter Challenge"  
   end
 
   # POST /teams

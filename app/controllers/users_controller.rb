@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @title = "#{@user.full_name} | Bike Commuter Challenge"
     if @user.team_id != nil
       @award = Award.where(:company_type => @user.team.company_type,
                            :company_size_range => @user.team.company_size_range,
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @title = "Register a New User | Bike Commuter Challenge"
       if params[:team_id] != nil
         @user.team_id = params[:team_id]
         @team = Team.find(params[:team_id])
@@ -49,6 +51,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @title = "Edit User | Bike Commuter Challenge"
     if @user.team == nil
       render 'chooseteam'
     end
