@@ -81,7 +81,7 @@
 					<% if get_user.team != nil %>
 						<li><%= link_to "My Team", team_url(get_user.team.id) %></li>
 							<% if get_user.team.company_size_range != nil && get_user.team.company_size_range != "" %>
-								<li><%= link_to "Our Scoreboard", award_url(users_scoreboard(get_user).id) %></li>
+								<li><%= link_to "Our Standings", award_url(users_scoreboard(get_user).id) %></li>
 							<% end %>
 					<% end %>
 						<li><%= link_to "My Commutes", user_url(get_user.id) %></li>
@@ -113,7 +113,7 @@
       <div class="subnav subnav-fixed">
         <ul class="nav nav-pills pull-right">
             <li id="subtn"><%= link_to "Log New Commute", new_commute_url %></li>
-            <li id="subtn"><%= link_to "Scoreboards", awards_url %></li>
+            <li id="subtn"><%= link_to "Standings", awards_url %></li>
         </ul>  		
 		<% end %>	
         </div>
@@ -127,7 +127,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">QUICK LINKS</li>
                 <li>---</li>
-                <li><%= link_to "Scoreboards", awards_url  %></li>
+                <li><%= link_to "Standings", awards_url  %></li>
                 <li><%= link_to "Teams", teams_url  %></li>
                 <li>---</li>
                 <li><%= link_to "How to Bike to Work", "http://www.activetrans.org/tricks-tips", :target => :blank  %></li>

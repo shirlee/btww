@@ -67,10 +67,10 @@
           method: 'feed',
           link: '<%= url_for commute_url %>',
           picture: 'http://activetrans.org/htmlemail/ata.png',
-          name: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!',
+          name: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike Commuter Challenge!',
           caption: 'Active Transportation Alliance Commuter Challenge',
           description: 'Sign up your company to compete!',
-		  message: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!'
+		  message: '<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike Commuter Challenge!'
         };
 
         function callback(response) {
@@ -82,7 +82,7 @@
     
     </script>
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike To Work Week!" data-count="none">Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= @commute.user.fname  %> just logged <%= @commute.distance %> miles for Bike Commuter Challenge!" data-count="none">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
 	    <p id='msg'></p>
 
@@ -93,7 +93,7 @@
 		<td><%= button_to "+ Add a Commute", new_commute_url(:user_id => get_user.id), :method => 'get' %>
 	<% end %>
 	<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
-		<td><%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
+		<td><%= button_to "Check the Standings for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
 	<% end %>
 </td>
 

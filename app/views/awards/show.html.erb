@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <% if @award.isteam = true %>
-	<h1>Commuter Challenge Scoreboard </h1>
-	<p><b>Category: <%= @award.company_type.upcase %> with <%= @award.company_size_range %> Employees (<%= link_to 'Scoreboards for Other Categories', awards_path %>)</b></p>
-	
+	<h1>Commuter Challenge Team Standings </h1>
+	<h3>Category: <%= @award.company_type.upcase %> Organizations with <%= @award.company_size_range %> EMPLOYEES </h3>
+	<%= link_to '(Standings for Other Categories)', awards_path, :method => 'get' %>
+	<br>
+	<br>
+
+
 	<div id='fb-share-button'> </div>
 
 	<div id='fb-root'></div>
@@ -21,10 +25,10 @@
 	          method: 'feed',
 	          link: '<%= url_for award_url %>',
 	          picture: 'http://activetrans.org/htmlemail/ata.png',
-	          name: 'Check out my company scoreboard for Bike To Work Week!',
+	          name: 'Check out my company scoreboard for Bike Commuter Challenge!',
 	          caption: 'Active Transportation Alliance Commuter Challenge',
 	          description: 'Sign up your company to compete!',
-			  message: 'Check out my company on the Bike To Work Week Scoreboard'
+			  message: 'Check out my company on the Bike Commuter Challenge Scoreboard'
 	        };
 
 	        function callback(response) {

@@ -9,9 +9,13 @@ I just signed up for our Bike Commuter Challenge Team!
 						
 Bike Commuter Challenge runs this year June 9 - June 15, but we need to start building our team now to have the best chance of winning in our category of #{@team.company_type} for #{@team.company_size_range} employees.
 						
-Join our team by clicking this link!  http://www.bike2workweek.com/users/new?team_id=#{@team.id}
+Join our team by clicking this link!  http://reg.bikecommuterchallenge.org/users/new?team_id=#{@team.id}
 
-Contact our team leader, #{@team_leader.full_name}, if you have any questions." %></b></p>
+More info about Bike Commuter Challenge including Tips, Pit-Stops, How-To's, and Active Transportation Alliance is here: http://bikecommuterchallenge.org
+
+Contact our team leader, #{@team_leader.full_name}, if you have any questions.
+
+GO TEAM #{@team.company.upcase}!" %></b></p>
 
 <div id='fb-share-button'> </div>
 
@@ -30,7 +34,7 @@ Contact our team leader, #{@team_leader.full_name}, if you have any questions." 
           method: 'feed',
           link: '<%= url_for team_url %>',
           picture: 'http://activetrans.org/htmlemail/ata.png',
-          name: 'Bike To Work Week - TEAM <%= @team.company.upcase  %>',
+          name: 'Bike Commuter Challenge - TEAM <%= @team.company.upcase  %>',
           caption: 'Active Transportation Alliance Commuter Challenge',
           description: 'Sign up your company to compete!',
 		  message: 'Check out my company on Bike To Work Week'
@@ -124,9 +128,13 @@ I just signed up for our Bike Commuter Challenge Team!
 						
 Bike Commuter Challenge runs this year June 9 - June 15, but we need to start building our team now to have the best chance of winning in our category of #{@team.company_type} for #{@team.company_size_range} employees.
 						
-Join our team by clicking this link!  http://www.bike2workweek.com/users/new?team_id=#{@team.id}
+Join our team by clicking this link!  http://reg.bikecommuterchallenge.org/users/new?team_id=#{@team.id}
 
-Contact our team leader, #{@team_leader.full_name}, if you have any questions." %></b></p>
+More info about Bike Commuter Challenge including Tips, Pit-Stops, How-To's, and Active Transportation Alliance is here: http://bikecommuterchallenge.org
+
+Contact our team leader, #{@team_leader.full_name}, if you have any questions.
+
+GO TEAM #{@team.company.upcase}!" %></b></p>
 	
 	<table class="table table-striped table-bordered table-condensed">
 
