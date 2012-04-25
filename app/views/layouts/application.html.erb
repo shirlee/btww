@@ -66,7 +66,7 @@
       <div class="navbar-inner">
           <div class="container-fluid">
           <!-- <a class="brand" href="/">Bike Commuter Challenge</a> -->
-          <div class="navcontainer-fluid">
+          <div class="navcontainer-fluid" data-toggle="collapse" data-target=".nav-collapse">
             <ul class="nav pull-right">
 				<li id="current-choice"><%= link_to "Registration & Standings", root_url %></li>
 				<li id="main-nav-links"><a href="http://bikecommuterchallenge.org/about">About</a></li>
@@ -105,8 +105,8 @@
 
 		<% else %>
 			
-        <div class="subnav subnav-fixed">
-            
+		<div class="nav-collapse">
+        <div class="subnav subnav-fixed">           
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
             <li id="subtn"><%= link_to "+ Log New Commute", new_commute_url %></li>
@@ -116,6 +116,7 @@
             <li><%= link_to image_tag("login_fb.jpeg", :border=>0), '/auth/facebook' %> </li>
         </ul>
         </div>  			
+        </div>
         </div>
         <% end %>
       </div>
