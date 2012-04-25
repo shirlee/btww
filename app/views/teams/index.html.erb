@@ -4,13 +4,12 @@
 <tr>	
 <% if session[:user_id] != nil && get_user != nil %>
 	<p>Welcome, <%= get_user.fname %>!</p>
-	<br>
-	<br>
+
 	<br>
 	<% if get_user.team != nil %>
 		<td><%= button_to "Team #{get_user.team.company}", team_url(get_user.team.id), :method => 'get' %></td>
 		<% if get_user.team.company_size_range != nil && get_user.team.company_size_range != "" %>
-			<td><%= button_to "Our Scoreboard", award_url(users_scoreboard(get_user).id), :method => 'get' %></td>
+			<td><%= button_to "Standings", award_url(users_scoreboard(get_user).id), :method => 'get' %></td>
 		<% end %>
 	<% else %>
 		<td><%= button_to "Choose Your Team", edit_user_url(get_user.id), :method => 'get' %></td>
@@ -20,6 +19,8 @@
 <% else %>
 	<td><%= button_to "Sign In", new_session_url, :method => 'get' %></td>
 	<td><%= button_to "Sign Up", new_user_url, :method => 'get' %></td>
+	<td>OR</td>
+	<td><%= link_to image_tag("login_fb.jpeg"), '/auth/facebook' %></td>
 <% end %>
 </tr>
 </table>

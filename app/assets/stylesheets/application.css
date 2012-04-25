@@ -36,3 +36,10 @@
   ul li {
     font-size: 12px;
     list-style: square; } }
+
+td
+	{
+	vertical-align:top;
+	padding:5px;
+	height:5px;
+	}
