@@ -88,7 +88,7 @@
       </div>
       <% if session[:user_id] != nil && get_user != nil %>
 		<% if get_user.isadmin? %>
-      <div class="subnav subnav-fluid">
+      <div class="subnav subnav-fixed">
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
             <% if get_user.provider != nil %>
@@ -112,7 +112,7 @@
 		<% end %>
 		<% else %>
 			
-        <div class="subnav subnav-fluid">
+        <div class="subnav subnav-fixed">
             
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
@@ -135,11 +135,11 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <div class="fonso_spacer">
+          <div id="fonso_spacer">
               <!-- THIS HOLDS SPACE OVER BIKEDUDE -->
           </div><!--/.well -->
         </div><!--/span-->
-        <div id="fonso" class="span9">
+        <div id="fonso pull-right" class="span9">
           <%= yield %>
         </div>
       </div><!--/row-->
