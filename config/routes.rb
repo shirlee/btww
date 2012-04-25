@@ -6,6 +6,7 @@ Btww1::Application.routes.draw do
   root :to => 'teams#index'
   
   get '/users/:id/chooseteam' => 'users#edit', :as => :chooseteam
+  get '/users/:id/completeprofile' => 'users#completeprofile', :as => :completeprofile
 
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'
 

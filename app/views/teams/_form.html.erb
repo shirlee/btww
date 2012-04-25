@@ -62,11 +62,11 @@
     <%= f.select(:shirt_size, ['No Thanks', 'Large', 'Medium', 'Small']) %>
   </div><br />
   <div class="field">
-    <%= f.label :website %>
+    <%= f.label :website, "Company Website" %>
     <%= f.text_field :website %>
   </div><br />
   <div class="field">
-    <%= f.label :twitter_handle %>
+    <%= f.label :twitter_handle, "Company Twitter Handle" %>
 		<% if @team.twitter_handle == nil || @team.twitter_handle == "" %>
     		<%= f.text_field :twitter_handle, :value => '@' %>
 		<% else %>

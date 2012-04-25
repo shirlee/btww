@@ -1,0 +1,11 @@
+<h1>Edit <%= @user.full_name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+	<% if @user.provider !=nil  %>
+		<%= render 'omniauthform' %>
+	<% else  %>
+	<%= render 'form' %>
+	<% end  %>
+
+<%= link_to 'Cancel', @user %>
