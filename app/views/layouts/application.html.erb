@@ -68,26 +68,17 @@
           <!-- <a class="brand" href="/">Bike Commuter Challenge</a> -->
           <div class="navcontainer-fluid">
             <ul class="nav pull-right">
-				<% if session[:user_id] != nil && get_user != nil %>
+				<li><a href="http://reg.bikecommuterchallenge.org/">Teams & Scoreboards</a></li>
 				<li><a href="http://bikecommuterchallenge.org/about">About</a></li>
 				<li><a href="http://bikecommuterchallenge.org/teamleader">Team Leader Info</a></li>
 				<li><a href="http://bikecommuterchallenge.org/pitstops">Pit Stops</a></li>
 				<li><a href="http://bikecommuterchallenge.org/howto">How To Bike To Work</a></li>
-				<li><a href="http://bikecommuterchallenge.org/sponsors">Sponsors</a></li>										
-				<% else %>
-				<li><a href="http://bikecommuterchallenge.org/about">About</a></li>
-				<li><a href="http://bikecommuterchallenge.org/teamleader">Team Leader Info</a></li>
-				<li><a href="http://bikecommuterchallenge.org/pitstops">Pit Stops</a></li>
-				<li><a href="http://bikecommuterchallenge.org/howto">How To Bike To Work</a></li>
-				<li><a href="http://bikecommuterchallenge.org/sponsors">Sponsors</a></li>
-				
-				<% end %>
+				<li><a href="http://bikecommuterchallenge.org/sponsors">Sponsors</a></li>														
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
       <% if session[:user_id] != nil && get_user != nil %>
-		<% if get_user.isadmin? %>
       <div class="subnav subnav-fluid">
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
@@ -103,26 +94,26 @@
 			<% end %>
 				<li id="subtn"><%= link_to "My Commutes", user_url(get_user.id) %></li>
 				<li id="subtn"><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
+		<% if get_user.isadmin? %>
                 <li id="subtn"><%= link_to "Teams Report", teamsreport_url %></li>
     			<li id="subtn"><%= link_to "Users Report", usersreport_url %></li>
+		<% end %>
 				<li id="subtn"><%= link_to "Sign Out", logout_url %></li>
 		</ul> 
 	  </div>
 	  </div>
-		<% end %>
+
 		<% else %>
 			
         <div class="subnav subnav-fluid">
             
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
-            <li id="subtn"><%= link_to "Log New Commute", new_commute_url %></li>
-            <li id="subtn"><%= link_to "Standings", awards_url %></li>
+            <li id="subtn"><%= link_to "+ Log New Commute", new_commute_url %></li>
+            <li id="subtn"><%= link_to "Team Standings", awards_url %></li>
             <li id="subtn"><%= link_to "Sign In", new_session_url %></li>
             <li id="subtn"><%= link_to "Sign Up", new_user_url  %></li>
             <li><%= link_to image_tag("login_fb.jpeg", :border=>0), '/auth/facebook' %> </li>
-
- 
         </ul>
         </div>  			
         </div>
