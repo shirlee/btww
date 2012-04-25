@@ -63,7 +63,7 @@ class CommutesController < ApplicationController
     respond_to do |format|
       if @commute.save
           if update_team_stats(@commute.user.team)
-          format.html { redirect_to @commute, notice: 'Congratulations!  Now Tell the World and check your scoreboard!' }
+          format.html { redirect_to @commute, notice: 'Congratulations!  Now tell the world and check your team standings!' }
           format.json { render json: @commute, status: :created, location: @commute }
         else
           format.html { redirect_to @commute, notice: 'Commute was successfully updated, but Team Stats were not updated because the Team does not have all the required information. A leader might be missing.' }
