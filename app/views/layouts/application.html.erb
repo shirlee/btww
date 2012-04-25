@@ -79,12 +79,7 @@
         </div>
       </div>
       <% if session[:user_id] != nil && get_user != nil %>
-<<<<<<< HEAD
-      <div class="subnav subnav-fluid">
-=======
-		<% if get_user.isadmin? %>
       <div class="subnav subnav-fixed">
->>>>>>> dfc354f10df2e1bf606e9cee94843364b40c3fb2
         <div class="subnavcontainer-fluid">
         <ul class="nav nav-pills pull-right">
             <% if get_user.provider != nil %>
