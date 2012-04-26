@@ -16,8 +16,10 @@
 // Example:
 @linkColor: #B67A73;
 
-@navbarBackgroundHighlight:#6197A0;
-@navbarBackground:#6197A0;
+/*@navbarBackgroundHighlight:#6197A0;*/
+@navbarBackgroundHighlight:#73AFB6;
+
+@navbarBackground:#73AFB6;
 @navbarLinkColor:#ffffff;
 @navbarLinkColorHover:#0B345B;
 .row-fluid > .span9 {
@@ -75,11 +77,10 @@ width: 90%;
 }
 .subnavcontainer-fluid {
 padding-left: 40px;
-padding-right: 140px;
+/*padding-right: 140px;*/
 }
 .navcontainer {
 padding-left: 40px;
-padding-right: 100px;
 }
 
 .nav-list .nav-header {
@@ -88,8 +89,9 @@ padding-right: 100px;
 }
 .navbar{
 /*	float: right;*/
-	width:1280px;
-	z-index: 1020;
+	margin: -2px 0 0 160px;
+    width: 960px;
+    z-index: 1020;
 }
 .navbar .subnav {
 	width: 100%;
@@ -126,6 +128,8 @@ padding-right: 100px;
 }
 .navbar .nav > li > a {
 	font-size: 14px;
+	font-weight:bold;
+	padding:10px 35px 10px 0;
 }
 .navbar .nav > li#subtn > a {
 	float: none;
