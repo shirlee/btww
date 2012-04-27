@@ -90,6 +90,11 @@ class TeamsController < ApplicationController
       if params[:team][:twitter_handle] == '@'
          params[:team][:twitter_handle] = nil
       end
+      # /^http/.match(params[:team][:website]) ? params[:team][:website] : "http://#{params[:team][:website]}"
+      # if (params[:team][:website]) == 'www.homefinder.com'
+      #   params[:team][:website] = "http://#{params[:team][:website]}"
+      # end
+      
     respond_to do |format|
       if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
@@ -127,7 +132,6 @@ class TeamsController < ApplicationController
     return company_size_range
   end
   
-
 
   
 end
