@@ -16,7 +16,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :commute_date, "Commute Date: (The date you biked at least part of your commute)" %>
+    <%= f.label :commute_date, "Date of your Bike Commute" %>
 		<% if @commute.id != nil %>
     		<%= f.text_field :commute_date, :value => "#{@commute.commute_date.strftime("%Y-%m-%d")}" %>
 		<% else %>
@@ -24,7 +24,7 @@
 		<% end %>
   </div> <br />
   <div class="field">
-    <%= f.label :distance, "Distance in Miles: Add up all mileage TO and FROM work" %>
+    <%= f.label :distance, "Miles Biked, round trip" %>
     <%= f.text_field :distance %>
   </div> <br />
   <div class="field">

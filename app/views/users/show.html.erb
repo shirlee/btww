@@ -165,12 +165,18 @@
 		<th> Date </th>
 		<th> Distance </th>
 	 	<th> Ridescore </th>
+	 	<th> Comments </th>
 		</tr>
 		<% @user.commutes.order('commute_date asc').each do |commute| %>
 			<tr>
 			<td> <%= commute.commute_date %> </td>
 			<td> <%= commute.distance %> </td>
 			<td> <%= commute.ridescore %> </td>
+			<% if commute.comments != nil && commute.comments != "" %>
+				<td> <i><b>"<%= commute.comments %>"</b></i> </td>
+			<% else %>
+				<td></td>
+			<% end %>
 			<td> <%= link_to "View Commute Detail", commute_url(commute.id) %> </td>		
 			</tr>
 	  	<% end %>
