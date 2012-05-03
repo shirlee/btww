@@ -3,19 +3,7 @@
 <h2>Team <%=  @team.company  %></h2>
 <p><b> <%= mail_to nil, "+ Invite more co-workers to join this team!",
 						:subject => "Sign Up for our Bike Commuter Challenge team!",
-						:body => "Hello Team #{@team.company}!
-						
-I just signed up for our Bike Commuter Challenge Team!
-						
-Bike Commuter Challenge runs this year June 9 - June 15, but we need to start building our team now to have the best chance of winning in our category of #{@team.company_type} for #{@team.company_size_range} employees.
-						
-Join our team by clicking this link!  http://reg.bikecommuterchallenge.org/users/new?team_id=#{@team.id}
-
-More info about Bike Commuter Challenge including Tips, Pit-Stops, How-To's, and Active Transportation Alliance is here: http://bikecommuterchallenge.org
-
-Contact our team leader, #{@team_leader.full_name}, if you have any questions.
-
-GO TEAM #{@team.company.upcase}!" %></b></p>
+						:body => "#{render 'invite'}" %></b></p>
 
 <div id='fb-share-button'> </div>
 
@@ -122,19 +110,7 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	 
 <p><b> <%= mail_to nil, "+ Invite more co-workers to join this team!",
 						:subject => "Sign Up for our Bike Commuter Challenge team!",
-						:body => "Hello Team #{@team.company}!
-						
-I just signed up for our Bike Commuter Challenge Team!
-						
-Bike Commuter Challenge runs this year June 9 - June 15, but we need to start building our team now to have the best chance of winning in our category of #{@team.company_type} for #{@team.company_size_range} employees.
-						
-Join our team by clicking this link!  http://reg.bikecommuterchallenge.org/users/new?team_id=#{@team.id}
-
-More info about Bike Commuter Challenge including Tips, Pit-Stops, How-To's, and Active Transportation Alliance is here: http://bikecommuterchallenge.org
-
-Contact our team leader, #{@team_leader.full_name}, if you have any questions.
-
-GO TEAM #{@team.company.upcase}!" %></b></p>
+						:body => "#{render 'invite'}" %></b></p>
 	
 	<table class="table table-striped table-bordered table-condensed">
 
