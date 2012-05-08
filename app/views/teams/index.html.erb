@@ -62,6 +62,7 @@
 	    <th>Company type</th>
 	    <th>Size</th>
 	    <th>Size Range</th>
+	    <th>Website</th>
 	    <th>Twitter</th>
 
 	  </tr>
@@ -72,6 +73,9 @@
 	    <td><%= team.company_type %></td>
 	    <td><%= team.size %></td>
 	    <td><%= team.company_size_range %></td>
+			<% if team.website != nil %>
+	    <td><%= link_to "#{team.website}", "#{team.website}", :target => "_blank" %></td>
+			<% end %>
 			<% if team.twitter_handle != nil %>
 	    <td><%= link_to "#{team.twitter_handle}", "https://twitter.com/#!/#{team.twitter_handle}", :target => "_blank" %></td>
 			<% end %>

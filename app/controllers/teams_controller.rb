@@ -74,6 +74,12 @@ class TeamsController < ApplicationController
           if @team.twitter_handle == '@'
              @team.update_attributes(:twitter_handle => nil)
           end
+
+        rgx = /^#{URI.regexp}$/
+          if (@team.website =~ rgx)  == nil
+            @team.update_attributes(:website => "http://#{params[:team][:website]}")
+          end
+
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
@@ -90,13 +96,15 @@ class TeamsController < ApplicationController
       if params[:team][:twitter_handle] == '@'
          params[:team][:twitter_handle] = nil
       end
-      # /^http/.match(params[:team][:website]) ? params[:team][:website] : "http://#{params[:team][:website]}"
-      # if (params[:team][:website]) == 'www.homefinder.com'
-      #   params[:team][:website] = "http://#{params[:team][:website]}"
-      # end
+
+    rgx = /^#{URI.regexp}$/
+      if ((params[:team][:website]) =~ rgx)  == nil
+        params[:team][:website] = "http://#{params[:team][:website]}"
+      end
       
     respond_to do |format|
       if @team.update_attributes(params[:team]) && @team.update_attributes(:company_size_range => company_size_range) && update_team_stats(@team)
+        
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :ok }
       else
