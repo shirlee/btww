@@ -14,7 +14,11 @@
 
 	<% else  %>
 		<% if isadmin?  %>
-			<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+			<% if @user.team.leader != @user.id %>
+				<%= link_to '(Edit Profile)', edit_user_path(@user) %> | <%= link_to '(Delete User)', user_url(@user), :method => 'delete', :confirm => "Hello, Admin User. Are you sure you want to delete User #{@user.full_name}? #{@user.commutes.count} commute(s) logged by this user will also be deleted." %>
+			<% else %>
+				<%= link_to '(Edit Profile)', edit_user_path(@user) %>
+			<% end %>
 		<% end %>
 	<% end  %>
 </p>

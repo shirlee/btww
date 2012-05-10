@@ -132,15 +132,28 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    team = @user.team_id
-    @user.destroy
+      if @user.commutes.count > 0
+        @user.commutes.each do |commute|
+          commute.destroy
+        end
+      end
+    team = @user.team    
+    
+    if @user.destroy
       if team != nil
         update_team_stats(team)
       end
       
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :ok }
+      respond_to do |format|
+        format.html { redirect_to teams_url, notice: 'User was successfully deleted.' }
+        format.json { head :ok }
+      end
+
+    else
+      format.html { render action: "show" }
+      format.json { render json: @user.errors, status: :unprocessable_entity }      
     end
+
   end
+  
 end
