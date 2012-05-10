@@ -52,7 +52,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @title = "Edit User | Bike Commuter Challenge"
-    if @user.team == nil
+    
+    if !isadmin? && @user.team == nil
       render 'chooseteam'
     end
     if params[:team_id] != nil

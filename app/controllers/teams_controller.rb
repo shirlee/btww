@@ -76,7 +76,7 @@ class TeamsController < ApplicationController
           end
 
         rgx = /^#{URI.regexp}$/
-          if (@team.website =~ rgx)  == nil
+          if (@team.website =~ rgx)  == nil && @team.website != nil && @team.website != ""
             @team.update_attributes(:website => "http://#{params[:team][:website]}")
           end
 
@@ -98,7 +98,7 @@ class TeamsController < ApplicationController
       end
 
     rgx = /^#{URI.regexp}$/
-      if ((params[:team][:website]) =~ rgx)  == nil
+      if ((params[:team][:website]) =~ rgx)  == nil && params[:team][:website] != nil && params[:team][:website] != ""
         params[:team][:website] = "http://#{params[:team][:website]}"
       end
       
