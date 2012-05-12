@@ -2,14 +2,22 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
 
-  before_filter :require_login, :except => [:index, :show]
-  before_filter :the_team, :except => [:index, :new, :create]
-  before_filter :require_leader, :except => [:index, :show, :new, :create]
+  before_filter :require_login, :except => [:index, :show, :team_count]
+  before_filter :the_team, :except => [:index, :new, :create, :team_count]
+  before_filter :require_leader, :except => [:index, :show, :new, :create, :team_count]
 
   def the_team
      @team = Team.find(params[:id])
   end
 
+  def team_count
+    @sum = Team.count
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @sum }
+    end
+    
+  end
 
   def index
       @teams = Team.search(params[:search], params[:page])

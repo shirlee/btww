@@ -25,6 +25,8 @@ Btww1::Application.routes.draw do
 
   resources :commutes
 
+  get '/teams/count' => 'teams#team_count', :as => :teamcount
+
   resources :teams
 
   resources :users do
