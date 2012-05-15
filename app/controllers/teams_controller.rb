@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   def team_count
     @sum = Team.count
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # team_count.html.erb
       format.json { render json: @sum }
     end
     
