@@ -1,9 +1,20 @@
 <h1> Bike Commuter Challenge Reports</h1>
 
 <p> This page is available to administrator users only.</p>
+<br>
+<b>Number of Teams: <%= @team_count %></b>
+<br>
+<b>Number of Users: <%= @user_count %></b>
+<br>
+<b>Number of Commutes: <%= @commute_count %></b>
+<br>
+<b>Number of Commuter Challenge Commutes: <%= @bcc_commute_count %></b>
+<br>
+<br>
 
-<br>
-<br>
-<%= button_to "Teams Report", teamsreport_url, :method => 'get' %>
-<br>
-<%= button_to "Users Report", usersreport_url, :method => 'get' %>
+<table>
+<tr>
+<td><%= button_to "Teams Report", teamsreport_url, :method => 'get' %></td>
+<td><%= button_to "Users Report", usersreport_url, :method => 'get' %></td>
+</tr>
+</table>

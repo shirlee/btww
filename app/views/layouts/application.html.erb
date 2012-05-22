@@ -95,8 +95,7 @@
 				<li id="subtn"><%= link_to "My Commutes", user_url(get_user.id) %></li>
 				<li id="subtn"><%= link_to "Log New Commute", new_commute_url, :user_id => get_user.id %></li>
 		<% if get_user.isadmin? %>
-                <li id="subtn"><%= link_to "Teams Report", teamsreport_url %></li>
-    			<li id="subtn"><%= link_to "Users Report", usersreport_url %></li>
+                <li id="subtn"><%= link_to "Reports", reports_url %></li>
 		<% end %>
 				<li id="subtn"><%= link_to "Sign Out", logout_url %></li>
 		</ul> 

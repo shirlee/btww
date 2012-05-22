@@ -2,6 +2,14 @@ class ReportsController < ApplicationController
   
   before_filter :require_admin
   
+  def index
+    @team_count = Team.count
+    @user_count = User.count
+    @commute_count = Commute.count
+    @bcc_commute_count = Commute.where(:commute_date => '2012-06-09'..'2012-06-15').count
+    
+  end
+  
   def teams
     @teams = Team.all
     
