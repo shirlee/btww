@@ -16,7 +16,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :commute_date, "Date of your Bike Commute" %>
+    <%= f.label :commute_date, "Date of your Bike Commute (required)" %>
 		<% if @commute.id != nil %>
     		<%= f.text_field :commute_date, :value => "#{@commute.commute_date.strftime("%Y-%m-%d")}" %>
 		<% else %>
@@ -24,16 +24,16 @@
 		<% end %>
   </div> <br />
   <div class="field">
-    <%= f.label :distance, "Miles Biked, round trip" %>
+    <%= f.label :distance, "Miles Biked, round trip (opt.)" %>
     <%= f.text_field :distance %>
   </div> <br />
   <div class="field">
-    <%= f.label :ridescore, "How did you feel?" %>
+    <%= f.label :ridescore, "How did you feel? (opt.)" %>
     <%= f.select(:ridescore, ['Fan-freakin-tastic!', 'Hella Good', 'Meh', "Hurtin'", 'Abysmal'],
  				:prompt => "Select One") %>
   </div> <br />
   <div class="field">
-    <%= f.label :comments, "Your Comments: (e.g. road/traffic conditions, weather, route)" %>
+    <%= f.label :comments, "Your Comments: (opt., e.g. road/traffic conditions, weather, route)" %>
     <%= f.text_area :comments, :size => "50x5" %>
   </div> <br />
   <div class="actions">
