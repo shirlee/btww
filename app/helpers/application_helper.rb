@@ -62,5 +62,21 @@ module ApplicationHelper
       return false
     end
   end
+
+  def team_email_list
+    u = 0
+    team_emails = "hello"
+    @team.users.each do |user|
+      if user.email != nil && user.email != ""
+        if u == 0 
+          team_emails = user.email
+        else
+          team_emails = "#{team_emails}, #{user.email}"
+        end
+      end
+    u = u + 1
+    end
+    return team_emails
+  end
   
 end
