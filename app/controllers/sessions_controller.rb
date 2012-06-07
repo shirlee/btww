@@ -44,7 +44,8 @@ class SessionsController < ApplicationController
 
     
   def create
-    user = User.find_by_email(params[:email])
+      user = User.find(:first, :conditions =>  ['UPPER(email) LIKE ?', "%#{params[:email].upcase}%"])
+    # user = User.find_by_email(params[:email])
       if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_url, :notice => "You are now signed in"
