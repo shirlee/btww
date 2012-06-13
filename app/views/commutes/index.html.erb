@@ -1,33 +1,4 @@
-<h1>Commutes</h1>
-
-<table class="table table-striped table-bordered table-condensed">
-  <tr>
-    <th>Commuter</th>
-    <th>Date</th>
-    <th>Distance</th>
-    <th>Ridescore</th>
-    <th></th>
-  </tr>
-
-<% @commutes.each do |commute| %>
-  <tr>
-    <td><%= link_to "#{User.find_by_id(commute.user_id).full_name}", user_url(User.find(commute.user_id)) %> </td>
-    <td><%= commute.commute_date %></td>
-    <td><%= commute.mileage%></td>
-    <td><%= commute.ridescore %></td>
-    <td><%= link_to 'Show Commute', commute %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<% if logged_in? && isadmin? %>
-	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
-<% elsif logged_in? %>
-	<%= link_to 'New Commute', new_commute_url(:user_id => get_user.id) %>
-<% end  %>
-
+<h1>Not Allowed</h1>
 
 
 
