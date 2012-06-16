@@ -2,9 +2,7 @@ Btww1::Application.routes.draw do
 
   get '/index' => 'greetings#index'
   get '/forgot-password' => 'greetings#forgot-password'
-  get '/forgot-password1' => 'greetings#forgot-password1'
   post '/forgot-password' => 'users#reset_password'
-  post '/forgot-password1' => 'users#reset_password'
 
   root :to => 'teams#index'
   
