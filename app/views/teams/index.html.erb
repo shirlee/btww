@@ -18,19 +18,21 @@
 		<td><%= button_to "+ Log New Commute", new_commute_url, :user_id => get_user.id, :method => 'get' %></td>
 <% else %>
 	<td><%= button_to "Sign In", new_session_url, :method => 'get' %></td>
-	<td><%= button_to "Sign Up", new_user_url, :method => 'get' %></td>
+	<!-- <td><%= button_to "Sign Up", new_user_url, :method => 'get' %></td> -->
 	<td>OR</td>
 	<td><%= link_to image_tag("login_fb.jpeg"), '/auth/facebook' %></td>
 <% end %>
 </tr>
 </table>
 
-<% if session[:user_id] != nil && get_user != nil && get_user.team != nil %>
+<h1>Registered Teams</h1>
+
+<!-- <% if session[:user_id] != nil && get_user != nil && get_user.team != nil %>
 <br>
 <h2>Registered Teams</h2>
 <% else %>
 <h1>Team Registration</h1>
-<% end %>
+<% end %> -->
 
 <br>
 
@@ -47,13 +49,13 @@
 </p>
 <% end %>
 
-<% if logged_in? && get_user.team == nil %>
+<!-- <% if logged_in? && get_user.team == nil %>
 <p><strong>Can't Find Your Team? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
 <% elsif logged_in? && isadmin? %>
 <p><strong> <%= button_to '+Add Another Team (Admins Only)', new_team_path, :method => 'get' %></strong></p>
 <% elsif !logged_in? %>
 <p><strong>Can't Find Your Team? <%= button_to '+ Add a New Team', new_team_path, :method => 'get' %></strong></p>
-<% end %>
+<% end %> -->
 
 <% if @teams.count > 0 %>
 	<table class="table table-striped table-bordered table-condensed">

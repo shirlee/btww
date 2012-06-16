@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Team <%=  @team.company  %></h2>
-<p><b> <%= mail_to nil, "+ Invite more co-workers to join this team!",
+<!-- <p><b> <%= mail_to nil, "+ Invite more co-workers to join this team!",
 						:subject => "Sign Up for our Bike Commuter Challenge team!",
-						:body => "#{render 'invite'}" %></b></p>
+						:body => "#{render 'invite'}" %></b></p> -->
 
 <div id='fb-share-button'> </div>
 
@@ -90,17 +90,17 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 		<% if @team.company_size_range != nil && @team.company_size_range != "" %>
 			<td><%= button_to "Team Standings", award_url(@award), :method => 'get' %></td>
 		    <td><%= button_to "+ Log New Commute", new_commute_url, :method => 'get' %></td>
-			<% if logged_in? && get_user.team != nil %>
+			<!-- <% if logged_in? && get_user.team != nil %>
 			<% else %>
 				<td><%= button_to "Join This Team", new_user_url, :method => 'get' %></td>
-			<% end %>			
+			<% end %>			 -->
 		<% end %>
 </table>
 
 <% end %>
 	<% if logged_in? != true %>
   		<h3>Team Members:</h3>
-		<p><b>Work for <%= "#{@team.company}" %>? <%= link_to 'Join this team', new_user_url(:team_id => "#{@team.id}") %></b>
+		<!-- <p><b>Work for <%= "#{@team.company}" %>? <%= link_to 'Join this team', new_user_url(:team_id => "#{@team.id}") %></b> -->
 	<% elsif logged_in? && get_user.team_id == nil %>
 		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user, :team_id => "#{@team.id}") %></b>	
 	<% else %>
@@ -108,13 +108,13 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 	<% end %>
 </p>
 	 
-<p><b> <%= mail_to nil, "+ Invite more co-workers to join this team!",
+<p><b> <!-- <%= mail_to nil, "+ Invite more co-workers to join this team!",
 						:subject => "Sign Up for our Bike Commuter Challenge team!",
-						:body => "#{render 'invite'}" %>
+						:body => "#{render 'invite'}" %> -->
 
 	   <% if logged_in? == true && get_user.team == @team %>
 
-	   | <%= mail_to team_email_list, "Send an email to members of this team",
+	   <%= mail_to team_email_list, "<Send an email to members of this team>",
 						:subject => "Bike Commuter Challenge",
 						:body => "#{render 'team_email'}" %>
 	   <% end %>
