@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 
-  before_filter :find_user, :except =>  [:index, :new, :create]
-  before_filter :require_istheuser, :except =>  [:index, :show, :new, :create]
+  before_filter :find_user, :except =>  [:index, :new, :create, :reset_password]
+  before_filter :require_istheuser, :except =>  [:index, :show, :new, :create, :reset_password]
 
   def index
     @users = User.all
@@ -129,6 +129,20 @@ class UsersController < ApplicationController
 
     end
   end
+  
+
+  def reset_password
+    @user = User.find_by_email(params[:email])
+    if @user
+      @pwd = rand(100000)
+      @user.update_attributes(:password => @pwd, :password_confirmation => @pwd)
+      UserMailer.password_email(@user, @pwd).deliver
+      redirect_to new_session_url, notice: "An email was sent to #{@user.email}. Don't forget to check your spam folder just in case."
+    else
+      redirect_to '/forgot-password', notice: "<<Sorry, there is no Bike Commuter Challenge account setup for #{params[:email]}. Try a different email address.>>"
+    end
+  end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
