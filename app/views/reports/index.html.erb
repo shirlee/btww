@@ -1,7 +1,6 @@
-<h1> Bike Commuter Challenge Reports</h1>
-
-<p> This page is available to administrator users only.</p>
+<h1> Bike Commuter Challenge 2012 Reports and Stats</h1>
 <br>
+<h3> Teams</h3>
 <b>Number of Teams: <%= @team_count %></b>
 <br>
 <br>
@@ -18,6 +17,20 @@ K-12 School: <%= @k12_count %>
 College/University: <%= @college_count %>
 <br>
 <br>
+<b>Teams by Company Size</b>
+<br>
+1-4 Employees: <%= @vysm_count %>
+<br>
+5-24 Employees: <%= @sm_count %>
+<br>
+25-99 Employees: <%= @med_count %>
+<br>
+100-499 Employees: <%= @lrg_count %>
+<br>
+500+ Employees: <%= @huge_count %>
+<br>
+<br>
+<h3> Users </h3>
 <b>Number of Users: <%= @user_count %></b>
 <br>
 <b>Bike to Work Newbies: <%= @newbies_count %></b>
@@ -36,6 +49,7 @@ Mountain Bike / Cross Riders: <%= @mtb_count %>
 BMX Riders: <%= @bmx_count %>
 <br>
 <br>
+<h3> Commutes</h3>
 <b>Number of Commutes: <%= @commute_count %></b>
 <br>
 <b>"Qualifying" Commuter Challenge Commutes: <%= @bcc_commute_count %></b>
