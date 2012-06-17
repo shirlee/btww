@@ -4,9 +4,28 @@ class ReportsController < ApplicationController
   
   def index
     @team_count = Team.count
+    @public_count = Team.where(:company_type => 'Public Agency').count
+    @busnp_count = Team.where(:company_type => 'Business/Non-Profit').count
+    @bike_count = Team.where(:company_type => 'Bicycle-related Business').count
+    @k12_count = Team.where(:company_type => 'K-12 School').count
+    @college_count = Team.where(:company_type => 'College/University').count
     @user_count = User.count
+    @newbies_count = User.where(:isnewbie => true).count
+    @transpo_count = User.where(:bikerclass => 'Commuter/Transportation').count
+    @rec_count = User.where(:bikerclass => 'Recreational').count
+    @roadies_count = User.where(:bikerclass => 'Roadie').count
+    @mtb_count = User.where(:bikerclass => 'MTB/Cross').count
+    @bmx_count = User.where(:bikerclass => 'BMX').count
     @commute_count = Commute.count
     @bcc_commute_count = Commute.where(:commute_date => '2012-06-09'..'2012-06-15').count
+    @bcc_sat_commute_count = Commute.where(:commute_date => '2012-06-09').count
+    @bcc_sun_commute_count = Commute.where(:commute_date => '2012-06-10').count
+    @bcc_mon_commute_count = Commute.where(:commute_date => '2012-06-11').count
+    @bcc_tue_commute_count = Commute.where(:commute_date => '2012-06-12').count
+    @bcc_wed_commute_count = Commute.where(:commute_date => '2012-06-13').count
+    @bcc_thu_commute_count = Commute.where(:commute_date => '2012-06-14').count
+    @bcc_fri_commute_count = Commute.where(:commute_date => '2012-06-15').count
+
     
   end
   
