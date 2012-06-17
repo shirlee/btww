@@ -25,6 +25,11 @@ class ReportsController < ApplicationController
     @bcc_wed_commute_count = Commute.where(:commute_date => '2012-06-13').count
     @bcc_thu_commute_count = Commute.where(:commute_date => '2012-06-14').count
     @bcc_fri_commute_count = Commute.where(:commute_date => '2012-06-15').count
+    @bcc_fantastic_commute_count = Commute.where(:ridescore => 'Fan-freakin-tastic!').count
+    @bcc_good_commute_count = Commute.where(:ridescore => 'Hella Good').count
+    @bcc_meh_commute_count = Commute.where(:ridescore => 'Meh').count
+    @bcc_hurtin_commute_count = Commute.where(:ridescore => "Hurtin'").count
+    @bcc_abysmal_commute_count = Commute.where(:ridescore => 'Abysmal').count
 
     
   end
