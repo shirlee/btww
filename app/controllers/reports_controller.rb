@@ -56,6 +56,11 @@ class ReportsController < ApplicationController
     
   end
   
+  def commute_comments
+    @commutes = Commute.where(:commute_date => '2012-06-11')
+    
+  end
+  
   def team_report
     # for csv_builder
     # TODO - @teamname = param value pointing to  team name here

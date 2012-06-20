@@ -16,6 +16,7 @@ Btww1::Application.routes.draw do
   get '/logout' => 'sessions#destroy', :as => :logout
   
   get '/reports' => 'reports#index', :as => :reports
+  get '/reports/commute-comments' => 'reports#commute_comments'
   get '/reports/teams' => 'reports#teams', :as => :teamsreport
   get '/reports/users' => 'reports#users', :as => :usersreport
   
