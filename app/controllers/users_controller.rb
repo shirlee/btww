@@ -132,7 +132,8 @@ class UsersController < ApplicationController
   
 
   def reset_password
-    @user = User.find_by_email(params[:email])
+    # @user = User.find_by_email(params[:email])
+    @user = User.where("email = ?", params[:email]).first
     if @user
       @pwd = rand(100000)
       @user.update_attributes(:password => @pwd, :password_confirmation => @pwd)
