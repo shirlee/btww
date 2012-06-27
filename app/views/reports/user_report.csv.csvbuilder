@@ -3,7 +3,7 @@
 csv << ["User report"]
 csv << [] # gap between header and data for visibility
 # header-row for the data
-  csv << ["Date","First Name", "Last Name", "Email Address", "3rd party Login?","ActiveTrans Email List Opt-in","BTWW event Email List Opt-in","Team","Team Leader?","Created ON","Updated On","Newbie?","Self-Described Biker Type","User Profile Link"]
+  csv << ["Date","First Name", "Last Name", "Email Address", "3rd party Login?","ActiveTrans Email List Opt-in","BTWW event Email List Opt-in","Team","Team Leader?","Created ON","Updated On","Newbie?","Self-Described Biker Type","User Profile Link","BTWW Mileage"]
   csv << [] # gap between header and data for visibility
   
 row_data = [] #for scoping
@@ -38,6 +38,7 @@ row_data = [] #for scoping
 	  end 
     row_data << user.bikerclass
     row_data << "http://#{request.env['HTTP_HOST']}/users/#{user.id}"
+    row_data << user.mileage
     
     # and don't forget to add the row to the csv 
     csv << row_data.dup # it breaks if you don't dup

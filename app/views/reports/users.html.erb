@@ -16,6 +16,7 @@
 		<th> Newbie? </th>		
 	 	<th> Self-Described Biker Type </th>
 	 	<th> User Profile Link </th>
+	 	<th> BTWW Mileage </th>
 		</tr>
 
 		<% @users.each do |user| %>
@@ -46,6 +47,7 @@
 		<% end %>	
 		<td> <%= user.bikerclass %> </td>
 		<td> <%= link_to "#{user.full_name}", user_url(user) %> | <%= link_to "User ID: #{user.id}", user_url(user) %> </td>
+		<td> <%= user.mileage %> </td>
 		</tr>
 <% end %>
 	</table>
