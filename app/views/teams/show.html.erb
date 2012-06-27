@@ -89,18 +89,18 @@ Team Leader: <%= link_to "#{@team_leader.full_name}", user_url(@team.leader) %>
 <table>
 		<% if @team.company_size_range != nil && @team.company_size_range != "" %>
 			<td><%= button_to "Team Standings", award_url(@award), :method => 'get' %></td>
-		    <td><%= button_to "+ Log New Commute", new_commute_url, :method => 'get' %></td>
-			<% if logged_in? && get_user.team != nil %>
+		    <!-- <td><%= button_to "+ Log New Commute", new_commute_url, :method => 'get' %></td> -->
+			<!-- <% if logged_in? && get_user.team != nil %>
 			<% else %>
 				<td><%= button_to "Join This Team", new_user_url, :method => 'get' %></td>
-			<% end %>			
+			<% end %>			 -->
 		<% end %>
 </table>
 
 <% end %>
 	<% if logged_in? != true %>
   		<h3>Team Members:</h3>
-		<p><b>Work for <%= "#{@team.company}" %>? <%= link_to 'Join this team', new_user_url(:team_id => "#{@team.id}") %></b>
+		<!-- <p><b>Work for <%= "#{@team.company}" %>? <%= link_to 'Join this team', new_user_url(:team_id => "#{@team.id}") %></b> -->
 	<% elsif logged_in? && get_user.team_id == nil %>
 		  <b>Team Members: (Is this your Team? <%= link_to "Add it to your profile)", edit_user_url(get_user, :team_id => "#{@team.id}") %></b>	
 	<% else %>

@@ -75,9 +75,9 @@
 	</table>
 
 	<table>
-		<% if logged_in? && @user == get_user %>		
+		<!-- <% if logged_in? && @user == get_user %>		
 			<td><%= button_to "+ Add a Commute", new_commute_url, :user_id => get_user.id, :method => 'get' %></td>
-		<% end %>
+		<% end %> -->
 		<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
 			<td><%= button_to "Check the Scoreboard for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
 		<% end %>
@@ -157,14 +157,14 @@
 		  <b><%= @user.fname %> has not yet logged commutes during Commuter Challenge (Jun 9 - Jun 15)</b>
 		</p>
 	<% end %>
-	<% if logged_in? && get_user.team_id != nil %>
+	<!-- <% if logged_in? && get_user.team_id != nil %>
 		<% if is_the_team_leader? || get_user == @user %>
 		<%= button_to "+ Add Commute", new_commute_url(:user_id => @user.id), :method => 'get' %> 
 		<% end %>	
 	<% elsif logged_in? && get_user == @user %>
 		<%= link_to "Choose Your Team to Add a Commute!", edit_user_url(@user.id) %>
 	<% else  %>
-	<% end %>
+	<% end %> -->
 <% end %>	
 <br>
 <p>
@@ -195,12 +195,12 @@
 	</table>
 
 
-	<% if logged_in? && get_user.team_id != nil %>
+	<!-- <% if logged_in? && get_user.team_id != nil %>
 		<% if is_the_team_leader? || get_user == @user %>
 		<%= button_to "+ Add Commute", new_commute_url(:user_id => @user.id), :method => 'get' %> 
 		<% end %>	
 	<% elsif logged_in? && get_user == @user %>
 		<%= link_to "Choose Your Team to Add a Commute!", edit_user_url(@user.id) %>
 	<% else  %>
-	<% end %>	
+	<% end %>	 -->
 

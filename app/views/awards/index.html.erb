@@ -16,7 +16,7 @@
 		<td><%= link_to "Team Standings", award_url(award.id) %> <%= "(#{num_competing_teams(award)} Teams)" %></td>
 	<% else %>
 		<% if !logged_in? %>
-		<td><%= link_to "+ Add Your Team", new_user_url %> <%= "(#{num_competing_teams(award)} Teams)" %></td>		
+		<td><!-- <%= link_to "+ Add Your Team", new_user_url %> --> <%= "(#{num_competing_teams(award)} Teams)" %></td>		
 		<% else %>
 		<td><%= "(#{num_competing_teams(award)} Teams)" %></td>
 		<% end %>

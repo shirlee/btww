@@ -39,13 +39,13 @@
 	<% end %>
 </p>
 
-<% if logged_in? && get_user.id == @commute.user_id %>
+<!-- <% if logged_in? && get_user.id == @commute.user_id %>
 <%= link_to 'Edit Commute', edit_commute_path(@commute) %> |
 <%= link_to 'Delete Commute', commute_url(@commute), confirm: 'Are you sure?', method: :delete %> |
 <%= link_to '+ Add A Commute', new_commute_url(:user_id => get_user.id) %>
 <br>
 <br>
-<% end %>
+<% end %> -->
 
 
 
@@ -89,9 +89,9 @@
 <p><b>----------------</b></p>
 
 <table>
-	<% if logged_in? && @user == get_user %>		
+	<!-- <% if logged_in? && @user == get_user %>		
 		<td><%= button_to "+ Add a Commute", new_commute_url(:user_id => get_user.id), :method => 'get' %>
-	<% end %>
+	<% end %> -->
 	<% if @user.team != nil && @user.team.company_size_range != nil && @user.team.company_size_range != "" %>
 		<td><%= button_to "Check the Standings for #{@user.team.company}", award_url(users_scoreboard(@user).id), :method => 'get' %></td>
 	<% end %>
