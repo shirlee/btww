@@ -82,7 +82,28 @@ Jun 15 (Friday) Commutes: <%= @bcc_fri_commute_count %>
 "Abysmal": <%= @bcc_abysmal_commute_count %>
 <br>
 <br>
+<b>Commuter Comments:</b>
+<br>
+<%= link_to "WORD CLOUD IMAGES of each day", "/reports/commute-comments/wordcloud" %>
+<br>
+<%= link_to "June 9 - Saturday", "/reports/commute-comments/?date=2012-06-09" %>
+<br>
+<%= link_to "June 10 - Sunday", "/reports/commute-comments/?date=2012-06-10" %>
+<br>
+<%= link_to "June 11 - Monday", "/reports/commute-comments/?date=2012-06-11" %>
+<br>
+<%= link_to "June 12 - Tuesday", "/reports/commute-comments/?date=2012-06-12" %>
+<br>
+<%= link_to "June 13 - Wednesday", "/reports/commute-comments/?date=2012-06-13" %>
+<br>
+<%= link_to "June 14 - Thursday", "/reports/commute-comments/?date=2012-06-14" %>
+<br>
+<%= link_to "June 15 - Friday", "/reports/commute-comments/?date=2012-06-15" %>
+<br>
+<%= link_to "All Comments", "/reports/commute-comments" %>
 
+<br>
+<br>
 <table>
 <tr>
 <td><%= button_to "Teams Report", teamsreport_url, :method => 'get' %></td>

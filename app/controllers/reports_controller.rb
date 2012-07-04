@@ -57,9 +57,17 @@ class ReportsController < ApplicationController
   end
   
   def commute_comments
-    @commutes = Commute.where(:commute_date => '2012-06-11')
-    
+    if params[:date]
+      @commutes = Commute.where("commute_date = ?", params[:date])
+    else
+      @commutes = Commute.all
+    end
   end
+  
+  def wordcloud
+
+  end
+  
   
   def team_report
     # for csv_builder
