@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :ensure_domain, :kill_deleted_user_session
+  before_filter :contest_end_redirect, :except => [:contest_ended]
 
 #  APP_DOMAIN = 'www.bike2workweek.com'
   APP_DOMAIN = 'reg.bikecommuterchallenge.org'
+
+
+  def contest_end_redirect
+    redirect_to '/contest_ended'
+  end
 
   def ensure_domain
     if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'

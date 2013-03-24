@@ -1,8 +1,11 @@
 Btww1::Application.routes.draw do
 
+  get '/contest_ended' => 'greetings#contest_ended', :as => :contestended
+
   get '/index' => 'greetings#index'
   get '/forgot-password' => 'greetings#forgot-password'
   post '/forgot-password' => 'users#reset_password'
+
 
   root :to => 'teams#index'
   
