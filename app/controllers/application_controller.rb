@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :ensure_domain, :kill_deleted_user_session
-  before_filter :contest_end_redirect, :except => [:contest_ended]
+#  before_filter :contest_end_redirect, :except => [:contest_ended]
 
 #  APP_DOMAIN = 'www.bike2workweek.com'
   APP_DOMAIN = 'reg.bikecommuterchallenge.org'
