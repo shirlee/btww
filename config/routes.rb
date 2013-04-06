@@ -6,6 +6,8 @@ Btww1::Application.routes.draw do
   get '/forgot-password' => 'greetings#forgot-password'
   post '/forgot-password' => 'users#reset_password'
 
+  get '/confirm' => 'greetings#confirm'
+  post '/confirm' => 'users#confirm_email'
 
   root :to => 'teams#index'
   

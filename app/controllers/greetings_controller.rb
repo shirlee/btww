@@ -5,4 +5,8 @@ class GreetingsController < ApplicationController
   def contest_ended
   end
 
+  def confirm
+    @email=params[:email]
+  end
+
 end

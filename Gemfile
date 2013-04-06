@@ -36,6 +36,9 @@ gem 'csv_builder'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# for config env values
+gem 'figaro'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

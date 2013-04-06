@@ -68,23 +68,30 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-
-        if @user.team != nil
-          update_team_stats(@user.team)
-        else
-        end
-
-        if logged_in? == false
-          session[:user_id] = @user.id
-        else
-        end
         
         if @user.team != nil
-        format.html { redirect_to team_url(@user.team.id), notice: "You're in!  Now invite more co-workers!" }
-        format.json { render json: @user, status: :created, location: @user }
-        else
-        format.html { redirect_to chooseteam_url(@user.id) }
+          update_team_stats(@user.team)
         end
+
+        if @user.uid == nil
+          UserMailer.email_confirmation(@user).deliver
+          format.html { redirect_to root_url,
+             notice: "A confirmation email was sent to #{@user.email}. You must click on the confirmation link to confirm your account.
+                      Don't forget to check your spam folder just in case." }
+        else
+          if logged_in? == false
+            session[:user_id] = @user.id
+          end
+          if @user.team != nil
+          format.html { redirect_to team_url(@user.team.id), notice: "You're in!  Now invite more co-workers!" }
+          format.json { render json: @user, status: :created, location: @user }
+          else
+          format.html { redirect_to chooseteam_url(@user.id) }
+          end
+          
+        end
+
+        
       
       else
         format.html { render action: "new" }
@@ -94,6 +101,10 @@ class UsersController < ApplicationController
 
   end
 
+
+ def email_confirm
+   
+ end
 
   # PUT /users/1
   # PUT /users/1.json
@@ -132,6 +143,19 @@ class UsersController < ApplicationController
   
 
   def reset_password
+    # @user = User.find_by_email(params[:email])
+    @user = User.where("email = ?", params[:email]).first
+    if @user
+      @pwd = rand(100000)
+      @user.update_attributes(:password => @pwd, :password_confirmation => @pwd)
+      UserMailer.password_email(@user, @pwd).deliver
+      redirect_to new_session_url, notice: "An email was sent to #{@user.email}. Don't forget to check your spam folder just in case."
+    else
+      redirect_to '/forgot-password', notice: "<<Sorry, there is no Bike Commuter Challenge account setup for #{params[:email]}. Try a different email address.>>"
+    end
+  end
+
+  def confirm_email
     # @user = User.find_by_email(params[:email])
     @user = User.where("email = ?", params[:email]).first
     if @user

@@ -54,6 +54,9 @@ GEM
       addressable (~> 2.2)
       multipart-post (~> 1.1)
       rack (~> 1.1)
+    figaro (0.6.3)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     gmaps4rails (1.4.8)
       json
     hashie (1.2.0)
@@ -158,6 +161,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.5)
   coffee-rails (~> 3.1.1)
   csv_builder
+  figaro
   gmaps4rails
   jquery-rails
   newrelic_rpm
