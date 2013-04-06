@@ -39,12 +39,12 @@
   </div><br />
   <div class="field">
    		<%= f.label :team_id, "Team:" %>
-	<!-- <% if @user.id == nil %>
+	<% if @user.id == nil %>
    		<%= f.label :team_id, "Team: If your company isn't listed, you can create it in the next step." %>
 	<% else %>
    		<%= f.label :team_id, "Team:" %>
    		Don't see your team? <%= link_to "Create a New Team", new_team_url %>
-	<% end %> -->
+	<% end %>
     <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
   </div>
 <br />

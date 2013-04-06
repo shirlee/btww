@@ -7,7 +7,7 @@ Btww1::Application.routes.draw do
   post '/forgot-password' => 'users#reset_password'
 
   get '/confirm' => 'greetings#confirm'
-  post '/confirm' => 'users#confirm_email'
+  post '/confirm' => 'users#confirm_email', :as => :activate_account
 
   root :to => 'teams#index'
   
