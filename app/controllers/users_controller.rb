@@ -161,7 +161,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Your account is activated! Let the games begin!"
     else
-      redirect_to root_url, notice: "Bad link, try again."
+      redirect_to root_url, notice: "Bad link, try again with the link from your re-activation email."
     end
   end
 
