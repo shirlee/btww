@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 #  before_filter :contest_end_redirect, :except => [:contest_ended]
 
 #  APP_DOMAIN = 'www.bike2workweek.com'
-  APP_DOMAIN = 'reg.bikecommuterchallenge.org'
+  APP_DOMAIN = ENV['HOST']
 
 
   def contest_end_redirect
@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_domain
-    if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'
+    if request.env['HTTP_HOST'] != APP_DOMAIN
+    # if request.env['HTTP_HOST'] != APP_DOMAIN && request.env['HTTP_HOST'] != 'localhost:3000'
       # HTTP 301 is a "permanent" redirect
        redirect_to "http://#{APP_DOMAIN}#{request.env['REQUEST_PATH']}", :status => 301
     end
