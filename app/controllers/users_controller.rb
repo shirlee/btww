@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 
-  before_filter :find_user, :except =>  [:index, :new, :create, :reset_password]
-  before_filter :require_istheuser, :except =>  [:index, :show, :new, :create, :reset_password]
+  before_filter :find_user, :except =>  [:index, :new, :create, :reset_password, :send_confirm, :activate]
+  before_filter :require_istheuser, :except =>  [:index, :show, :new, :create, :reset_password, :send_confirm, :activate]
 
   def index
     @users = User.all
@@ -70,15 +70,16 @@ class UsersController < ApplicationController
       if @user.save
         
         if @user.team != nil
-          update_team_stats(@user.team)
+          update_team_stats(@user.team)          
         end
 
         if @user.uid == nil
-          @user.update_attributes(:activation_code => rand(36**18).to_s(36))
-          UserMailer.email_confirmation(@user).deliver
-          format.html { redirect_to root_url,
-             notice: "A confirmation email was sent to #{@user.email}. You must click on the confirmation link to confirm your account.
-                      Don't forget to check your spam folder just in case." }
+          
+            @user.update_attributes(:activation_code => rand(36**18).to_s(36))
+            UserMailer.email_confirmation(@user).deliver
+            format.html {redirect_to root_url, notice: "A confirmation email was sent to #{@user.email}.
+                                                                         You must click on the confirmation link to confirm your account.
+                                                                         Don't forget to check your spam folder just in case."}
         else
           if logged_in? == false
             session[:user_id] = @user.id
@@ -91,8 +92,6 @@ class UsersController < ApplicationController
           end
           
         end
-
-        
       
       else
         format.html { render action: "new" }
@@ -103,9 +102,7 @@ class UsersController < ApplicationController
   end
 
 
- def email_confirm
-   
- end
+
 
   # PUT /users/1
   # PUT /users/1.json
@@ -152,23 +149,21 @@ class UsersController < ApplicationController
       UserMailer.password_email(@user, @pwd).deliver
       redirect_to new_session_url, notice: "An email was sent to #{@user.email}. Don't forget to check your spam folder just in case."
     else
-      redirect_to '/forgot-password', notice: "<<Sorry, there is no Bike Commuter Challenge account setup for #{params[:email]}. Try a different email address.>>"
+      redirect_to '/forgot-password', notice: "Sorry, there is no Bike Commuter Challenge account setup for #{params[:email]}. Try a different email address."
     end
   end
 
-  def confirm_email
-    # @user = User.find_by_email(params[:email])
-    @user = User.where("email = ?", params[:email]).first
-    if @user
-      @pwd = rand(100000)
-      @user.update_attributes(:password => @pwd, :password_confirmation => @pwd)
-      UserMailer.password_email(@user, @pwd).deliver
-      redirect_to new_session_url, notice: "An email was sent to #{@user.email}. Don't forget to check your spam folder just in case."
+  def activate
+    @user = User.find_by_id(params[:id])
+    logger.debug "user is #{@user}"
+    if params[:activation_code] == @user.activation_code
+      @user.update_attributes(:activation_code => 'activated-2013')
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Your account is activated! Let the games begin!"
     else
-      redirect_to '/forgot-password', notice: "<<Sorry, there is no Bike Commuter Challenge account setup for #{params[:email]}. Try a different email address.>>"
+      redirect_to root_url, notice: "Bad link, try again."
     end
   end
-
 
   # DELETE /users/1
   # DELETE /users/1.json

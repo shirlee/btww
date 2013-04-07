@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   
   def email_confirmation(user)
   @user = user
-  @url = activate_account_url(:host => ENV['HOST'], :activation_code => @user.activation_code)
+  @url = activate_account_url(:host => ENV['HOST'], :id => @user.id, :activation_code => @user.activation_code)
   mail(:to => user.email, :subject => "Bike Commuter Challenge temporary password")
   end
   

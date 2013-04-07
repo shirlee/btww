@@ -6,13 +6,14 @@ Btww1::Application.routes.draw do
   get '/forgot-password' => 'greetings#forgot-password'
   post '/forgot-password' => 'users#reset_password'
 
-  get '/confirm' => 'greetings#confirm'
-  post '/confirm' => 'users#confirm_email', :as => :activate_account
+  get '/activate' => 'greetings#activate', :as => :activate
+
 
   root :to => 'teams#index'
   
   get '/users/:id/chooseteam' => 'users#edit', :as => :chooseteam
   get '/users/:id/completeprofile' => 'users#completeprofile', :as => :completeprofile
+  get '/users/activate' => 'users#activate', :as => :activate_account
 
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'
 
