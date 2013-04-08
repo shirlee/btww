@@ -1,0 +1,69 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname, "First Name" %>
+    <%= f.text_field :fname %>
+  </div><br>
+  <div class="field">
+    <%= f.label :lname, "Last Name" %>
+    <%= f.text_field :lname %>
+  </div><br />
+	<% if isadmin? %>
+	  <div class="field">
+	    <%= f.label :isadmin, "Check box if this User should have Admin rights" %>
+	    <%= f.check_box :isadmin %>
+	  </div><br />
+	<% end %>
+  <div class="field">
+   	<%= f.label :team_id, "Team: If your company isn't listed, you can create it in the next step." %>
+    <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
+  </div><br>
+  <div class="field">
+    <%= f.label :isnewbie, "First Time Biking to Work?" %>
+    <%= f.check_box :isnewbie %>
+  </div><br>
+	<% if isadmin? %>
+  <div class="field">
+    <%= f.label :email, "Email Address" %>
+    <%= f.text_field :email %>
+  </div><br>
+  <div class="field">
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+  </div><br />
+  <div class="field">
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %>
+  </div><br />
+	<% end %>
+	  <div class="field">
+	    <%= f.label :bikerclass, "Primary Biker Type" %>
+	    <%= f.select(:bikerclass, ['Recreational', 'Commuter/Transportation', 'Roadie', 'MTB/Cross', 'BMX'], :prompt => "Select One") %>
+	<br />
+	  </div>
+	<br>
+	<div class="field">
+	  <%= f.label :btww_email_list, "Would you like to receive tips on How to Bike To Work and info on Pit Stops, Parties, and Winners of Commuter Challenge?" %>
+	  <%= f.check_box :btww_email_list %>
+	</div>
+	<br>
+	<div class="field">
+	  <%= f.label :general_email_list, "Would you like to receive updates on events and policy efforts of the Active Transportation Alliance as it pertains to the state of cycling in Chicago and Illinois?" %>
+	  <%= f.check_box :general_email_list %>
+	</div>
+	<br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

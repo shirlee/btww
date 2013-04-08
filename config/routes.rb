@@ -13,6 +13,7 @@ Btww1::Application.routes.draw do
   
   get '/users/:id/chooseteam' => 'users#edit', :as => :chooseteam
   get '/users/:id/completeprofile' => 'users#completeprofile', :as => :completeprofile
+  get '/users/:id/surveyinfo' => 'users#surveyinfo', :as => :surveyinfo
   get '/users/activate' => 'users#activate', :as => :activate_account
 
   match '/auth/:facebook/callback', to: 'sessions#fb_auth'

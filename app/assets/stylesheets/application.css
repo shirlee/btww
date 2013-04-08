@@ -12,10 +12,72 @@
 #notice {
   color: green; }
 
+#new-user-required-left {
+	border-style:dotted;
+	border-width:1px;
+	border-color:#73AFB6;
+	width:300px;
+	float:left;
+	margin:5px;
+	padding:5px;
+	color:#000;
+}
+
+#fun-stuff {
+	border-style:dotted;
+	border-width:1px;
+	border-color:#73AFB6;
+	width:300px;
+	float:right;
+	margin:5px;
+	padding:5px;
+	color:#000;
+}
+
+#demo-stuff {
+	border-style:dotted;
+	border-width:1px;
+	border-color:#73AFB6;
+	width:300px;
+	float:right;
+	margin:5px;
+	padding:5px;
+	color:#000;
+}
+
+#submit-form {
+	border-style:dotted;
+	border-width:1px;
+	border-color:#73AFB6;
+	width:600px;
+	float:bottom;
+	margin:5px;
+	padding:5px;
+	color:#000;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table; }
+
+#home-zip {
+	width:100px;
+	float:left;
+	margin:0px;
+	padding:0;
+}
+
+#work-zip {
+	width:100px;
+	float:left;
+	margin-left:20px;
+	padding:0;
+}
+
+#new-user-action {
+	float:;
+}
 
 #error_explanation {
   width: 450px;

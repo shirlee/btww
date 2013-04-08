@@ -11,24 +11,21 @@
     </div>
   <% end %>
 
+
+<div id=new-user-required-left>
+<h3>Required Information</h3>
   <div class="field">
     <%= f.label :fname, "First Name" %>
     <%= f.text_field :fname %>
-  </div><br>
+  </div><br />
   <div class="field">
     <%= f.label :lname, "Last Name" %>
     <%= f.text_field :lname %>
-  </div><br />
+  </div><br />	
   <div class="field">
     <%= f.label :email, "Email Address" %>
     <%= f.text_field :email %>
   </div><br />
-<% if isadmin? %>
-  <div class="field">
-    <%= f.label :isadmin, "Check box if this User should have Admin rights" %>
-    <%= f.check_box :isadmin %>
-  </div><br />
-<% end %>
   <div class="field">
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
@@ -37,8 +34,15 @@
     <%= f.label :password_confirmation, "Password Confirmation" %>
     <%= f.password_field :password_confirmation %>
   </div><br />
+	
+	<% if isadmin? %>
+	  <div class="field">
+	    <%= f.label :isadmin, "Check box if this User should have Admin rights" %>
+	    <%= f.check_box :isadmin %>
+	  </div><br />
+	<% end %>
+
   <div class="field">
-   		<%= f.label :team_id, "Team:" %>
 	<% if @user.id == nil %>
    		<%= f.label :team_id, "Team: If your company isn't listed, you can create it in the next step." %>
 	<% else %>
@@ -47,6 +51,10 @@
 	<% end %>
     <p><%= f.collection_select(:team_id, Team.order('company asc'), :id, :company, :prompt => "Select your Team") %></p>
   </div>
+</div>
+
+<div id=fun-stuff>
+<h3>Fun Stuff</h3>
 <br />
   <div class="field">
     <%= f.label :isnewbie, "First Time Biking to Work?" %>
@@ -58,18 +66,58 @@
     <%= f.select(:bikerclass, ['Recreational', 'Commuter/Transportation', 'Roadie', 'MTB/Cross', 'BMX'], :prompt => "Select One") %>
 <br />
   </div>
-<br>
-<div class="field">
-  <%= f.label :btww_email_list, "Would you like to receive tips on How to Bike To Work and info on Pit Stops, Parties, and Winners of Commuter Challenge?" %>
-  <%= f.check_box :btww_email_list %>
+	<br>
+	<div class="field">
+	  <%= f.label :btww_email_list, "Send me tips on How to Bike To Work, Pit Stops, Parties, and Winners of Commuter Challenge!" %>
+	  <%= f.check_box :btww_email_list %>
+	</div>
+	<br>
+	<div class="field">
+	  <%= f.label :general_email_list, "Send me updates on events and legislation pertaining to cycling in Chicago and Illinois!" %>
+	  <%= f.check_box :general_email_list %>
+	</div>
+
 </div>
-<br>
-<div class="field">
-  <%= f.label :general_email_list, "Would you like to receive updates on events and policy efforts of the Active Transportation Alliance as it pertains to the state of cycling in Chicago and Illinois?" %>
-  <%= f.check_box :general_email_list %>
-</div>
-<br>
-  <div class="actions">
-    <%= f.submit %>
+
+<div id=demo-stuff>
+<h3>Important Stuff</h3>
+<p>These survey questions are optional, for planning purposes only, and will only be shared at an aggregate level -- not displayed on your profile page.</p>
+  <div class="field">
+    <!-- <%= f.label :gender, "Gender" %> -->
+    <%= f.select(:gender, ['Female', 'Male', 'Other'], :prompt => "Gender") %>
   </div>
+  <div class="field">
+    <!-- <%= f.label :ethnicity, "Would you describe yourself as:" %> -->
+    <%= f.select(:ethnicity, ['American Indian/Native American', 'Asian', 'Black/African American', 'Hispanic/Latino', 'White/Caucasian', 'Pacific Islander', 'Other'], :prompt => "Ethnicity") %>
+  </div>
+	<div class="field">
+	  <!-- <%= f.label :age_range, "What is your age range?" %> -->
+      <%= f.select(:age_range, ['18-34', '35-44', '45-54', '55-65', '  65+'], :prompt => "Age Range") %>
+	</div>
+	
+
+	<div class="field">
+	<div id="home-zip">
+	  <%= f.label :home_zip_code, "HOME zip code" %>
+      <%= f.text_field :home_zip_code , :style=>'width:100px'%>
+	</div>
+	</div>
+	<div class="field">
+	<div id="work-zip">
+	  <%= f.label :work_zip_code, "WORK zip code" %>
+      <%= f.text_field :work_zip_code , :style=>'width:100px'%>
+		</div>
+	</div>
+	</div>
+</div>
+
+<br>
+<div id=submit-form>
+	<button type="submit" class="btn btn-large btn-success"> Create My Account!
+	</button>
+
+<!--   <div class="btn btn-large btn-success">
+    <%= f.submit "Create my Account!"%>
+  </div> -->
+</div>
 <% end %>

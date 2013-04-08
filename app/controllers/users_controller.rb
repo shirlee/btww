@@ -77,7 +77,7 @@ class UsersController < ApplicationController
           
             @user.update_attributes(:activation_code => rand(36**18).to_s(36))
             UserMailer.email_confirmation(@user).deliver
-            format.html {redirect_to root_url, notice: "A confirmation email was sent to #{@user.email}.
+            format.html {redirect_to new_session_url, notice: "A confirmation email was sent to #{@user.email}.
                                                                          You must click on the confirmation link to confirm your account.
                                                                          Don't forget to check your spam folder just in case."}
         else
